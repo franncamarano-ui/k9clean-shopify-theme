@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17433c">
+  <title>{{ page_title }} — {{ shop.name }}</title>
+  <meta name="description" content="{{ page_description }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  {{ 'k9clean.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body>
+
+  <!-- BANNER COUNTDOWN -->
+  <div class="countdown-banner">
+    <span class="countdown-banner__text">Tiempo limitado | Llevá 2 y el 3ro es gratis</span>
+    <div class="countdown-banner__timer">
+      <div class="countdown-banner__unit"><span id="cd-hours">03</span><small>Hrs</small></div>
+      <span class="countdown-banner__sep">:</span>
+      <div class="countdown-banner__unit"><span id="cd-minutes">49</span><small>Min</small></div>
+      <span class="countdown-banner__sep">:</span>
+      <div class="countdown-banner__unit"><span id="cd-seconds">00</span><small>Seg</small></div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">K9<span>Clean</span></a>
+      <nav class="nav-desktop">
+        <a href="/">Inicio</a>
+        <a href="/pages/producto">K9Clean Disolvente</a>
+        <a href="/pages/seguimiento">Seguí tu pedido</a>
+        <a href="/pages/contacto">Contacto</a>
+      </nav>
+      <div class="header-icons">
+        <button class="hamburger" id="hamburgerBtn" aria-label="Menú"><span></span><span></span><span></span></button>
+        <a href="/account" aria-label="Mi cuenta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
+        <a href="/cart" aria-label="Carrito"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav-mobile" id="mobileNav">
+    <a href="/">Inicio</a>
+    <a href="/pages/producto">K9Clean Disolvente</a>
+    <a href="/pages/seguimiento">Seguí tu pedido</a>
+    <a href="/pages/contacto">Contacto</a>
+  </nav>
+
+  <main>
+    {{ content_for_layout }}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <span class="logo">K9<span>Clean</span></span>
+          <div class="footer__social">
+            <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Soporte</h4>
+          <a href="/#garantia">Política de reembolso</a>
+          <a href="/pages/seguimiento">Política de cancelación</a>
+          <a href="/pages/seguimiento">Política de envío</a>
+          <a href="/pages/contacto">Contacto</a>
+        </div>
+        <div class="footer__col">
+          <h4>Legales</h4>
+          <a href="/policies/privacy-policy">Política de privacidad</a>
+          <a href="/policies/terms-of-service">Términos y condiciones</a>
+        </div>
+        <div class="footer__col">
+          <h4>Aviso legal</h4>
+          <p class="footer__disclaimer">Producto habilitado para la venta en todo Latinoamérica. K9 Clean no reemplaza el mantenimiento regular de tu lavarropas y no se responsabiliza por daños derivados de mal uso o problemas preexistentes de la máquina. Usar según las indicaciones.</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copy">&copy; {{ 'now' | date: '%Y' }} K9 Clean Argentina. Todos los derechos reservados.</span>
+        <div class="footer__payments">
+          <span class="payment-icon">💳 Visa</span>
+          <span class="payment-icon">💵 Mercado Pago</span>
+          <span class="payment-icon">🏦 Rapipago</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY CTA MOBILE -->
+  <div class="sticky-cta" id="stickyCta">
+    <a href="/pages/producto" class="btn btn-primary">Quiero el mío</a>
+  </div>
+
+  <script src="{{ 'k9clean.js' | asset_url }}" defer></script>
+</body>
+</html>

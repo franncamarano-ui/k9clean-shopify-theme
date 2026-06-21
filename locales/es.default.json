@@ -1,0 +1,12 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Ingresá a la tienda con tu contraseña:",
+      "login_password_button": "Ingresar",
+      "login_form_password_label": "Contraseña",
+      "login_form_password_placeholder": "Tu contraseña",
+      "login_form_error": "Contraseña incorrecta.",
+      "login_form_submit": "Ingresar"
+    }
+  }
+}

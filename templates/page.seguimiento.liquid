@@ -1,0 +1,39 @@
+<!-- SEGUIMIENTO — K9 Clean Argentina -->
+<h1 class="page-title">Seguí tu Pedido</h1>
+<div class="container">
+  <div class="track-wrapper">
+    <div class="track-layout">
+      <div class="track-section">
+        <div class="form-group">
+          <label for="orderNumber">Número de Orden</label>
+          <input type="text" id="orderNumber" placeholder="Ej: #1234">
+        </div>
+        <div class="form-group">
+          <label for="emailPhone">Email o Teléfono</label>
+          <input type="text" id="emailPhone" placeholder="tu@email.com o teléfono">
+        </div>
+        <button class="btn btn-primary" type="button" id="trackBtn1">Rastrear</button>
+      </div>
+      <div class="track-divider">O</div>
+      <div class="track-section">
+        <div class="form-group">
+          <label for="trackingNumber">Número de Seguimiento</label>
+          <input type="text" id="trackingNumber" placeholder="Ingresá tu tracking">
+        </div>
+        <button class="btn btn-secondary" type="button" id="trackBtn2">Rastrear</button>
+      </div>
+    </div>
+
+    <div class="track-result" id="trackResult">
+      <div class="track-result__icon">📦</div>
+      <h3 class="track-result__title">Pedido encontrado</h3>
+      <span class="track-result__status">✓ Enviado — En camino</span>
+      <div class="track-result__timeline">
+        <div class="track-step"><span class="track-step__dot track-step__dot--done">✓</span><div class="track-step__info"><p class="track-step__label">Pedido confirmado</p><p class="track-step__date">Pago recibido correctamente</p></div></div>
+        <div class="track-step"><span class="track-step__dot track-step__dot--done">✓</span><div class="track-step__info"><p class="track-step__label">Preparando tu pedido</p><p class="track-step__date">Empaquetado y listo para despacho</p></div></div>
+        <div class="track-step"><span class="track-step__dot track-step__dot--current">📍</span><div class="track-step__info"><p class="track-step__label">En camino</p><p class="track-step__date">Tu pedido fue despachado y está en tránsito</p></div></div>
+        <div class="track-step"><span class="track-step__dot track-step__dot--pending">○</span><div class="track-step__info"><p class="track-step__label">Entregado</p><p class="track-step__date">Estimado: 3-5 días hábiles</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>

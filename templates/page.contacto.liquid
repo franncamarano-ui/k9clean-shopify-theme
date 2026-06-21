@@ -1,0 +1,30 @@
+<!-- CONTACTO — K9 Clean Argentina -->
+<h1 class="page-title">Contacto</h1>
+<div class="container">
+  <form class="contact-form" action="/contact" method="POST">
+    <input type="hidden" name="form_type" value="contact">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" name="contact[name]" placeholder="Tu nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="contact[email]" placeholder="tu@email.com" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group" style="grid-column: 1 / -1;">
+        <label for="phone">Teléfono</label>
+        <input type="tel" id="phone" name="contact[phone]" placeholder="Tu número de teléfono">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group" style="grid-column: 1 / -1;">
+        <label for="message">Comentario</label>
+        <textarea id="message" name="contact[body]" placeholder="¿En qué podemos ayudarte?" required></textarea>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+</div>
