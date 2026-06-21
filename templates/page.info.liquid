@@ -1,370 +1,953 @@
-<!-- LANDING INFORMATIVA — Estilo editorial / blog -->
-
 <style>
-  .il * { box-sizing: border-box; margin: 0; padding: 0; }
-  .il { background: #f5f1eb; color: #1a1a1a; font-family: 'DM Sans', -apple-system, sans-serif; }
+/* ============================================================
+   PAGE.INFO — Presell Listicle K9Clean Argentina
+   Self-contained styles. Fonts loaded by theme.liquid.
+   ============================================================ */
 
-  /* HERO — fondo con gradiente verde + foto */
-  .il-hero {
-    background: linear-gradient(160deg, #17433c 0%, #1d5a51 40%, #3a8b6e 100%);
-    padding: 48px 20px 56px;
-    text-align: center;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
-  }
-  .il-hero::after {
-    content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 40px;
-    background: #f5f1eb; border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  }
-  .il-hero-inner { max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
-  .il-hero-badge {
-    display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
-    padding: 6px 16px; border-radius: 40px; font-size: 11px; font-weight: 600;
-    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
-  }
-  .il-hero h1 {
-    font-family: 'Playfair Display', Georgia, serif; font-size: 30px; line-height: 1.25;
-    font-weight: 700; margin-bottom: 16px;
-  }
-  .il-hero h1 span { color: #c9a961; }
-  .il-hero p { font-size: 14px; line-height: 1.7; opacity: 0.9; margin-bottom: 24px; }
-  .il-cta {
-    display: inline-block; background: #c9a961; color: #17433c; padding: 14px 32px;
-    border-radius: 40px; font-weight: 700; font-size: 14px; text-transform: uppercase;
-    text-decoration: none; letter-spacing: 0.5px;
-  }
-  .il-cta:hover { background: #b8943f; }
-  .il-hero-proof {
-    margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.7);
-  }
-  .il-hero-proof .stars { color: #c9a961; font-size: 14px; }
+/* ---------- BASE ---------- */
+.info-page {
+  font-family: 'DM Sans', sans-serif;
+  color: #2d2d2d;
+  line-height: 1.7;
+  font-size: 17px;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+.info-page *,
+.info-page *::before,
+.info-page *::after {
+  box-sizing: border-box;
+}
+.info-page img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
-  /* CONTENIDO */
-  .il-wrap { max-width: 780px; margin: 0 auto; padding: 0 20px; }
+/* ---------- UTILITIES ---------- */
+.info-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.info-page h2,
+.info-page h3 {
+  font-family: 'Playfair Display', serif;
+  color: #17433c;
+  line-height: 1.25;
+}
+.info-page h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 0.6em;
+}
+.info-page h3 {
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  margin-bottom: 0.5em;
+}
+.info-page p {
+  margin: 0 0 1.15em;
+}
 
-  /* SECCIONES EDITORIALES */
-  .il-section { padding: 48px 0; }
+/* ---------- CTA BUTTONS ---------- */
+.info-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, #c9a961 0%, #f4d99a 100%);
+  color: #17433c;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 16px 38px;
+  border-radius: 40px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+}
+.info-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 169, 97, 0.45);
+}
 
-  .il-section-num {
-    font-size: 64px; font-weight: 800; color: rgba(23,67,60,0.08);
-    font-family: 'Playfair Display', serif; line-height: 1; margin-bottom: -20px;
-  }
-  .il-section h2 {
-    font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.25;
-    color: #17433c; margin-bottom: 16px; font-weight: 700;
-  }
-  .il-section h2 span { color: #c9a961; }
-  .il-section p {
-    font-size: 15px; color: #4a4a4a; line-height: 1.8; margin-bottom: 14px;
-  }
-  .il-section p strong { color: #17433c; }
-  .il-section p em { font-style: italic; color: #17433c; }
+/* ---------- STAR RATING ---------- */
+.info-stars {
+  display: inline-flex;
+  gap: 2px;
+  color: #f4b740;
+  font-size: 18px;
+  line-height: 1;
+}
+.info-social-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  flex-wrap: wrap;
+}
+.info-social-line--dark {
+  color: #555;
+}
 
-  /* Imágenes full-width en el contenido */
-  .il-img {
-    width: calc(100% + 40px); margin: 24px -20px; border-radius: 0;
-  }
-  .il-img img { width: 100%; display: block; }
+/* ============================================================
+   SECTION 1 — HERO
+   ============================================================ */
+.info-hero {
+  background: linear-gradient(160deg, #17433c 0%, #1a5248 100%);
+  color: #fff;
+  padding: 50px 0 56px;
+}
+.info-hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+.info-hero__img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+}
+.info-hero__text {
+  text-align: center;
+}
+.info-hero__text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.65rem, 5vw, 2.65rem);
+  line-height: 1.2;
+  margin: 0 0 20px;
+  color: #fff;
+}
+.info-hero__sub {
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.92;
+  margin-bottom: 28px;
+}
+.info-hero__sub strong {
+  color: #f4d99a;
+}
 
-  /* Imagen dentro del wrap */
-  .il-img-inline {
-    width: 100%; margin: 24px 0; border-radius: 12px; overflow: hidden;
+@media (min-width: 768px) {
+  .info-hero {
+    padding: 70px 0 76px;
   }
-  .il-img-inline img { width: 100%; display: block; border-radius: 12px; }
+  .info-hero__inner {
+    flex-direction: row;
+    gap: 48px;
+  }
+  .info-hero__img {
+    width: 45%;
+    flex-shrink: 0;
+  }
+  .info-hero__text {
+    text-align: left;
+    flex: 1;
+  }
+}
 
-  /* Quote highlight */
-  .il-quote {
-    background: #fff; border-left: 4px solid #c9a961; padding: 20px 24px;
-    margin: 24px 0; border-radius: 0 8px 8px 0;
-    font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic;
-    color: #17433c; line-height: 1.6;
-  }
+/* ============================================================
+   REASON SECTIONS (alternating layout)
+   ============================================================ */
+.info-reason {
+  padding: 56px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+.info-reason:last-of-type {
+  border-bottom: none;
+}
+.info-reason__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+.info-reason__text {
+  flex: 1;
+}
+.info-reason__text p {
+  color: #444;
+}
+.info-reason__img-wrap {
+  width: 100%;
+  max-width: 480px;
+}
+.info-reason__img-wrap img {
+  border-radius: 12px;
+  width: 100%;
+}
 
-  /* Bullet list editorial */
-  .il-bullets { margin: 16px 0 24px; }
-  .il-bullets li {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 8px 0; font-size: 15px; color: #4a4a4a; list-style: none;
+@media (min-width: 768px) {
+  .info-reason {
+    padding: 72px 0;
   }
-  .il-bullets li strong { color: #17433c; }
-  .il-check { color: #17433c; font-weight: 700; font-size: 16px; flex-shrink: 0; }
+  .info-reason__inner {
+    flex-direction: row;
+    gap: 52px;
+  }
+  .info-reason__img-wrap {
+    width: 46%;
+    flex-shrink: 0;
+  }
+  .info-reason--reversed .info-reason__inner {
+    flex-direction: row-reverse;
+  }
+}
 
-  /* SEPARADOR */
-  .il-divider {
-    width: 60px; height: 3px; background: #c9a961; margin: 0 auto;
-  }
+/* ---------- CHECKLIST (Reason 3) ---------- */
+.info-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 28px;
+}
+.info-checklist li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  line-height: 1.6;
+  color: #444;
+}
+.info-check-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  background: #17433c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.info-check-icon svg {
+  width: 14px;
+  height: 14px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 
-  /* INGREDIENTES — estilo card */
-  .il-ingredients-section {
-    background: #17433c; padding: 48px 0; color: #fff;
-  }
-  .il-ingredients-section h2 {
-    font-family: 'Playfair Display', serif; font-size: 26px; color: #c9a961;
-    text-align: center; margin-bottom: 32px;
-  }
-  .il-ing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 600px; margin: 0 auto; padding: 0 20px; }
-  .il-ing-card {
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 12px; padding: 20px;
-  }
-  .il-ing-card h4 { color: #c9a961; font-size: 15px; margin-bottom: 6px; }
-  .il-ing-card p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+/* ============================================================
+   SOCIAL PROOF BANNER
+   ============================================================ */
+.info-social-banner {
+  background: #f8f3fa;
+  padding: 56px 0;
+  text-align: center;
+}
+.info-social-banner h2 {
+  margin-bottom: 8px;
+}
+.info-social-banner__sub {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 24px;
+}
+.info-social-banner blockquote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.8vw, 1.45rem);
+  color: #333;
+  margin: 0 auto 10px;
+  max-width: 640px;
+  line-height: 1.5;
+  padding: 0;
+  border: none;
+}
+.info-social-banner cite {
+  font-style: normal;
+  font-size: 14px;
+  color: #888;
+  display: block;
+  margin-bottom: 28px;
+}
+.info-social-line--center {
+  justify-content: center;
+  color: #555;
+}
 
-  /* CTA BANNER */
-  .il-cta-banner {
-    background: linear-gradient(135deg, #c9a961, #b8943f); padding: 40px 20px;
-    text-align: center; color: #17433c;
-  }
-  .il-cta-banner h3 {
-    font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 8px;
-  }
-  .il-cta-banner p { font-size: 14px; margin-bottom: 20px; opacity: 0.8; }
-  .il-cta-dark {
-    display: inline-block; background: #17433c; color: #c9a961; padding: 14px 32px;
-    border-radius: 40px; font-weight: 700; font-size: 14px; text-transform: uppercase;
-    text-decoration: none;
-  }
+/* ============================================================
+   PRODUCT CTA SECTION
+   ============================================================ */
+.info-product-cta {
+  padding: 64px 0;
+  text-align: center;
+  background: #fafaf7;
+}
+.info-product-cta__img {
+  width: 240px;
+  margin: 0 auto 24px;
+  border-radius: 14px;
+}
+.info-product-cta h2 {
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  max-width: 700px;
+  margin: 0 auto 16px;
+}
+.info-product-cta__desc {
+  max-width: 600px;
+  margin: 0 auto 28px;
+  color: #555;
+  font-size: 16px;
+}
+.info-product-cta .info-cta {
+  font-size: 18px;
+  padding: 18px 44px;
+}
+.info-trust-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #777;
+}
+.info-trust-line svg {
+  width: 16px;
+  height: 16px;
+  stroke: #17433c;
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
 
-  /* SOCIAL PROOF / TESTIMONIOS */
-  .il-proof-section { padding: 48px 0; background: #f5f1eb; }
-  .il-proof-section h2 {
-    font-family: 'Playfair Display', serif; font-size: 24px; color: #17433c;
-    text-align: center; margin-bottom: 8px;
-  }
-  .il-proof-sub { text-align: center; font-size: 13px; color: #7a7a7a; margin-bottom: 24px; }
-  .il-proof-grid { display: grid; grid-template-columns: 1fr; gap: 16px; max-width: 700px; margin: 0 auto; padding: 0 20px; }
-  .il-proof-card { background: #fff; border-radius: 12px; padding: 24px; }
-  .il-proof-card .stars { color: #c9a961; font-size: 16px; margin-bottom: 8px; }
-  .il-proof-card h4 { font-size: 15px; color: #17433c; margin-bottom: 6px; }
-  .il-proof-card p { font-size: 13px; color: #4a4a4a; line-height: 1.6; margin-bottom: 12px; }
-  .il-proof-card cite {
-    font-style: normal; font-size: 12px; color: #17433c; font-weight: 600;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .il-proof-card cite .dot {
-    width: 28px; height: 28px; border-radius: 50%; background: #17433c;
-    color: #c9a961; display: flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700;
-  }
+/* ============================================================
+   REVIEWS SECTION
+   ============================================================ */
+.info-reviews {
+  padding: 60px 0;
+  background: #fff;
+}
+.info-reviews h2 {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.info-reviews__track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 12px;
+}
+.info-reviews__track::-webkit-scrollbar {
+  height: 6px;
+}
+.info-reviews__track::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+.info-review-card {
+  flex: 0 0 85%;
+  max-width: 360px;
+  scroll-snap-align: start;
+  background: #fafafa;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+.info-review-card__img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.info-review-card__body {
+  padding: 20px 22px 24px;
+}
+.info-review-card__stars {
+  color: #f4b740;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+.info-review-card__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #17433c;
+  margin: 0 0 8px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.info-review-card__text {
+  font-size: 14.5px;
+  color: #555;
+  line-height: 1.65;
+  margin: 0 0 12px;
+}
+.info-review-card__author {
+  font-size: 13px;
+  color: #888;
+  font-weight: 600;
+}
 
-  /* FAQ */
-  .il-faq-section { padding: 48px 0; background: #fff; }
-  .il-faq-section h2 {
-    font-family: 'Playfair Display', serif; font-size: 26px; color: #17433c;
-    text-align: center; margin-bottom: 24px;
+@media (min-width: 768px) {
+  .info-reviews__track {
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
   }
-  .il-faq-list { max-width: 680px; margin: 0 auto; padding: 0 20px; }
-  .il-faq-item { border-bottom: 1px solid rgba(201,169,97,0.25); }
-  .il-faq-q {
-    width: 100%; background: none; border: none; padding: 18px 0; display: flex;
-    justify-content: space-between; align-items: center; gap: 12px;
-    text-align: left; font-size: 15px; font-weight: 600; color: #17433c;
-    cursor: pointer; font-family: 'DM Sans', sans-serif;
+  .info-review-card {
+    flex: none;
+    max-width: none;
   }
-  .il-faq-icon { font-size: 18px; color: #c9a961; transition: transform 0.3s; }
-  .il-faq-item.open .il-faq-icon { transform: rotate(45deg); }
-  .il-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-  .il-faq-item.open .il-faq-a { max-height: 300px; padding-bottom: 18px; }
-  .il-faq-a p { font-size: 14px; color: #4a4a4a; line-height: 1.7; }
+}
 
-  /* FOOTER CTA */
-  .il-footer-cta {
-    background: #17433c; color: #fff; padding: 48px 20px; text-align: center;
-  }
-  .il-footer-cta p.small { font-size: 12px; opacity: 0.5; margin-top: 16px; }
+/* ============================================================
+   FAQ SECTION
+   ============================================================ */
+.info-faq {
+  padding: 60px 0 72px;
+  background: #fff;
+}
+.info-faq h2 {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.info-faq__list {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.info-faq-item {
+  border-bottom: 1px solid #e2e2e2;
+}
+.info-faq-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 0;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d1d1d;
+  text-align: left;
+  gap: 16px;
+  line-height: 1.4;
+}
+.info-faq-trigger:hover {
+  color: #17433c;
+}
+.info-faq-chevron {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  transition: transform 0.3s ease;
+  stroke: #666;
+}
+.info-faq-trigger[aria-expanded="true"] .info-faq-chevron {
+  transform: rotate(180deg);
+}
+.info-faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 0;
+}
+.info-faq-panel[aria-hidden="false"] {
+  padding: 0 0 20px;
+}
+.info-faq-panel p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
 
-  /* RESPONSIVE */
-  @media (min-width: 768px) {
-    .il-hero h1 { font-size: 40px; }
-    .il-hero { padding: 64px 20px 72px; }
-    .il-section h2 { font-size: 32px; }
-    .il-section-num { font-size: 80px; }
-    .il-img { width: calc(100% + 80px); margin: 32px -40px; }
-    .il-wrap { padding: 0 40px; }
-    .il-proof-grid { grid-template-columns: 1fr 1fr; }
-    .il-ing-grid { grid-template-columns: 1fr 1fr 1fr; }
-  }
+/* ============================================================
+   FOOTER DISCLAIMER
+   ============================================================ */
+.info-footer-disclaimer {
+  background: #17433c;
+  color: rgba(255,255,255,0.88);
+  padding: 36px 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.info-footer-disclaimer strong {
+  display: block;
+  font-size: 15px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.info-footer-disclaimer p {
+  max-width: 800px;
+  margin: 0 auto;
+  color: rgba(255,255,255,0.72);
+}
 </style>
 
-<div class="il">
+<div class="info-page">
 
-  <!-- HERO -->
-  <section class="il-hero">
-    <div class="il-hero-inner">
-      <span class="il-hero-badge">K9Clean Argentina</span>
-      <h1>6 razones por las que los dueños de mascotas están cambiando a <span>K9Clean</span></h1>
-      <p>El primer polvo enzimático del mundo formulado específicamente para disolver pelo de mascota a nivel molecular. Compatible con tu lavarropas, tu rutina, y tu bolsillo.</p>
-      <a href="/pages/producto" class="il-cta">Quiero probarlo</a>
-      <div class="il-hero-proof"><span class="stars">★★★★★</span> +10.000 clientes satisfechos</div>
-    </div>
-  </section>
-
-  <!-- RAZÓN 1 -->
-  <section class="il-section">
-    <div class="il-wrap">
-      <p class="il-section-num">1.</p>
-      <h2>Tu lavarropas labura duro. <span>K9Clean lo mantiene así.</span></h2>
-      <p>Los dueños de mascotas no se dan cuenta, pero el pelo no solo queda en la ropa — se acumula adentro del lavarropas. En el tambor, el filtro, la bomba de desagüe. Eso genera ruidos raros, malos olores, y roturas inesperadas.</p>
-      <p>La verdad es que con que tu lavarropas esté limpio, ya hace una diferencia enorme. Y eso es exactamente para lo que fue diseñado K9Clean: su fórmula con <strong>proteasa activa</strong> rompe el pelo acumulado ciclo a ciclo, eliminando más del <strong>96.7%</strong> de la acumulación que el detergente común no puede tocar.</p>
-    </div>
-    <div class="il-img"><img src="{{ 'producto1.png' | asset_url }}" alt="K9Clean producto"></div>
-  </section>
-
-  <div style="padding:8px 0;"><div class="il-divider"></div></div>
-
-  <!-- RAZÓN 2 -->
-  <section class="il-section">
-    <div class="il-wrap">
-      <p class="il-section-num">2.</p>
-      <h2>K9Clean funciona con <span>cualquier lavarropas</span> que tengas.</h2>
-      <p>¿Carga frontal? Sin problema. ¿Carga superior? También. ¿Tu lavarropas no tiene ciclo de autolimpieza? No importa.</p>
-      <p>La solución es simple: <strong>agregá K9Clean directo al tambor</strong> con tu ropa y listo. No necesitás hacer nada distinto a lo que ya hacés. Solo sumalo a tu lavado de siempre y el producto se encarga del resto.</p>
-    </div>
-    <div class="il-img"><img src="{{ 'uso6.png' | asset_url }}" alt="Cómo usar K9Clean - 3 pasos"></div>
-  </section>
-
-  <div style="padding:8px 0;"><div class="il-divider"></div></div>
-
-  <!-- RAZÓN 3 -->
-  <section class="il-section">
-    <div class="il-wrap">
-      <p class="il-section-num">3.</p>
-      <h2>3 ingredientes activos. <span>Un solo objetivo.</span></h2>
-      <p>Cada ingrediente en K9Clean existe por una razón — y esa razón es el pelo de mascota.</p>
-      <ul class="il-bullets">
-        <li><span class="il-check">→</span> <div><strong>Proteasa</strong><br>Rompe la queratina del pelo a nivel molecular. Es lo que hace que K9Clean funcione donde otros fallan.</div></li>
-        <li><span class="il-check">→</span> <div><strong>Percarbonato de sodio</strong><br>Libera oxígeno para levantar la suciedad y refrescar las telas sin fragancias artificiales.</div></li>
-        <li><span class="il-check">→</span> <div><strong>Sulfonato de alquilo</strong><br>Ayuda a desprender el pelo de mascota incrustado durante el ciclo de lavado.</div></li>
-      </ul>
-      <p>A diferencia de los detergentes regulares, K9Clean tiene lo que hace falta para romper la queratina — <strong>algo que ningún detergente estándar puede hacer.</strong></p>
-    </div>
-    <div class="il-img"><img src="{{ 'beneficios5.png' | asset_url }}" alt="Ingredientes K9Clean"></div>
-  </section>
-
-  <div style="padding:8px 0;"><div class="il-divider"></div></div>
-
-  <!-- RAZÓN 4 -->
-  <section class="il-section">
-    <div class="il-wrap">
-      <p class="il-section-num">4.</p>
-      <h2>Los dueños que lo usan describen una sola cosa: <span>alivio.</span></h2>
-      <p>Cuando les preguntamos a nuestros clientes qué sienten después de usar K9Clean, no hablan de limpieza. Hablan de <strong>dejar de preocuparse.</strong></p>
-      <p>De no revisar la ropa antes de salir. De no vivir con miedo a que se rompa el lavarropas. De por fin poder usar ropa negra tranquilos.</p>
-      <div class="il-quote">"Me agarró un ataque de risa cuando saqué la ropa y no tenía NI UN pelo. Literal, ni uno. Mi marido no lo podía creer."</div>
-    </div>
-    <div class="il-img"><img src="{{ 'efecto7.png' | asset_url }}" alt="Amá a tu perro, amá la ropa limpia"></div>
-  </section>
-
-  <div style="padding:8px 0;"><div class="il-divider"></div></div>
-
-  <!-- RAZÓN 5 -->
-  <section class="il-section">
-    <div class="il-wrap">
-      <p class="il-section-num">5.</p>
-      <h2>Más de 10.000 dueños de mascotas <span>ya hicieron el cambio.</span></h2>
-      <p>Desde golden retrievers hasta gatos persas, desde deptos en Palermo hasta casas en Córdoba — miles de dueños de mascotas ya descubrieron exactamente lo que necesitaba su lavarropas.</p>
-      <p>Más de <strong>4.000 reseñas verificadas</strong> con un promedio de 4.8 estrellas. Y la razón más repetida: <em>"Es lo primero que realmente funciona."</em></p>
-    </div>
-    <div class="il-img"><img src="{{ 'clientes4.png' | asset_url }}" alt="Más de 10.000 clientes"></div>
-  </section>
-
-  <div style="padding:8px 0;"><div class="il-divider"></div></div>
-
-  <!-- RAZÓN 6 -->
-  <section class="il-section">
-    <div class="il-wrap">
-      <p class="il-section-num">6.</p>
-      <h2>Seguro. Natural. <span>Hecho acá.</span></h2>
-      <p>K9Clean fue desarrollado por un equipo de dueños de mascotas que se hartaron de que nada funcionara. Meses de investigación y pruebas para crear algo que sea:</p>
-      <ul class="il-bullets">
-        <li><span class="il-check">✓</span> A base de ingredientes vegetales</li>
-        <li><span class="il-check">✓</span> Seguro para pozo séptico y cámara séptica</li>
-        <li><span class="il-check">✓</span> Sin fragancias artificiales ni químicos agresivos</li>
-        <li><span class="il-check">✓</span> Certificado por ANMAT para su comercialización</li>
-      </ul>
-      <p><strong>Así es como sabés que K9Clean es diferente.</strong></p>
-    </div>
-    <div class="il-img"><img src="{{ 'competencia2.png' | asset_url }}" alt="K9Clean vs competencia"></div>
-  </section>
-
-  <!-- CTA BANNER -->
-  <section class="il-cta-banner">
-    <h3>Sumate a los +10.000 dueños que ya hicieron el cambio</h3>
-    <p>Resultados reales desde el primer lavado. 30 días de garantía.</p>
-    <a href="/pages/producto" class="il-cta-dark">Quiero mi K9Clean</a>
-  </section>
-
-  <!-- TESTIMONIOS -->
-  <section class="il-proof-section">
-    <h2>Por qué miles ya eligieron K9Clean</h2>
-    <p class="il-proof-sub">★★★★★ Promedio 4.8/5 — Más de 4.000 reseñas verificadas</p>
-    <div class="il-proof-grid">
-      <div class="il-proof-card">
-        <div class="stars">★★★★★</div>
-        <h4>Le salvó la vida al lavarropas</h4>
-        <p>Hacía un ruido tremendo. Usé K9Clean y a los 3 lavados desapareció. Me ahorré fácil $400 lucas de reparación.</p>
-        <cite><span class="dot">MR</span> Martín R. — Cliente verificado</cite>
-      </div>
-      <div class="il-proof-card">
-        <div class="stars">★★★★★</div>
-        <h4>Por fin puedo usar negro</h4>
-        <p>Laburo en oficina y siempre llegaba llena de pelo de mi labrador. Ahora me visto y salgo tranquila. Lo recontra recomiendo.</p>
-        <cite><span class="dot">SB</span> Sol B. — Cliente verificada</cite>
-      </div>
-      <div class="il-proof-card">
-        <div class="stars">★★★★☆</div>
-        <h4>Funciona, hay que darle tiempo</h4>
-        <p>Al primer lavado noté algo. Al tercero fue otra historia. No es magia instantánea pero el resultado final es excelente.</p>
-        <cite><span class="dot">DR</span> Daniel R. — Cliente verificado</cite>
-      </div>
-      <div class="il-proof-card">
-        <div class="stars">★★★★★</div>
-        <h4>Mi vieja no lo puede creer</h4>
-        <p>Se lo regalé a mi mamá que tiene un caniche. Me llamó a la semana diciendo que era lo mejor que le regalé en la vida.</p>
-        <cite><span class="dot">FT</span> Facundo T. — Cliente verificado</cite>
+  <!-- ========================================================
+       SECTION 1 — HERO
+       ======================================================== -->
+  <section class="info-hero">
+    <div class="info-wrap">
+      <div class="info-hero__inner">
+        <img
+          class="info-hero__img"
+          src="{{ 'producto1.png' | asset_url }}"
+          alt="K9Clean - Disolvente de pelo de mascota para lavarropas"
+          loading="eager"
+        >
+        <div class="info-hero__text">
+          <h1>6 razones por las que los due&ntilde;os de mascotas eligen el polvo disolvente de pelo K9Clean</h1>
+          <p class="info-hero__sub">
+            <strong>El primer polvo para lavarropas a base de plantas, apto para pozo s&eacute;ptico</strong>, formulado para disolver el pelo de mascota a nivel molecular. Compatible con cualquier lavarropas, cualquier ciclo, sin pasos extra.
+          </p>
+          <a href="#productoCTA" class="info-cta">Quiero el m&iacute;o</a>
+          <div class="info-social-line">
+            <span class="info-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span>Sumate a los clientes K9Clean</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="il-faq-section">
-    <h2>Preguntas frecuentes</h2>
-    <div class="il-faq-list">
-      <div class="il-faq-item"><button class="il-faq-q">¿Esto realmente elimina el pelo o solo lo reduce?<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>Lo disuelve a nivel molecular rompiendo la queratina. Elimina hasta el 96.7% del pelo acumulado.</p></div></div>
-      <div class="il-faq-item"><button class="il-faq-q">¿Tengo que cambiar cómo lavo la ropa?<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>No. Agregás 2-4 cucharadas al tambor y lavás como siempre. Sin pasos extra.</p></div></div>
-      <div class="il-faq-item"><button class="il-faq-q">¿Funciona con pelo de gato?<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>Sí. Rompe la queratina de cualquier mascota — perro, gato o conejo.</p></div></div>
-      <div class="il-faq-item"><button class="il-faq-q">¿Hay telas donde no se puede usar?<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>No usar en lana, seda, cuero, plumón ni telas delicadas. En el resto funciona perfecto.</p></div></div>
-      <div class="il-faq-item"><button class="il-faq-q">¿Es seguro para el lavarropas?<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>Sí. Apto para carga superior, frontal y pozo séptico. Certificado por ANMAT.</p></div></div>
-      <div class="il-faq-item"><button class="il-faq-q">¿Cuánto dura un pote?<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>Aproximadamente 8 ciclos de lavado.</p></div></div>
-      <div class="il-faq-item"><button class="il-faq-q">¿Funciona en lavarropas de carga superior y frontal?<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>Sí, en los dos. Se agrega directo al tambor sin importar el tipo de carga.</p></div></div>
-      <div class="il-faq-item"><button class="il-faq-q">¿Es seguro para las tuberías?<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>Totalmente. Es apto para pozo séptico y no daña tuberías.</p></div></div>
-      <div class="il-faq-item"><button class="il-faq-q">¿Qué pasa si no me funciona?<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>30 días de garantía. Si no estás conforme, te devolvemos tu dinero.</p></div></div>
-      <div class="il-faq-item"><button class="il-faq-q">Tengo más preguntas...</<span class="il-faq-icon">+</span></button><div class="il-faq-a"><p>Escribinos por la página de <a href="/pages/contacto" style="color:#c9a961;font-weight:600;">Contacto</a> y te respondemos lo antes posible.</p></div></div>
+  <!-- ========================================================
+       SECTION 2 — REASON 1
+       ======================================================== -->
+  <section class="info-reason">
+    <div class="info-wrap">
+      <div class="info-reason__inner">
+        <div class="info-reason__text">
+          <h2>Tu lavarropas trabaja duro. K9Clean lo mantiene as&iacute;.</h2>
+          <p>
+            La mayor&iacute;a no piensa en el mantenimiento de su lavarropas hasta que algo falla. La verdad es que, para los due&ntilde;os de mascotas, el mantenimiento regular marca una diferencia enorme en cu&aacute;nto dura y qu&eacute; tan bien funciona.
+          </p>
+          <p>
+            Para eso se dise&ntilde;&oacute; K9Clean. Sus enzimas proteasa activas trabajan durante un ciclo caliente normal, descomponiendo el 96.7% de la acumulaci&oacute;n que el detergente com&uacute;n deja.
+          </p>
+        </div>
+        <div class="info-reason__img-wrap">
+          <img src="{{ 'producto8.png' | asset_url }}" alt="K9Clean producto detalle" loading="lazy">
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER CTA -->
-  <section class="il-footer-cta">
-    <h2 style="font-family:'Playfair Display',serif;font-size:26px;color:#c9a961;margin-bottom:12px;">Si No Te Gustó, Te Devolvemos La Plata.</h2>
-    <p style="font-size:15px;opacity:0.9;max-width:480px;margin:0 auto 24px;line-height:1.6;">Usá K9Clean durante 30 días. Si no notás la diferencia, contactanos y te devolvemos tu dinero.</p>
-    <a href="/pages/producto" class="il-cta">Quiero probarlo</a>
-    <p class="small">K9Clean no reemplaza el mantenimiento regular de tu lavarropas. Los resultados pueden variar.</p>
+  <!-- ========================================================
+       SECTION 3 — REASON 2 (reversed)
+       ======================================================== -->
+  <section class="info-reason info-reason--reversed">
+    <div class="info-wrap">
+      <div class="info-reason__inner">
+        <div class="info-reason__text">
+          <h2>K9Clean funciona con cualquier lavarropas. As&iacute; de simple.</h2>
+          <p>
+            &iquest;No tiene ciclo de autolimpieza? No importa. &iquest;No tiene opci&oacute;n de agua caliente? Tambi&eacute;n est&aacute; bien. La enzima de K9Clean es m&aacute;s efectiva en agua caliente pero sigue activa en agua tibia, as&iacute; que us&aacute; el ciclo m&aacute;s caliente que tu lavarropas ofrezca.
+          </p>
+          <p>
+            Carga superior, carga frontal, nuevo o viejo, no importa. Agreg&aacute; dos a cuatro cucharadas al tambor vac&iacute;o o a la ropa de cama de tu mascota y pon&eacute; el ciclo m&aacute;s caliente disponible, una vez al mes. Eso es todo.
+          </p>
+        </div>
+        <div class="info-reason__img-wrap">
+          <img src="{{ 'uso6.png' | asset_url }}" alt="C&oacute;mo usar K9Clean - 3 pasos simples" loading="lazy">
+        </div>
+      </div>
+    </div>
   </section>
 
-</div>
+  <!-- ========================================================
+       SECTION 4 — REASON 3 (with checklist)
+       ======================================================== -->
+  <section class="info-reason">
+    <div class="info-wrap">
+      <div class="info-reason__inner">
+        <div class="info-reason__text">
+          <h2>Tres ingredientes activos. Un solo objetivo.</h2>
+          <p>Cada ingrediente de K9Clean est&aacute; ah&iacute; por una raz&oacute;n, y esa raz&oacute;n es el pelo de mascota:</p>
+          <ul class="info-checklist">
+            <li>
+              <span class="info-check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span><strong>Proteasa</strong> &mdash; La enzima que los detergentes comunes no tienen. Es lo que realmente disuelve el pelo.</span>
+            </li>
+            <li>
+              <span class="info-check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span><strong>Complejo de Sulfonato</strong> &mdash; Se asegura de que todo lo disuelto permanezca disuelto y se enjuague por completo.</span>
+            </li>
+            <li>
+              <span class="info-check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+              <span><strong>Carboximetilcelulosa</strong> &mdash; Evita que los pelos sueltos vuelvan a pegarse a tu ropa antes de que termine el ciclo.</span>
+            </li>
+          </ul>
+          <a href="#productoCTA" class="info-cta">Proteg&eacute; mi lavarropas</a>
+          <div class="info-social-line info-social-line--dark">
+            <span class="info-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span>Sumate a los clientes K9Clean</span>
+          </div>
+        </div>
+        <div class="info-reason__img-wrap">
+          <img src="{{ 'formulado1.png' | asset_url }}" alt="K9Clean ingredientes - formulaci&oacute;n a base de plantas" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ========================================================
+       SECTION 5 — REASON 4 (reversed)
+       ======================================================== -->
+  <section class="info-reason info-reason--reversed">
+    <div class="info-wrap">
+      <div class="info-reason__inner">
+        <div class="info-reason__text">
+          <h2>Los due&ntilde;os de mascotas que lo usan describen un solo sentimiento: alivio.</h2>
+          <p>
+            Cuando les preguntamos a los clientes qu&eacute; significar&iacute;a que K9Clean realmente funcione, no hablan de ropa limpia ni de lavarropas limpios. Hablan de alivio. Menos estr&eacute;s. No tener que pensar m&aacute;s en eso.
+          </p>
+          <p>
+            Un cliente lo resumi&oacute; as&iacute;: <em>&ldquo;Me compr&eacute; un lavarropas nuevo y quiero que dure.&rdquo;</em> De eso se trata realmente. No del producto, sino de la tranquilidad que viene con &eacute;l.
+          </p>
+        </div>
+        <div class="info-reason__img-wrap">
+          <img src="{{ 'clientes4.png' | asset_url }}" alt="Testimonios de clientes K9Clean" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 6 — REASON 5
+       ======================================================== -->
+  <section class="info-reason">
+    <div class="info-wrap">
+      <div class="info-reason__inner">
+        <div class="info-reason__text">
+          <h2>Miles de due&ntilde;os de mascotas ya hicieron el cambio.</h2>
+          <p>
+            Desde hogares con un solo perro hasta el caos total de varias mascotas, due&ntilde;os de mascotas de todos lados est&aacute;n descubriendo exactamente lo que su rutina de lavado necesitaba.
+          </p>
+          <!-- NOTA: "Miles de resenias" es dato ilustrativo tomado del referente. Reemplazar por dato real cuando exista. -->
+          <p>
+            Miles de rese&ntilde;as de cinco estrellas y sumando, y los mismos temas se repiten: menos preocupaci&oacute;n, ropa m&aacute;s limpia y un lavarropas que realmente dura.
+          </p>
+        </div>
+        <div class="info-reason__img-wrap">
+          <img src="{{ 'antesdespues3.png' | asset_url }}" alt="Antes y despu&eacute;s con K9Clean" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 7 — REASON 6 (reversed)
+       ======================================================== -->
+  <section class="info-reason info-reason--reversed">
+    <div class="info-wrap">
+      <div class="info-reason__inner">
+        <div class="info-reason__text">
+          <h2>Seguro. A base de plantas. Fabricado con calidad.</h2>
+          <p>
+            Aplicando su experiencia en investigaci&oacute;n biom&eacute;dica y qu&iacute;mica de prote&iacute;nas, un peque&ntilde;o equipo de due&ntilde;os de mascotas como vos pas&oacute; meses probando y perfeccionando hasta obtener una f&oacute;rmula creada desde cero para un solo prop&oacute;sito.
+          </p>
+          <p>As&iacute; naci&oacute; K9Clean.</p>
+        </div>
+        <div class="info-reason__img-wrap">
+          <img src="{{ 'beneficios5.png' | asset_url }}" alt="Beneficios K9Clean - a base de plantas" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 8 — SOCIAL PROOF BANNER
+       ======================================================== -->
+  <section class="info-social-banner">
+    <div class="info-wrap">
+      <h2>Sumate a los miles de clientes K9Clean</h2>
+      <div class="info-stars" style="justify-content:center;font-size:22px;margin-bottom:6px;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="info-social-banner__sub">Resultados reales que los due&ntilde;os de mascotas aman</p>
+      <blockquote>&ldquo;Lavar la ropa no era tan tranquilo desde hace a&ntilde;os!&rdquo;</blockquote>
+      <cite>Verificado &mdash; Alexa H.</cite>
+      <a href="#productoCTA" class="info-cta">Quiero mis resultados</a>
+      <div class="info-social-line info-social-line--center" style="margin-top:18px;">
+        <span class="info-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span>Sumate a los clientes K9Clean</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 9 — PRODUCT CTA (replaces product selector)
+       ======================================================== -->
+  <section class="info-product-cta" id="productoCTA">
+    <div class="info-wrap">
+      <h2>Conoc&eacute; K9Clean &mdash; El primer disolvente de pelo de mascota para lavarropas</h2>
+      <img
+        class="info-product-cta__img"
+        src="{{ 'nuevolook9.png' | asset_url }}"
+        alt="K9Clean nuevo packaging"
+        loading="lazy"
+      >
+      <p class="info-product-cta__desc">
+        Polvo a base de plantas que descompone la queratina para liberar el pelo de mascota incrustado, logrando ropa cada vez m&aacute;s limpia sin esfuerzo extra.
+      </p>
+      <a href="/pages/producto" class="info-cta">Ver producto y comprar</a>
+      <div class="info-trust-line">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>Compra 100% segura &mdash; Mercado Pago</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 10 — REVIEWS
+       ======================================================== -->
+  <!-- NOTA: Los testimonios son ilustrativos basados en el patron real de K9Clean USA. Reemplazar por resenias reales cuando esten disponibles. -->
+  <section class="info-reviews">
+    <div class="info-wrap">
+      <h2>Por qu&eacute; miles de due&ntilde;os de mascotas eligieron K9Clean</h2>
+      <div class="info-reviews__track">
+
+        <!-- Review 1 -->
+        <div class="info-review-card">
+          <img class="info-review-card__img" src="{{ 'efecto7.png' | asset_url }}" alt="Perro junto a ropa limpia" loading="lazy">
+          <div class="info-review-card__body">
+            <div class="info-review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3 class="info-review-card__title">&ldquo;Me ahorr&oacute; una fortuna&rdquo;</h3>
+            <p class="info-review-card__text">
+              Mi lavarropas ven&iacute;a haciendo un ruido raro. Empec&eacute; a usar K9Clean y a los pocos ciclos el ruido par&oacute;. No tuve que llamar a un t&eacute;cnico. Esa tranquilidad no tiene precio.
+            </p>
+            <span class="info-review-card__author">Kevin S. &mdash; Comprador verificado</span>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="info-review-card">
+          <img class="info-review-card__img" src="{{ 'competencia2.png' | asset_url }}" alt="Comparaci&oacute;n K9Clean vs otros" loading="lazy">
+          <div class="info-review-card__body">
+            <div class="info-review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3 class="info-review-card__title">&ldquo;Por fin puedo usar ropa negra!&rdquo;</h3>
+            <p class="info-review-card__text">
+              Tengo dos golden retrievers y la ropa oscura era un desastre. Lavaba y siempre sal&iacute;a llena de pelo. Desde que uso K9Clean la ropa sale realmente limpia. Ya no le tengo miedo al d&iacute;a de lavar.
+            </p>
+            <span class="info-review-card__author">Julia G. &mdash; Compradora verificada</span>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="info-review-card">
+          <img class="info-review-card__img" src="{{ 'producto8.png' | asset_url }}" alt="K9Clean detalle del producto" loading="lazy">
+          <div class="info-review-card__body">
+            <div class="info-review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <h3 class="info-review-card__title">&ldquo;Funciona de verdad!&rdquo;</h3>
+            <p class="info-review-card__text">
+              Estas criaturas siempre dejaban pelo en todos lados. Vi esto scrolleando y fui esc&eacute;ptica. No entend&iacute;a c&oacute;mo un polvo pod&iacute;a disolver el pelo. Pero despu&eacute;s de tres lavados estoy genuinamente impresionada. La ropa sale m&aacute;s limpia, el lavarropas suena mejor. Ojal&aacute; lo hubiera encontrado antes.
+            </p>
+            <span class="info-review-card__author">Rebeca Z. &mdash; Compradora verificada</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 11 — FAQ
+       ======================================================== -->
+  <section class="info-faq">
+    <div class="info-wrap">
+      <h2>Preguntas frecuentes</h2>
+      <div class="info-faq__list">
+
+        <!-- FAQ 1 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-1">
+            <span>&iquest;Esto realmente elimina el pelo de mascota, o solo lo reduce?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-1" aria-hidden="true">
+            <p>K9Clean est&aacute; dise&ntilde;ado para disolver y liberar el pelo de mascota durante el lavado, lo que reduce significativamente la cantidad de pelo que queda en la ropa. Los resultados pueden variar seg&uacute;n la tela y la carga, pero la mayor&iacute;a nota una diferencia clara despu&eacute;s del primer lavado.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-2">
+            <span>&iquest;Tengo que cambiar c&oacute;mo lavo la ropa?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-2" aria-hidden="true">
+            <p>No. Agreg&aacute;s K9Clean al lavarropas y pon&eacute;s el ciclo como te indica el envase. No hay que pre-limpiar, ni usar herramientas, ni pasos extra.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-3">
+            <span>&iquest;Funciona tambi&eacute;n con pelo de gato?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-3" aria-hidden="true">
+            <p>S&iacute;. K9Clean funciona con todo tipo de pelo de mascota: gatos, perros, conejos y m&aacute;s. &ldquo;K9&rdquo; es parte de nuestra marca, pero la f&oacute;rmula est&aacute; dise&ntilde;ada para disolver cualquier pelo com&uacute;n de mascota durante el lavado.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-4">
+            <span>&iquest;Qu&eacute; pasa si mi lavarropas no tiene ciclo de autolimpieza?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-4" aria-hidden="true">
+            <p>Si tu lavarropas no tiene un modo de Autolimpieza dedicado, us&aacute; el ciclo m&aacute;s caliente y m&aacute;s largo disponible. Evit&aacute; ciclos delicados o de lavado a mano, ya que se necesita calor alto para que K9Clean funcione correctamente.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-5">
+            <span>&iquest;Hay telas en las que no deber&iacute;a usarlo?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-5" aria-hidden="true">
+            <p>S&iacute;. K9Clean no debe usarse en lana, seda, cuero, cachemir, plum&oacute;n ni en telas con estampados sensibles al color. Recomendamos revisar las etiquetas de cuidado de la tela antes de usar.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-6">
+            <span>&iquest;K9Clean es seguro para pozos s&eacute;pticos y mi lavarropas?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-6" aria-hidden="true">
+            <p>S&iacute;. K9Clean est&aacute; dise&ntilde;ado para ser seguro para c&aacute;maras s&eacute;pticas cuando se usa seg&uacute;n las indicaciones y es compatible con lavarropas est&aacute;ndar y de alta eficiencia. Se disuelve completamente durante el lavado y no tapa desag&uuml;es ni da&ntilde;a tu lavarropas.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 7 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-7">
+            <span>&iquest;En qu&eacute; se diferencia de las pastillas comunes para lavarropas?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-7" aria-hidden="true">
+            <p>Las pastillas para lavarropas est&aacute;n dise&ntilde;adas para limpiar olores, sarro y residuos de detergente. No contienen proteasa y no pueden descomponer la queratina, la estructura prote&iacute;ca que hace que el pelo de mascota se comporte como lo hace dentro de tu lavarropas. K9Clean fue creado espec&iacute;ficamente para ese problema, y nada m&aacute;s.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 8 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-8">
+            <span>&iquest;Es seguro para mis ca&ntilde;er&iacute;as?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-8" aria-hidden="true">
+            <p>Completamente. K9Clean es a base de plantas y apto para pozos s&eacute;pticos. La enzima proteasa ataca la prote&iacute;na queratina espec&iacute;ficamente y no tiene efecto en sellos de goma, recubrimientos del tambor, ca&ntilde;er&iacute;as ni desag&uuml;es.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 9 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-9">
+            <span>&iquest;Cu&aacute;nto tiempo hasta que vea resultados?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-9" aria-hidden="true">
+            <p>La mayor&iacute;a de los clientes nota ropa m&aacute;s limpia, menos acumulaci&oacute;n de pelo y un lavarropas m&aacute;s silencioso en 1 a 3 ciclos de lavado a medida que la f&oacute;rmula trabaja progresivamente sobre el pelo incrustado.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 10 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-10">
+            <span>&iquest;Funciona en lavarropas de carga superior y frontal?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-10" aria-hidden="true">
+            <p>S&iacute;. K9Clean funciona igual en lavarropas de carga superior y frontal cuando se usa seg&uacute;n las indicaciones. Es compatible con lavarropas est&aacute;ndar y de alta eficiencia.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 11 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-11">
+            <span>&iquest;Qu&eacute; pasa si no me funciona?</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-11" aria-hidden="true">
+            <p>Ofrecemos garant&iacute;a de devoluci&oacute;n de 30 d&iacute;as. Prob&aacute; K9Clean en tu casa, y si no qued&aacute;s satisfecho/a, escribinos a soporte@k9clean.ar y lo resolvemos.</p>
+          </div>
+        </div>
+
+        <!-- FAQ 12 -->
+        <div class="info-faq-item">
+          <button class="info-faq-trigger" aria-expanded="false" aria-controls="faq-panel-12">
+            <span>Todav&iacute;a tengo dudas...</span>
+            <svg class="info-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="info-faq-panel" id="faq-panel-12" aria-hidden="true">
+            <p>Con gusto te ayudamos. Escribinos cuando quieras a soporte@k9clean.ar y nuestro equipo te responde lo antes posible.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 12 — FOOTER DISCLAIMER
+       ======================================================== -->
+  <section class="info-footer-disclaimer">
+    <div class="info-wrap">
+      <strong>&copy; 2026 K9Clean Argentina</strong>
+      <p>
+        Los resultados pueden variar. K9Clean est&aacute; dise&ntilde;ado para uso en lavarropas est&aacute;ndar con ciclos de agua caliente o tibia. No recomendado para uso con lana, seda u otras telas delicadas. Segu&iacute; siempre las indicaciones del fabricante de tu lavarropas. K9Clean no se responsabiliza por da&ntilde;os preexistentes o mal funcionamiento del equipo. Todos los derechos reservados.
+      </p>
+    </div>
+  </section>
+
+</div><!-- /.info-page -->
+
+<!-- ============================================================
+     FAQ ACCORDION — Vanilla JS
+     ============================================================ -->
 <script>
-(function(){
-  var items = document.querySelectorAll('.il-faq-item');
-  if (!items.length) return;
-  items.forEach(function(item){
-    var q = item.querySelector('.il-faq-q');
-    if (!q) return;
-    q.addEventListener('click', function(){
-      var open = item.classList.contains('open');
-      items.forEach(function(i){ i.classList.remove('open'); });
-      if (!open) item.classList.add('open');
+(function() {
+  var triggers = document.querySelectorAll('.info-faq-trigger');
+  if (!triggers.length) return;
+
+  triggers.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      var panelId = btn.getAttribute('aria-controls');
+      var panel = document.getElementById(panelId);
+
+      // Close all other items first
+      triggers.forEach(function(otherBtn) {
+        if (otherBtn !== btn) {
+          otherBtn.setAttribute('aria-expanded', 'false');
+          var otherId = otherBtn.getAttribute('aria-controls');
+          var otherPanel = document.getElementById(otherId);
+          if (otherPanel) {
+            otherPanel.style.maxHeight = null;
+            otherPanel.setAttribute('aria-hidden', 'true');
+          }
+        }
+      });
+
+      // Toggle current item
+      if (isOpen) {
+        btn.setAttribute('aria-expanded', 'false');
+        panel.style.maxHeight = null;
+        panel.setAttribute('aria-hidden', 'true');
+      } else {
+        btn.setAttribute('aria-expanded', 'true');
+        panel.setAttribute('aria-hidden', 'false');
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
     });
   });
 })();
