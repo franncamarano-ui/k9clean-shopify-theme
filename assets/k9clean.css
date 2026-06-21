@@ -1115,7 +1115,19 @@ ul { list-style: none; }
   max-width: 560px; margin: 0 auto 36px; line-height: 1.6;
 }
 
-.formulado__list { max-width: 700px; margin: 0 auto; }
+.formulado__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  align-items: center;
+}
+
+.formulado__image {
+  display: flex;
+  justify-content: center;
+}
+
+.formulado__list { max-width: 700px; }
 
 .formulado__item {
   padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -1504,6 +1516,9 @@ ul { list-style: none; }
 
   /* Product Hero (producto) */
   .product-hero .container { grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  /* Formulado layout (texto + imagen) */
+  .formulado__layout { grid-template-columns: 1fr 1fr; gap: 48px; }
 
   /* Pasos (producto) */
   .pasos__grid { grid-template-columns: repeat(3, 1fr); }
