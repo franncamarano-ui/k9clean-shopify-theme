@@ -94,11 +94,23 @@
     btn.addEventListener('click', function() {
       var target = btn.getAttribute('data-infotab');
       if (!target) return;
-      btns.forEach(function(b) { b.classList.remove('active'); });
-      panels.forEach(function(p) { p.classList.remove('active'); });
+      btns.forEach(function(b) {
+        b.classList.remove('active');
+        b.style.borderBottomColor = 'transparent';
+        b.style.color = '';
+      });
+      panels.forEach(function(p) {
+        p.classList.remove('active');
+        p.style.display = 'none';
+      });
       btn.classList.add('active');
+      btn.style.borderBottomColor = 'var(--verde-oscuro)';
+      btn.style.color = 'var(--verde-oscuro)';
       var targetEl = document.getElementById(target);
-      if (targetEl) targetEl.classList.add('active');
+      if (targetEl) {
+        targetEl.classList.add('active');
+        targetEl.style.display = 'block';
+      }
     });
   });
 })();
