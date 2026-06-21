@@ -3,15 +3,14 @@
 <section class="product-hero">
   <div class="container">
     <div class="product-gallery fade-in">
-      <div class="product-gallery__main">
-        <span class="product-gallery__main-label">K9Clean</span>
-        <span class="product-gallery__main-sub">Disolvente de Pelo</span>
+      <div class="product-gallery__main" style="background:none;aspect-ratio:auto;">
+        <img id="mainProductImg" src="{{ 'ImagenProducto1.png' | asset_url }}" alt="K9 Clean Producto" style="width:100%;border-radius:16px;">
       </div>
       <div class="product-gallery__thumbs">
-        <div class="product-gallery__thumb product-gallery__thumb--verde">📦</div>
-        <div class="product-gallery__thumb product-gallery__thumb--crema">🧺</div>
-        <div class="product-gallery__thumb product-gallery__thumb--verde">🐕</div>
-        <div class="product-gallery__thumb product-gallery__thumb--crema">✨</div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;border-color:var(--dorado);"><img src="{{ 'ImagenProducto1.png' | asset_url }}" alt="Producto" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'ImagenProducto8.png' | asset_url }}" alt="Producto detalle" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'ImagenBeneficios5.png' | asset_url }}" alt="Beneficios" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'ImagenAntesdespus3.png' | asset_url }}" alt="Antes y después" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
       </div>
     </div>
 
@@ -106,6 +105,20 @@
   </div>
 </section>
 
+<!-- IMAGEN: Antes/Después -->
+<section style="padding:32px 0;background:var(--crema);">
+  <div class="container" style="text-align:center;">
+    <img src="{{ 'ImagenAntesdespus3.png' | asset_url }}" alt="Antes y después - K9 Clean" style="width:100%;max-width:700px;border-radius:16px;margin:0 auto;" class="fade-in">
+  </div>
+</section>
+
+<!-- IMAGEN: Comparación vs competencia -->
+<section style="padding:32px 0;background:var(--crema-alt);">
+  <div class="container" style="text-align:center;">
+    <img src="{{ 'Imagencompetencia2.png' | asset_url }}" alt="K9 Clean vs otras marcas" style="width:100%;max-width:700px;border-radius:16px;margin:0 auto;" class="fade-in">
+  </div>
+</section>
+
 <!-- SECCIÓN DOLOR — ÁNGULO #1 (Esfuerzo inútil) -->
 <section class="dolor" data-angulo="esfuerzo">
   <div class="container">
@@ -141,25 +154,38 @@
   </div>
 </section>
 
-<section class="pasos">
-  <div class="container">
-    <h2 class="section-title fade-in">Agregá. Lavá. <em>Listo.</em></h2>
-    <div class="pasos__grid">
-      <div class="paso fade-in"><div class="paso__icon">🥄</div><p class="paso__step">Paso 1</p><h3>Agregá al tambor</h3><p>2 a 4 cucharadas según la carga y cantidad de pelo.</p></div>
-      <div class="paso fade-in"><div class="paso__icon">🌡️</div><p class="paso__step">Paso 2</p><h3>Poné el ciclo caliente</h3><p>El calor activa la enzima que rompe la queratina.</p></div>
-      <div class="paso fade-in"><div class="paso__icon">✨</div><p class="paso__step">Paso 3</p><h3>Dejalo actuar</h3><p>Resultados visibles desde el primer lavado.</p></div>
-    </div>
+<!-- IMAGEN: Cómo usar - 3 pasos -->
+<section style="padding:32px 0;background:var(--blanco);">
+  <div class="container" style="text-align:center;">
+    <img src="{{ 'ImagenUso6.png' | asset_url }}" alt="Cómo usar K9 Clean - 3 pasos fáciles" style="width:100%;max-width:700px;border-radius:16px;margin:0 auto;" class="fade-in">
   </div>
 </section>
 
-<section class="testimonios-prod">
-  <div class="container">
-    <h2 class="section-title fade-in">Lo que nuestros clientes están <em>diciendo</em></h2>
-    <div style="max-width:700px;margin:0 auto;">
-      <div class="opinion-card fade-in"><div class="opinion-card__header"><div class="opinion-card__avatar">LM</div><div><p class="opinion-card__name">Lucía M.</p><p class="opinion-card__verified">✓ Compra verificada</p></div></div><div class="opinion-card__stars">★★★★★</div><p class="opinion-card__title">Por fin puedo usar ropa negra</p><p class="opinion-card__text">Mi ropa oscura era un desastre con pelo de mi golden. K9 Clean fue lo primero que realmente funcionó.</p></div>
-      <div class="opinion-card fade-in"><div class="opinion-card__header"><div class="opinion-card__avatar">MR</div><div><p class="opinion-card__name">Martín R.</p><p class="opinion-card__verified">✓ Compra verificada</p></div></div><div class="opinion-card__stars">★★★★★</div><p class="opinion-card__title">Me ahorró una reparación</p><p class="opinion-card__text">Mi lavarropas hacía un ruido raro hace meses. Empecé con K9 Clean y el ruido desapareció en 3 lavados.</p></div>
-      <div class="opinion-card fade-in"><div class="opinion-card__header"><div class="opinion-card__avatar">VS</div><div><p class="opinion-card__name">Valentina S.</p><p class="opinion-card__verified">✓ Compra verificada</p></div></div><div class="opinion-card__stars">★★★★★</div><p class="opinion-card__title">Ya no reviso la ropa antes de salir</p><p class="opinion-card__text">Tengo un gato persa y la ropa siempre tenía pelo. Con K9 Clean eso se terminó.</p></div>
-    </div>
+<!-- IMAGEN: Perro + ropa limpia -->
+<section style="padding:32px 0;background:var(--crema);">
+  <div class="container" style="text-align:center;">
+    <img src="{{ 'ImagenEfecto7.png' | asset_url }}" alt="Amá a tu perro, amá la ropa limpia" style="width:100%;max-width:700px;border-radius:16px;margin:0 auto;" class="fade-in">
+  </div>
+</section>
+
+<!-- IMAGEN: Testimonios de clientes -->
+<section style="padding:32px 0;background:var(--verde-oscuro);">
+  <div class="container" style="text-align:center;">
+    <img src="{{ 'ImagenClientes4.png' | asset_url }}" alt="Más de 10.000 clientes contentos" style="width:100%;max-width:700px;border-radius:16px;margin:0 auto;" class="fade-in">
+  </div>
+</section>
+
+<!-- IMAGEN: Ingredientes / ciencia -->
+<section style="padding:32px 0;background:var(--crema-alt);">
+  <div class="container" style="text-align:center;">
+    <img src="{{ 'ImagenBeneficios5.png' | asset_url }}" alt="La ciencia detrás de K9 Clean" style="width:100%;max-width:700px;border-radius:16px;margin:0 auto;" class="fade-in">
+  </div>
+</section>
+
+<!-- IMAGEN: Nuevo packaging -->
+<section style="padding:32px 0;background:var(--crema);">
+  <div class="container" style="text-align:center;">
+    <img src="{{ 'ImagenCompetencia9.png' | asset_url }}" alt="Mismo producto, nuevo look" style="width:100%;max-width:700px;border-radius:16px;margin:0 auto;" class="fade-in">
   </div>
 </section>
 
