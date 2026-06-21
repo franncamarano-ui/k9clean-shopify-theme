@@ -103,19 +103,24 @@
 <section class="formulado">
   <div class="container">
     <h2 class="section-title fade-in">Formulado específicamente para <strong>pelo de mascota incrustado</strong></h2>
-    <div class="formulado__layout fade-in">
+    <div style="display:grid;grid-template-columns:1fr;gap:32px;align-items:center;" class="formulado-grid fade-in">
       <div class="formulado__list">
         <div class="formulado__item"><h3>Disuelve el pelo de mascota</h3><p>K9Clean actúa durante el ciclo de lavado para romper el vínculo entre el pelo y la tela, destruyendo la queratina para liberar y enjuagar el pelo en vez de reincrustarlo.</p></div>
         <div class="formulado__item"><h3>Formulado para el pelo de las mascotas</h3><p>Esto no es un potenciador de aroma ni un detergente común. K9Clean está diseñado para actuar sobre la queratina del pelo de tu perro, algo que los detergentes tradicionales no pueden hacer.</p></div>
         <div class="formulado__item"><h3>Apto para lavarropas y pozo séptico</h3><p>Diseñado para uso regular en lavarropas estándar y de alta eficiencia. K9Clean es seguro para pozo séptico cuando se usa según las instrucciones y no dañará tu lavarropas ni las tuberías.</p></div>
         <div class="formulado__item"><h3>Neutraliza los olores en su origen</h3><p>K9Clean neutraliza los residuos que causan malos olores durante el lavado, por lo que la ropa, las mantas y las camas de las mascotas salen con un olor a limpio, sin fragancias artificiales.</p></div>
       </div>
-      <div class="formulado__image">
-        <img src="{{ 'formulado1.png' | asset_url }}" alt="K9 Clean - Formulado para pelo de mascota" style="width:100%;border-radius:16px;">
+      <div style="text-align:center;">
+        <img src="{{ 'formulado1.png' | asset_url }}" alt="K9 Clean - Formulado para pelo de mascota" loading="lazy" style="width:100%;max-width:500px;border-radius:16px;margin:0 auto;">
       </div>
     </div>
   </div>
 </section>
+<style>
+  @media (min-width: 768px) {
+    .formulado-grid { grid-template-columns: 1fr 1fr !important; gap: 48px !important; }
+  }
+</style>
 
 <!-- SECCIÓN DOLOR — ÁNGULO #1 (Esfuerzo inútil) -->
 <section class="dolor" data-angulo="esfuerzo">
