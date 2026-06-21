@@ -713,6 +713,39 @@ ul { list-style: none; }
 }
 
 /* ============================================
+   DOLOR / STORYTELLING (index + producto)
+   ============================================ */
+.dolor {
+  padding: 64px 0;
+  background: var(--crema-alt);
+}
+
+.dolor__content {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dolor h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--verde-oscuro);
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+
+.dolor p {
+  font-size: 16px;
+  color: var(--texto-medio);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.dolor .btn {
+  margin-top: 12px;
+}
+
+/* ============================================
    GARANTIA (shared: index + producto)
    ============================================ */
 .garantia {
