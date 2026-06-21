@@ -96,6 +96,29 @@
         <span class="product-trust__item">♻️ Apto pozo séptico</span>
       </div>
       <div class="product-payments"><span>💳 Visa</span><span>💵 Mercado Pago</span><span>🏦 Rapipago</span></div>
+
+      <!-- TABS: Aprobado / Ingredientes / Instrucciones / Beneficios -->
+      <div style="margin-top:24px;border-top:1px solid var(--borde-sutil);padding-top:20px;">
+        <div class="info-tabs__nav" style="display:flex;border-bottom:2px solid var(--borde-sutil);overflow-x:auto;scrollbar-width:none;margin-bottom:0;">
+          <button class="info-tab-btn active" data-infotab="aprobado" style="padding:10px 14px;font-size:12px;font-weight:600;color:var(--texto-medio);background:none;white-space:nowrap;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;">Aprobado por dueños</button>
+          <button class="info-tab-btn" data-infotab="ingredientes" style="padding:10px 14px;font-size:12px;font-weight:600;color:var(--texto-medio);background:none;white-space:nowrap;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;">Ingredientes clave</button>
+          <button class="info-tab-btn" data-infotab="instrucciones" style="padding:10px 14px;font-size:12px;font-weight:600;color:var(--texto-medio);background:none;white-space:nowrap;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;">Instrucciones</button>
+          <button class="info-tab-btn" data-infotab="beneficios" style="padding:10px 14px;font-size:12px;font-weight:600;color:var(--texto-medio);background:none;white-space:nowrap;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;">Beneficios</button>
+        </div>
+        <div class="info-tab-panel active" id="aprobado" style="padding:16px 0;">
+          <blockquote style="font-family:var(--font-display);font-size:14px;font-style:italic;color:var(--verde-oscuro);line-height:1.5;padding:16px;background:var(--crema-alt);border-radius:8px;border-left:3px solid var(--dorado);margin-bottom:12px;">"Tengo dos pastores alemanes y el lavarropas estaba hecho pelota de tanto pelo acumulado. Con un solo lavado con K9Clean, el lavarropas empezó a andar más tranquilo y ya no vivo con miedo de que se me rompa. Es lo primero que realmente funciona."</blockquote>
+          <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:50%;background:var(--verde-oscuro);color:var(--dorado);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;">CH</div><div><strong style="font-size:13px;color:var(--verde-oscuro);">Carolina H.</strong><br><span style="font-size:11px;color:var(--texto-claro);">Mamá de perros full time, 2 hijos y 2 pastores.</span></div></div>
+        </div>
+        <div class="info-tab-panel" id="ingredientes" style="padding:16px 0;display:none;">
+          <ul style="list-style:none;margin:0;padding:0;"><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Proteasa — enzima que rompe la queratina del pelo</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Ingredientes a base de plantas, biodegradables</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Sin fragancias artificiales ni químicos agresivos</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Apto para pozo séptico y cámara séptica</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Seguro para todas las mascotas del hogar</li></ul>
+        </div>
+        <div class="info-tab-panel" id="instrucciones" style="padding:16px 0;display:none;">
+          <ul style="list-style:none;margin:0;padding:0;"><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">1.</span> Agregá 2 cucharadas al tambor vacío o 4 sobre ropa con pelo</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">2.</span> Elegí el ciclo más caliente que permita la prenda</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">3.</span> Lavá como siempre — no hace falta remojar</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">4.</span> Repetí 1 a 3 lavados para pelo muy incrustado</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);display:flex;gap:6px;"><span style="color:#856404;font-weight:700;">⚠️</span> No usar en lana, seda, cuero, plumón ni telas delicadas</li></ul>
+        </div>
+        <div class="info-tab-panel" id="beneficios" style="padding:16px 0;display:none;">
+          <ul style="list-style:none;margin:0;padding:0;"><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Disuelve hasta el 96.7% del pelo acumulado</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Limpia el tambor, filtro y componentes internos</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Previene reparaciones costosas del lavarropas</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Elimina olores de mascota de forma natural</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Cero esfuerzo extra — se agrega al lavado de siempre</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Resultados progresivos, mejora en cada lavado</li></ul>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -315,30 +338,6 @@
       <h2>¿Ya probaste de todo y el pelo siempre vuelve?</h2>
       <p>Cepillaste antes de lavar. Usaste bolitas atrapapelos. Limpiaste el filtro después de cada lavado. Y la ropa sigue saliendo con pelo.</p>
       <p>No es que estés haciendo algo mal — es que esas soluciones solo atrapan una parte del pelo. K9 Clean lo disuelve a nivel molecular, así que no depende de la textura del pelo ni de cuántas bolitas uses.</p>
-    </div>
-  </div>
-</section>
-
-<section class="info-tabs">
-  <div class="container">
-    <div class="info-tabs__nav">
-      <button class="info-tab-btn active" data-infotab="aprobado">Aprobado por dueños</button>
-      <button class="info-tab-btn" data-infotab="ingredientes">Ingredientes clave</button>
-      <button class="info-tab-btn" data-infotab="instrucciones">Instrucciones</button>
-      <button class="info-tab-btn" data-infotab="beneficios">Beneficios</button>
-    </div>
-    <div class="info-tab-panel active" id="aprobado">
-      <blockquote>"Tengo dos pastores alemanes y el lavarropas estaba hecho pelota de tanto pelo acumulado. Con un solo lavado con K9Clean, el lavarropas empezó a andar más tranquilo y ya no vivo con miedo de que se me rompa. Es lo primero que realmente funciona."</blockquote>
-      <cite><span class="avatar">CH</span><div><strong>Carolina H.</strong><span>Mamá de perros full time, 2 hijos y 2 pastores.</span></div></cite>
-    </div>
-    <div class="info-tab-panel" id="ingredientes">
-      <ul><li><span class="check">✓</span> Proteasa — enzima que rompe la queratina del pelo</li><li><span class="check">✓</span> Ingredientes a base de plantas, biodegradables</li><li><span class="check">✓</span> Sin fragancias artificiales ni químicos agresivos</li><li><span class="check">✓</span> Apto para pozo séptico y cámara séptica</li><li><span class="check">✓</span> Seguro para todas las mascotas del hogar</li></ul>
-    </div>
-    <div class="info-tab-panel" id="instrucciones">
-      <ul><li><span class="check">1.</span> Agregá 2 cucharadas al tambor vacío (mantenimiento) o 4 cucharadas sobre ropa con pelo</li><li><span class="check">2.</span> Elegí el ciclo más caliente que permita la prenda</li><li><span class="check">3.</span> Lavá como siempre — no hace falta remojar ni prelavar</li><li><span class="check">4.</span> Repetí 1 a 3 lavados para pelo muy incrustado</li><li><span class="check">⚠️</span> No usar en lana, seda, cuero, plumón ni telas delicadas</li></ul>
-    </div>
-    <div class="info-tab-panel" id="beneficios">
-      <ul><li><span class="check">✓</span> Disuelve hasta el 96.7% del pelo acumulado</li><li><span class="check">✓</span> Limpia el tambor, filtro y componentes internos</li><li><span class="check">✓</span> Previene reparaciones costosas del lavarropas</li><li><span class="check">✓</span> Elimina olores de mascota de forma natural</li><li><span class="check">✓</span> Cero esfuerzo extra — se agrega al lavado de siempre</li><li><span class="check">✓</span> Resultados progresivos, mejora en cada lavado</li></ul>
     </div>
   </div>
 </section>
