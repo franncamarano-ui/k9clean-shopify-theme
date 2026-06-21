@@ -355,8 +355,10 @@
 }
 .info-review-card__img {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #f8f8f6;
+  padding: 8px;
 }
 .info-review-card__body {
   padding: 20px 22px 24px;
@@ -739,7 +741,7 @@
 
         <!-- Review 3 -->
         <div class="info-review-card">
-          <img class="info-review-card__img" src="{{ 'efecto7.png' | asset_url }}" alt="Am&aacute; a tu perro, am&aacute; la ropa limpia" loading="lazy">
+          <img class="info-review-card__img" src="{{ 'producto1.png' | asset_url }}" alt="K9Clean producto" loading="lazy">
           <div class="info-review-card__body">
             <div class="info-review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <h3 class="info-review-card__title">&ldquo;Funciona de verdad&rdquo;</h3>
