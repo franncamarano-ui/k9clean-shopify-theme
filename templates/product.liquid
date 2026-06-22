@@ -1,0 +1,352 @@
+<!-- PRODUCTO — K9 Clean Argentina -->
+
+<section class="product-hero">
+  <div class="container">
+    <div class="product-gallery fade-in">
+      <div class="product-gallery__main" style="background:none;aspect-ratio:auto;">
+        <img id="mainProductImg" src="{{ 'producto1.png' | asset_url }}" alt="K9 Clean Producto" style="width:100%;border-radius:16px;">
+      </div>
+      <div class="product-gallery__thumbs" style="grid-template-columns:repeat(5,1fr);">
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;border-color:var(--dorado);"><img src="{{ 'producto1.png' | asset_url }}" alt="Producto" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'producto8.png' | asset_url }}" alt="Producto detalle" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'competencia2.png' | asset_url }}" alt="Comparación" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'antesdespues3.png' | asset_url }}" alt="Antes y después" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'clientes4.png' | asset_url }}" alt="Clientes" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+      </div>
+      <div class="product-gallery__thumbs" style="grid-template-columns:repeat(4,1fr);margin-top:6px;">
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'beneficios5.png' | asset_url }}" alt="Beneficios" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'uso6.png' | asset_url }}" alt="Cómo usar" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'efecto7.png' | asset_url }}" alt="Efecto" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+        <div class="product-gallery__thumb" onclick="document.getElementById('mainProductImg').src=this.querySelector('img').src" style="padding:0;"><img src="{{ 'nuevolook9.png' | asset_url }}" alt="Nuevo packaging" style="width:100%;height:100%;object-fit:cover;border-radius:4px;"></div>
+      </div>
+    </div>
+
+    <div class="product-info fade-in">
+      <h1 class="product-info__title">K9Clean Disolvente de Pelo de Mascota</h1>
+
+      <p class="product-info__meta">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--verde-oscuro)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100g / ~8 ciclos de lavado
+      </p>
+
+      <p class="product-info__desc">Polvo enzimático a base de plantas que rompe la queratina para liberar el pelo de mascota incrustado en telas y lavarropas. Resultados progresivos, sin esfuerzo extra.</p>
+
+      <div class="product-info__rating">
+        <span class="product-info__stars">★★★★☆</span>
+        Elegido por dueños de mascotas en toda Argentina
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <span class="benefit-item__text">Disuelve el pelo en cada lavado</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <span class="benefit-item__text">Se adapta a tu rutina actual</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <span class="benefit-item__text">Seguro para mascotas, telas y lavarropas</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg></div>
+          <span class="benefit-item__text">Elimina pelo de perro y gato</span>
+        </div>
+      </div>
+
+      <!-- KACHING BUNDLES SE INYECTA ACÁ (en la página nativa de producto) -->
+
+      <!-- Formulario nativo de Shopify necesario para que Kaching funcione -->
+      {% form 'product', product %}
+        <select name="id" id="productSelect" style="display:none;">
+          {% for variant in product.variants %}
+            <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+              {{ variant.title }} - {{ variant.price | money }}
+            </option>
+          {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;font-size:16px;cursor:pointer;">Comprar ahora</button>
+      {% endform %}
+
+      <div class="product-trust">
+        <span class="product-trust__item"><svg viewBox="0 0 24 24" fill="var(--dorado)" stroke="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" fill="none" stroke="var(--verde-oscuro)" stroke-width="2" stroke-linecap="round"/></svg> Garantía 30 días</span>
+        <span class="product-trust__item">🚚 Envío rápido</span>
+        <span class="product-trust__item"><svg viewBox="0 0 24 24" fill="none" stroke="var(--verde-oscuro)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Pago seguro</span>
+        <span class="product-trust__item">♻️ Apto pozo séptico</span>
+      </div>
+      <div class="product-payments"><span>💳 Visa</span><span>💵 Mercado Pago</span><span>🏦 Rapipago</span></div>
+
+      <!-- TABS: Aprobado / Ingredientes / Instrucciones / Beneficios -->
+      <div style="margin-top:24px;border-top:1px solid var(--borde-sutil);padding-top:20px;">
+        <div class="info-tabs__nav" style="display:flex;border-bottom:2px solid var(--borde-sutil);overflow-x:auto;scrollbar-width:none;margin-bottom:0;">
+          <button class="info-tab-btn active" data-infotab="aprobado" style="padding:10px 14px;font-size:12px;font-weight:600;color:var(--texto-medio);background:none;white-space:nowrap;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;">Aprobado por dueños</button>
+          <button class="info-tab-btn" data-infotab="ingredientes" style="padding:10px 14px;font-size:12px;font-weight:600;color:var(--texto-medio);background:none;white-space:nowrap;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;">Ingredientes clave</button>
+          <button class="info-tab-btn" data-infotab="instrucciones" style="padding:10px 14px;font-size:12px;font-weight:600;color:var(--texto-medio);background:none;white-space:nowrap;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;">Instrucciones</button>
+          <button class="info-tab-btn" data-infotab="beneficios" style="padding:10px 14px;font-size:12px;font-weight:600;color:var(--texto-medio);background:none;white-space:nowrap;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;">Beneficios</button>
+        </div>
+        <div class="info-tab-panel active" id="aprobado" style="padding:16px 0;">
+          <blockquote style="font-family:var(--font-display);font-size:14px;font-style:italic;color:var(--verde-oscuro);line-height:1.5;padding:16px;background:var(--crema-alt);border-radius:8px;border-left:3px solid var(--dorado);margin-bottom:12px;">"Tengo dos pastores alemanes y el lavarropas estaba hecho pelota de tanto pelo acumulado. Con un solo lavado con K9Clean, el lavarropas empezó a andar más tranquilo y ya no vivo con miedo de que se me rompa. Es lo primero que realmente funciona."</blockquote>
+          <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:50%;background:var(--verde-oscuro);color:var(--dorado);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;">CH</div><div><strong style="font-size:13px;color:var(--verde-oscuro);">Carolina H.</strong><br><span style="font-size:11px;color:var(--texto-claro);">Mamá de perros full time, 2 hijos y 2 pastores.</span></div></div>
+        </div>
+        <div class="info-tab-panel" id="ingredientes" style="padding:16px 0;display:none;">
+          <ul style="list-style:none;margin:0;padding:0;"><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Proteasa — enzima que rompe la queratina del pelo</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Ingredientes a base de plantas, biodegradables</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Sin fragancias artificiales ni químicos agresivos</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Apto para pozo séptico y cámara séptica</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Seguro para todas las mascotas del hogar</li></ul>
+        </div>
+        <div class="info-tab-panel" id="instrucciones" style="padding:16px 0;display:none;">
+          <ul style="list-style:none;margin:0;padding:0;"><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">1.</span> Agregá 2 cucharadas al tambor vacío o 4 sobre ropa con pelo</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">2.</span> Elegí el ciclo más caliente que permita la prenda</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">3.</span> Lavá como siempre — no hace falta remojar</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">4.</span> Repetí 1 a 3 lavados para pelo muy incrustado</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);display:flex;gap:6px;"><span style="color:#856404;font-weight:700;">⚠️</span> No usar en lana, seda, cuero, plumón ni telas delicadas</li></ul>
+        </div>
+        <div class="info-tab-panel" id="beneficios" style="padding:16px 0;display:none;">
+          <ul style="list-style:none;margin:0;padding:0;"><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Disuelve hasta el 96.7% del pelo acumulado</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Limpia el tambor, filtro y componentes internos</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Previene reparaciones costosas del lavarropas</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Elimina olores de mascota de forma natural</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);border-bottom:1px solid var(--borde-sutil);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Cero esfuerzo extra — se agrega al lavado de siempre</li><li style="padding:6px 0;font-size:13px;color:var(--texto-medio);display:flex;gap:6px;"><span style="color:var(--verde-oscuro);font-weight:700;">✓</span> Resultados progresivos, mejora en cada lavado</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="formulado">
+  <div class="container">
+    <h2 class="section-title fade-in">Formulado específicamente para <strong>pelo de mascota incrustado</strong></h2>
+    <div style="display:grid;grid-template-columns:1fr;gap:32px;align-items:center;" class="formulado-grid fade-in">
+      <div class="formulado__list">
+        <div class="formulado__item"><h3>Disuelve el pelo de mascota</h3><p>K9Clean actúa durante el ciclo de lavado para romper el vínculo entre el pelo y la tela, destruyendo la queratina para liberar y enjuagar el pelo en vez de reincrustarlo.</p></div>
+        <div class="formulado__item"><h3>Formulado para el pelo de las mascotas</h3><p>Esto no es un potenciador de aroma ni un detergente común. K9Clean está diseñado para actuar sobre la queratina del pelo de tu perro, algo que los detergentes tradicionales no pueden hacer.</p></div>
+        <div class="formulado__item"><h3>Apto para lavarropas y pozo séptico</h3><p>Diseñado para uso regular en lavarropas estándar y de alta eficiencia. K9Clean es seguro para pozo séptico cuando se usa según las instrucciones y no dañará tu lavarropas ni las tuberías.</p></div>
+        <div class="formulado__item"><h3>Neutraliza los olores en su origen</h3><p>K9Clean neutraliza los residuos que causan malos olores durante el lavado, por lo que la ropa, las mantas y las camas de las mascotas salen con un olor a limpio, sin fragancias artificiales.</p></div>
+      </div>
+      <div style="text-align:center;">
+        <img src="{{ 'formulado1.png' | asset_url }}" alt="K9 Clean - Formulado para pelo de mascota" loading="lazy" style="width:100%;max-width:500px;border-radius:16px;margin:0 auto;">
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  @media (min-width: 768px) {
+    .formulado-grid { grid-template-columns: 1fr 1fr !important; gap: 48px !important; }
+  }
+</style>
+
+<!-- SLIDER ANTES / DESPUÉS -->
+<section style="padding:48px 0;background:var(--crema);">
+  <div class="container" style="max-width:700px;">
+    <p style="text-align:center;font-size:15px;color:var(--texto-medio);margin-bottom:16px;">Misma ropa. Misma rutina. Notablemente menos pelo.</p>
+    <div class="ba-slider" id="baSlider" style="position:relative;overflow:hidden;border-radius:12px;cursor:ew-resize;user-select:none;-webkit-user-select:none;">
+      <img src="{{ 'despues.png' | asset_url }}" alt="Después de K9 Clean" style="display:block;width:100%;" draggable="false">
+      <div class="ba-before" id="baBefore" style="position:absolute;top:0;left:0;bottom:0;width:50%;overflow:hidden;">
+        <img src="{{ 'antes.png' | asset_url }}" alt="Antes de K9 Clean" style="display:block;width:100%;height:100%;object-fit:cover;" draggable="false">
+        <span style="position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:4px;font-size:12px;font-weight:700;">Antes</span>
+      </div>
+      <div class="ba-handle" id="baHandle" style="position:absolute;top:0;bottom:0;left:50%;width:4px;background:#fff;cursor:ew-resize;z-index:10;transform:translateX(-50%);">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#17433c" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/><polyline points="9 18 15 12 9 6" transform="translate(6,0)"/></svg>
+        </div>
+      </div>
+      <span style="position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,0.6);color:#fff;padding:4px 12px;border-radius:4px;font-size:12px;font-weight:700;">Después</span>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--texto-claro);margin-top:8px;">Deslizá para ver la diferencia</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var slider = document.getElementById('baSlider');
+  var before = document.getElementById('baBefore');
+  var handle = document.getElementById('baHandle');
+  if (!slider || !before || !handle) return;
+  var dragging = false;
+
+  function move(x) {
+    var rect = slider.getBoundingClientRect();
+    var pos = Math.max(0, Math.min(x - rect.left, rect.width));
+    var pct = (pos / rect.width) * 100;
+    before.style.width = pct + '%';
+    handle.style.left = pct + '%';
+  }
+
+  slider.addEventListener('mousedown', function(e) { dragging = true; move(e.clientX); });
+  window.addEventListener('mousemove', function(e) { if (dragging) move(e.clientX); });
+  window.addEventListener('mouseup', function() { dragging = false; });
+
+  slider.addEventListener('touchstart', function(e) { dragging = true; move(e.touches[0].clientX); }, {passive: true});
+  window.addEventListener('touchmove', function(e) { if (dragging) move(e.touches[0].clientX); }, {passive: true});
+  window.addEventListener('touchend', function() { dragging = false; });
+})();
+</script>
+
+<!-- RESULTADOS -->
+<section style="padding:48px 0;background:var(--blanco);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr;gap:32px;align-items:center;" class="resultados-grid">
+      <div>
+        <h2 style="font-family:var(--font-display);font-size:32px;color:var(--verde-oscuro);font-weight:700;margin-bottom:4px;">Resultados de</h2>
+        <p style="font-family:var(--font-display);font-size:28px;color:var(--dorado);font-style:italic;margin-bottom:32px;">esta temporada de muda</p>
+
+        <div style="display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-top:1px solid var(--borde-sutil);">
+          <span style="font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--dorado);line-height:1;">96%</span>
+          <div>
+            <strong style="font-size:16px;color:var(--verde-oscuro);display:block;margin-bottom:4px;">Notaron</strong>
+            <p style="font-size:14px;color:var(--texto-medio);line-height:1.5;">Menos pelo en ropa, toallas y sábanas después de un solo lavado.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-top:1px solid var(--borde-sutil);">
+          <span style="font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--dorado);line-height:1;">99%</span>
+          <div>
+            <strong style="font-size:16px;color:var(--verde-oscuro);display:block;margin-bottom:4px;">Confirmaron</strong>
+            <p style="font-size:14px;color:var(--texto-medio);line-height:1.5;">Pudieron usar K9Clean en lavarropas estándar y de alta eficiencia sin problemas.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-top:1px solid var(--borde-sutil);">
+          <span style="font-family:var(--font-display);font-size:48px;font-weight:700;color:var(--dorado);line-height:1;">0%</span>
+          <div>
+            <strong style="font-size:16px;color:var(--verde-oscuro);display:block;margin-bottom:4px;">Sintieron</strong>
+            <p style="font-size:14px;color:var(--texto-medio);line-height:1.5;">Esfuerzo extra. El lavado se sintió igual que siempre, con resultados notablemente más limpios.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;padding:12px 16px;background:var(--crema-alt);border-radius:8px;display:flex;align-items:center;gap:8px;">
+          <span style="color:var(--dorado);font-size:16px;">ℹ️</span>
+          <p style="font-size:12px;color:var(--texto-claro);">* Basado en estudios internos y encuestas de feedback de clientes.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <img src="{{ 'efecto7.png' | asset_url }}" alt="Resultados K9 Clean" style="width:100%;max-width:480px;border-radius:16px;margin:0 auto;">
+      </div>
+    </div>
+  </div>
+</section>
+<style>.resultados-grid{grid-template-columns:1fr !important;}@media(min-width:768px){.resultados-grid{grid-template-columns:1fr 1fr !important;}}</style>
+
+<!-- RESEÑAS CARRUSEL -->
+<section style="padding:48px 0;background:var(--crema-alt);overflow:hidden;">
+  <div class="container">
+    <h2 style="font-family:var(--font-display);font-size:32px;color:var(--verde-oscuro);text-align:center;margin-bottom:4px;">Lo que nuestros clientes <em style="color:var(--dorado);font-style:italic;">están diciendo...</em></h2>
+    <p style="text-align:center;margin-bottom:24px;">
+      <span style="display:inline-block;border:2px solid var(--verde-oscuro);border-radius:6px;padding:6px 16px;font-size:13px;font-weight:600;color:var(--verde-oscuro);">
+        ★★★★★ "Excelente" 4.8/5 basado en <strong>1046 reseñas verificadas</strong>
+      </span>
+    </p>
+  </div>
+  <div style="position:relative;">
+    <div class="reviews-track" id="reviewsTrack" style="display:flex;gap:16px;padding:0 20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;">
+      <div style="min-width:300px;max-width:340px;flex-shrink:0;scroll-snap-align:start;background:var(--blanco);border-radius:12px;padding:24px;border:1px solid var(--borde-sutil);">
+        <div style="color:var(--verde-oscuro);font-size:16px;letter-spacing:2px;margin-bottom:12px;">★★★★★</div>
+        <h4 style="font-size:16px;color:var(--verde-oscuro);margin-bottom:8px;font-weight:700;">Chau rodillo para siempre</h4>
+        <p style="font-size:13px;color:var(--texto-medio);line-height:1.6;margin-bottom:16px;">Tengo un golden y la ropa salía peor de lo que entraba. Lo probé sin mucha fe y la verdad me sorprendió mal. Ya no paso el rodillo antes de salir.</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--verde-oscuro);color:var(--dorado);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">MG</div>
+          <span style="font-size:13px;color:var(--verde-oscuro);font-weight:600;">María G. <span style="color:var(--dorado);">✓</span> Cliente verificada</span>
+        </div>
+      </div>
+      <div style="min-width:300px;max-width:340px;flex-shrink:0;scroll-snap-align:start;background:var(--blanco);border-radius:12px;padding:24px;border:1px solid var(--borde-sutil);">
+        <div style="color:var(--verde-oscuro);font-size:16px;letter-spacing:2px;margin-bottom:12px;">★★★★☆</div>
+        <h4 style="font-size:16px;color:var(--verde-oscuro);margin-bottom:8px;font-weight:700;">Funciona, pero tarda un toque</h4>
+        <p style="font-size:13px;color:var(--texto-medio);line-height:1.6;margin-bottom:16px;">Al primer lavado noté algo de diferencia pero no fue mágico. Al tercero ya fue otra cosa. Ahora la ropa sale impecable. Hay que tenerle paciencia.</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--dorado);color:var(--verde-oscuro);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">DR</div>
+          <span style="font-size:13px;color:var(--verde-oscuro);font-weight:600;">Daniel R. <span style="color:var(--dorado);">✓</span> Cliente verificado</span>
+        </div>
+      </div>
+      <div style="min-width:300px;max-width:340px;flex-shrink:0;scroll-snap-align:start;background:var(--blanco);border-radius:12px;padding:24px;border:1px solid var(--borde-sutil);">
+        <div style="color:var(--verde-oscuro);font-size:16px;letter-spacing:2px;margin-bottom:12px;">★★★★★</div>
+        <h4 style="font-size:16px;color:var(--verde-oscuro);margin-bottom:8px;font-weight:700;">Lo recontra recomiendo</h4>
+        <p style="font-size:13px;color:var(--texto-medio);line-height:1.6;margin-bottom:16px;">Tengo 3 gatos en un depto de 2 ambientes. Probé las bolitas, los cepillos, nada servía. K9Clean fue lo primero que realmente funcionó. Una masa.</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--verde-oscuro);color:var(--dorado);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">LC</div>
+          <span style="font-size:13px;color:var(--verde-oscuro);font-weight:600;">Laura C. <span style="color:var(--dorado);">✓</span> Cliente verificada</span>
+        </div>
+      </div>
+      <div style="min-width:300px;max-width:340px;flex-shrink:0;scroll-snap-align:start;background:var(--blanco);border-radius:12px;padding:24px;border:1px solid var(--borde-sutil);">
+        <div style="color:var(--verde-oscuro);font-size:16px;letter-spacing:2px;margin-bottom:12px;">★★★★★</div>
+        <h4 style="font-size:16px;color:var(--verde-oscuro);margin-bottom:8px;font-weight:700;">Le salvó la vida al lavarropas</h4>
+        <p style="font-size:13px;color:var(--texto-medio);line-height:1.6;margin-bottom:16px;">El lavarropas hacía un ruido raro hace meses. El técnico me dijo que era pelo en la bomba. Usé K9Clean y a la tercera vez el ruido se fue. Me ahorré como $400 lucas.</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--dorado);color:var(--verde-oscuro);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">MR</div>
+          <span style="font-size:13px;color:var(--verde-oscuro);font-weight:600;">Martín R. <span style="color:var(--dorado);">✓</span> Cliente verificado</span>
+        </div>
+      </div>
+      <div style="min-width:300px;max-width:340px;flex-shrink:0;scroll-snap-align:start;background:var(--blanco);border-radius:12px;padding:24px;border:1px solid var(--borde-sutil);">
+        <div style="color:var(--verde-oscuro);font-size:16px;letter-spacing:2px;margin-bottom:12px;">★★★★☆</div>
+        <h4 style="font-size:16px;color:var(--verde-oscuro);margin-bottom:8px;font-weight:700;">Bueno pero no milagroso</h4>
+        <p style="font-size:13px;color:var(--texto-medio);line-height:1.6;margin-bottom:16px;">No te saca el 100% del pelo eh, pero la diferencia es gigante. Antes era un desastre y ahora es muy poco. Para mí, eso ya es un golazo.</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--verde-oscuro);color:var(--dorado);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">VS</div>
+          <span style="font-size:13px;color:var(--verde-oscuro);font-weight:600;">Valentina S. <span style="color:var(--dorado);">✓</span> Cliente verificada</span>
+        </div>
+      </div>
+      <div style="min-width:300px;max-width:340px;flex-shrink:0;scroll-snap-align:start;background:var(--blanco);border-radius:12px;padding:24px;border:1px solid var(--borde-sutil);">
+        <div style="color:var(--verde-oscuro);font-size:16px;letter-spacing:2px;margin-bottom:12px;">★★★★★</div>
+        <h4 style="font-size:16px;color:var(--verde-oscuro);margin-bottom:8px;font-weight:700;">Mi vieja no lo puede creer</h4>
+        <p style="font-size:13px;color:var(--texto-medio);line-height:1.6;margin-bottom:16px;">Se lo regalé a mi mamá que tiene un caniche que larga pelo por todos lados. Me llamó a la semana diciéndome que era lo mejor que le regalé en la vida. Literal.</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--dorado);color:var(--verde-oscuro);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">FT</div>
+          <span style="font-size:13px;color:var(--verde-oscuro);font-weight:600;">Facundo T. <span style="color:var(--dorado);">✓</span> Cliente verificado</span>
+        </div>
+      </div>
+      <div style="min-width:300px;max-width:340px;flex-shrink:0;scroll-snap-align:start;background:var(--blanco);border-radius:12px;padding:24px;border:1px solid var(--borde-sutil);">
+        <div style="color:var(--verde-oscuro);font-size:16px;letter-spacing:2px;margin-bottom:12px;">★★★★★</div>
+        <h4 style="font-size:16px;color:var(--verde-oscuro);margin-bottom:8px;font-weight:700;">Por fin ropa negra sin dramas</h4>
+        <p style="font-size:13px;color:var(--texto-medio);line-height:1.6;margin-bottom:16px;">Laburo en una oficina y siempre llegaba con pelo de mi labrador en el pantalón de vestir. Ahora me visto y salgo tranquila. Era hora.</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--verde-oscuro);color:var(--dorado);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">SB</div>
+          <span style="font-size:13px;color:var(--verde-oscuro);font-weight:600;">Sol B. <span style="color:var(--dorado);">✓</span> Cliente verificada</span>
+        </div>
+      </div>
+      <div style="min-width:300px;max-width:340px;flex-shrink:0;scroll-snap-align:start;background:var(--blanco);border-radius:12px;padding:24px;border:1px solid var(--borde-sutil);">
+        <div style="color:var(--verde-oscuro);font-size:16px;letter-spacing:2px;margin-bottom:12px;">★★★★☆</div>
+        <h4 style="font-size:16px;color:var(--verde-oscuro);margin-bottom:8px;font-weight:700;">Anda bien, el envío tardó</h4>
+        <p style="font-size:13px;color:var(--texto-medio);line-height:1.6;margin-bottom:16px;">El producto es un 10, la ropa sale joya. Lo único que el envío tardó un par de días más de lo que decía. Pero bueno, el producto cumple de sobra.</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--dorado);color:var(--verde-oscuro);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;">JP</div>
+          <span style="font-size:13px;color:var(--verde-oscuro);font-weight:600;">Juan Pablo M. <span style="color:var(--dorado);">✓</span> Cliente verificado</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:12px;margin-top:20px;">
+      <button onclick="document.getElementById('reviewsTrack').scrollBy({left:-320,behavior:'smooth'})" style="width:40px;height:40px;border-radius:50%;border:2px solid var(--verde-oscuro);background:var(--blanco);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--verde-oscuro);">←</button>
+      <button onclick="document.getElementById('reviewsTrack').scrollBy({left:320,behavior:'smooth'})" style="width:40px;height:40px;border-radius:50%;border:2px solid var(--verde-oscuro);background:var(--blanco);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--verde-oscuro);">→</button>
+    </div>
+  </div>
+</section>
+<style>.reviews-track::-webkit-scrollbar{display:none;}</style>
+
+<!-- SECCIÓN DOLOR — ÁNGULO #1 (Esfuerzo inútil) -->
+<section class="dolor" data-angulo="esfuerzo">
+  <div class="container">
+    <div class="dolor__content fade-in">
+      <h2>¿Ya probaste de todo y el pelo siempre vuelve?</h2>
+      <p>Cepillaste antes de lavar. Usaste bolitas atrapapelos. Limpiaste el filtro después de cada lavado. Y la ropa sigue saliendo con pelo.</p>
+      <p>No es que estés haciendo algo mal — es que esas soluciones solo atrapan una parte del pelo. K9 Clean lo disuelve a nivel molecular, así que no depende de la textura del pelo ni de cuántas bolitas uses.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <h2 class="section-title fade-in">Preguntas <em>frecuentes</em></h2>
+    <div class="faq__list">
+      <div class="faq__item"><button class="faq__question">¿Cuántos ciclos rinde por pote?<span class="faq__icon">+</span></button><div class="faq__answer"><p>Cada pote rinde aproximadamente 8 ciclos de lavado con la dosis recomendada de 2-4 cucharadas.</p></div></div>
+      <div class="faq__item"><button class="faq__question">¿Funciona con todo tipo de pelo de mascota? ¿Y en los gatos?<span class="faq__icon">+</span></button><div class="faq__answer"><p>Sí. Rompe la queratina del pelo, así que funciona igual en perro, gato o conejo — no depende del grosor o textura.</p></div></div>
+      <div class="faq__item"><button class="faq__question">¿Por qué funciona mejor que las bolitas/pastillas?<span class="faq__icon">+</span></button><div class="faq__answer"><p>Las pastillas comunes no tienen proteasa — fueron diseñadas para sarro, no para pelo. K9 Clean fue creado específicamente para romper queratina.</p></div></div>
+      <div class="faq__item"><button class="faq__question">¿Es seguro para mi lavarropas?<span class="faq__icon">+</span></button><div class="faq__answer"><p>Sí, apto para todo tipo de lavarropas (carga superior, frontal) y para pozo séptico/cámara séptica. Certificado por ANMAT para su comercialización segura.</p></div></div>
+      <div class="faq__item"><button class="faq__question">¿Qué pasa si no funciona para mí?<span class="faq__icon">+</span></button><div class="faq__answer"><p>Tenés 30 días de garantía. Si no estás conforme, te devolvemos tu dinero.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="garantia">
+  <div class="container">
+    <div class="fade-in">
+      <div class="garantia__shield"><svg width="44" height="44" viewBox="0 0 24 24" fill="var(--dorado)" stroke="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" fill="none" stroke="var(--verde-oscuro)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h2>Si No Te Gustó, Te Devolvemos La Plata.</h2>
+      <p>Usá K9 Clean durante 30 días. Si no notás la diferencia, contactanos y te devolvemos tu dinero.</p>
+      <a href="#" class="btn btn-primary">Quiero probarlo</a>
+      <div class="garantia__badges">
+        <span class="garantia__badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 100% Satisfacción</span>
+        <span class="garantia__badge">🚚 Envío Rápido</span>
+        <span class="garantia__badge"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Devolución Garantizada</span>
+      </div>
+    </div>
+  </div>
+</section>
