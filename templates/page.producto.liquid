@@ -57,37 +57,43 @@
 
       <div class="offer-section">
         <p class="offer-section__title">— Oferta por tiempo limitado —</p>
-        <div class="offer-option" data-pack="1">
+        <div class="offer-option" data-pack="1" data-variant="48632621433015">
           <div class="offer-option__radio"></div>
           <span class="offer-option__icon">📦</span>
           <div class="offer-option__info">
-            <p class="offer-option__name">Comprá 1 <span class="offer-option__wash">$XX/lavado</span></p>
+            <p class="offer-option__name">Comprá 1 <span class="offer-option__wash">$4.999/lavado</span></p>
             <p class="offer-option__sub">Para probar o mascotas chicas</p>
           </div>
-          <div class="offer-option__price"><p class="offer-option__current">$XX.XXX</p></div>
+          <div class="offer-option__price"><p class="offer-option__current">$39.990</p></div>
         </div>
-        <div class="offer-option selected" data-pack="2">
+        <div class="offer-option selected" data-pack="2" data-variant="48632622743735">
           <span class="offer-option__badge">Más elegida</span>
           <div class="offer-option__radio"></div>
           <span class="offer-option__icon">📦📦</span>
           <div class="offer-option__info">
-            <p class="offer-option__name">Llevá 2 + 1 Gratis <span class="offer-option__wash">$XX/lavado</span></p>
+            <p class="offer-option__name">Llevá 2 + 1 Gratis <span class="offer-option__wash">$1.874/lavado</span></p>
             <p class="offer-option__sub">Para mudas regulares</p>
           </div>
-          <div class="offer-option__price"><p class="offer-option__current">$XX.XXX</p><p class="offer-option__original">$XX.XXX</p></div>
+          <div class="offer-option__price"><p class="offer-option__current">$44.990</p><p class="offer-option__original">$79.980</p></div>
         </div>
-        <div class="offer-option" data-pack="3">
+        <div class="offer-option" data-pack="3" data-variant="48632622776503">
           <div class="offer-option__radio"></div>
           <span class="offer-option__icon">📦📦📦</span>
           <div class="offer-option__info">
-            <p class="offer-option__name">Llevá 3 + 2 Gratis <span class="offer-option__wash">$XX/lavado</span></p>
+            <p class="offer-option__name">Llevá 3 + 2 Gratis <span class="offer-option__wash">$1.250/lavado</span></p>
             <p class="offer-option__sub">Máximo ahorro</p>
           </div>
-          <div class="offer-option__price"><p class="offer-option__current">$XX.XXX</p><p class="offer-option__original">$XX.XXX</p></div>
+          <div class="offer-option__price"><p class="offer-option__current">$49.990</p><p class="offer-option__original">$119.970</p></div>
         </div>
       </div>
 
-      <div class="product-cta"><a href="#" class="btn btn-primary">Comprar ahora</a></div>
+      <div class="product-cta">
+        <form id="addToCartForm" action="/cart/add" method="POST">
+          <input type="hidden" name="id" id="selectedVariant" value="48632622743735">
+          <input type="hidden" name="quantity" value="1">
+          <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;font-size:16px;cursor:pointer;">Comprar ahora</button>
+        </form>
+      </div>
 
       <div class="product-trust">
         <span class="product-trust__item"><svg viewBox="0 0 24 24" fill="var(--dorado)" stroke="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" fill="none" stroke="var(--verde-oscuro)" stroke-width="2" stroke-linecap="round"/></svg> Garantía 30 días</span>

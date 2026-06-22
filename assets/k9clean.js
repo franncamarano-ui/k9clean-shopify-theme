@@ -134,12 +134,16 @@
 /* ---- Pack / Offer Selection (producto.html) ---- */
 (function() {
   var opts = document.querySelectorAll('.offer-option');
+  var variantInput = document.getElementById('selectedVariant');
   if (!opts.length) return;
 
   opts.forEach(function(o) {
     o.addEventListener('click', function() {
       opts.forEach(function(x) { x.classList.remove('selected'); });
       o.classList.add('selected');
+      if (variantInput && o.dataset.variant) {
+        variantInput.value = o.dataset.variant;
+      }
     });
   });
 })();
