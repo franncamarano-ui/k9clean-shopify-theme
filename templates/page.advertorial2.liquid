@@ -56,15 +56,54 @@
   }
   .adv2-media-left { display: flex; align-items: center; gap: 16px; }
   .adv2-media-logo {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .adv2-media-logo-text {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 700;
     color: #17433c;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
+    line-height: 1;
   }
-  .adv2-media-logo em {
-    color: #c9a961;
-    font-style: italic;
+  .adv2-media-logo-ar {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    background: #17433c;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-left: 4px;
+    letter-spacing: 1px;
+    position: relative;
+    top: -2px;
+  }
+  .adv2-media-logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #c9a961, #e8d5a3);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .adv2-media-logo-icon svg {
+    width: 18px;
+    height: 18px;
+    color: #17433c;
+  }
+  .adv2-media-logo-sub {
+    font-size: 9px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-top: 1px;
   }
   .adv2-media-date {
     font-size: 12px;
@@ -328,7 +367,18 @@
   <!-- CABECERA DE MEDIO -->
   <div class="adv2-media-header">
     <div class="adv2-media-left">
-      <div class="adv2-media-logo">Hogar<em>AR</em></div>
+      <div class="adv2-media-logo">
+        <div class="adv2-media-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;">
+            <span class="adv2-media-logo-text">Hogar</span>
+            <span class="adv2-media-logo-ar">AR</span>
+          </div>
+          <span class="adv2-media-logo-sub">Noticias del hogar argentino</span>
+        </div>
+      </div>
     </div>
     <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
       <div class="adv2-media-nav">
