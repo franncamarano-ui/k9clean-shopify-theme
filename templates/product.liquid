@@ -55,42 +55,18 @@
         </div>
       </div>
 
-      <div class="offer-section">
-        <p class="offer-section__title">— Oferta por tiempo limitado —</p>
-        <div class="offer-option" data-pack="1" data-variant="{{ product.variants[0].id }}">
-          <div class="offer-option__radio"></div>
-          <span class="offer-option__icon">📦</span>
-          <div class="offer-option__info">
-            <p class="offer-option__name">1 Unidad <span class="offer-option__wash">$4.999/lavado</span></p>
-            <p class="offer-option__sub">Para probar</p>
-          </div>
-          <div class="offer-option__price"><p class="offer-option__current">$39.990</p></div>
-        </div>
-        <div class="offer-option selected" data-pack="2" data-variant="{{ product.variants[1].id }}">
-          <span class="offer-option__badge">Más elegida</span>
-          <div class="offer-option__radio"></div>
-          <span class="offer-option__icon">📦📦</span>
-          <div class="offer-option__info">
-            <p class="offer-option__name">2 Unidades <span class="offer-option__wash">$2.812/lavado</span></p>
-            <p class="offer-option__sub">Para mudas regulares</p>
-          </div>
-          <div class="offer-option__price"><p class="offer-option__current">$44.990</p><p class="offer-option__original">$79.980</p></div>
-        </div>
-        <div class="offer-option" data-pack="3" data-variant="{{ product.variants[2].id }}">
-          <div class="offer-option__radio"></div>
-          <span class="offer-option__icon">📦📦📦</span>
-          <div class="offer-option__info">
-            <p class="offer-option__name">3 Unidades <span class="offer-option__wash">$2.083/lavado</span></p>
-            <p class="offer-option__sub">Máximo ahorro</p>
-          </div>
-          <div class="offer-option__price"><p class="offer-option__current">$49.990</p><p class="offer-option__original">$119.970</p></div>
-        </div>
-      </div>
+      <!-- Kaching Bundles se inyecta acá automáticamente -->
 
+      <!-- Formulario de compra (fallback si Kaching no está activo) -->
       <div class="product-cta">
         {% form 'product', product %}
-          <input type="hidden" name="id" id="selectedVariant" value="{{ product.selected_or_first_available_variant.id }}">
-          <input type="hidden" name="quantity" value="1">
+          <select name="id" id="productSelect" style="display:none;">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+                {{ variant.title }} - {{ variant.price | money }}
+              </option>
+            {% endfor %}
+          </select>
           <input type="hidden" name="return_to" value="/checkout">
           <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;font-size:16px;cursor:pointer;">Comprar ahora</button>
         {% endform %}
