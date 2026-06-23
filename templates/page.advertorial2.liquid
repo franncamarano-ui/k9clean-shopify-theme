@@ -10,55 +10,121 @@
   }
   .adv2 *, .adv2 *::before, .adv2 *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  /* TICKER TOP */
+  .adv2-ticker {
+    background: #1a1a1a;
+    color: #ccc;
+    font-size: 12px;
+    padding: 6px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .adv2-ticker-label {
+    background: #e63946;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .adv2-ticker-items {
+    display: flex;
+    gap: 24px;
+    animation: tickerScroll 30s linear infinite;
+  }
+  .adv2-ticker-items span { flex-shrink: 0; }
+  @keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
   /* HEADER DE MEDIO */
   .adv2-media-header {
-    background: #17433c;
-    padding: 14px 20px;
+    background: #fff;
+    padding: 12px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 8px;
+    border-bottom: 3px solid #17433c;
   }
-  .adv2-media-left { display: flex; align-items: center; gap: 12px; }
+  .adv2-media-left { display: flex; align-items: center; gap: 16px; }
   .adv2-media-logo {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 20px;
+    font-size: 28px;
     font-weight: 700;
+    color: #17433c;
+    letter-spacing: -0.5px;
+  }
+  .adv2-media-logo em {
     color: #c9a961;
     font-style: italic;
   }
-  .adv2-media-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.2); }
-  .adv2-media-tagline {
-    font-size: 11px;
-    color: rgba(255,255,255,0.6);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  .adv2-media-date {
+    font-size: 12px;
+    color: #999;
   }
   .adv2-media-nav {
     display: flex;
-    gap: 16px;
+    gap: 20px;
     font-size: 13px;
-    color: rgba(255,255,255,0.7);
+    font-weight: 500;
     flex-wrap: wrap;
   }
   .adv2-media-nav a {
-    color: rgba(255,255,255,0.7);
+    color: #555;
     text-decoration: none;
     transition: color 0.2s;
+    padding: 4px 0;
   }
-  .adv2-media-nav a:hover { color: #c9a961; }
-  .adv2-media-nav a.active { color: #c9a961; font-weight: 600; }
+  .adv2-media-nav a:hover { color: #17433c; }
+  .adv2-media-nav a.active {
+    color: #17433c;
+    font-weight: 700;
+    border-bottom: 2px solid #c9a961;
+  }
+  .adv2-media-live {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #e63946;
+  }
+  .adv2-media-live::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #e63946;
+    border-radius: 50%;
+    animation: livePulse 1.5s infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
 
-  /* BARRA CATEGORIA */
+  /* BREADCRUMB */
   .adv2-cat-bar {
     background: #f8f6f1;
     padding: 10px 20px;
-    font-size: 12px;
+    font-size: 13px;
     color: #888;
     border-bottom: 1px solid #eee;
   }
-  .adv2-cat-bar span { color: #17433c; font-weight: 600; }
+  .adv2-cat-bar a {
+    color: #17433c;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .adv2-cat-bar a:hover { text-decoration: underline; }
+  .adv2-cat-bar .sep { margin: 0 6px; color: #ccc; }
 
   /* ARTÍCULO */
   .adv2-article {
@@ -258,24 +324,48 @@
 
 <div class="adv2">
 
-  <!-- CABECERA DE MEDIO -->
-  <div class="adv2-media-header">
-    <div class="adv2-media-left">
-      <div class="adv2-media-logo">Informe Especial</div>
-      <div class="adv2-media-sep"></div>
-      <div class="adv2-media-tagline">Vida con Mascotas</div>
-    </div>
-    <div class="adv2-media-nav">
-      <a href="#" class="active">Mascotas</a>
-      <a href="#">Hogar</a>
-      <a href="#">Salud</a>
-      <a href="#">Opinión</a>
+  <!-- TICKER -->
+  <div class="adv2-ticker">
+    <span class="adv2-ticker-label">Temas de hoy</span>
+    <div class="adv2-ticker-items">
+      <span>Mascotas en Argentina</span>
+      <span>·</span>
+      <span>Cuidado del hogar</span>
+      <span>·</span>
+      <span>Lavarropas: guía de mantenimiento</span>
+      <span>·</span>
+      <span>Pelo de mascota: soluciones reales</span>
+      <span>·</span>
+      <span>Mascotas en Argentina</span>
+      <span>·</span>
+      <span>Cuidado del hogar</span>
+      <span>·</span>
+      <span>Lavarropas: guía de mantenimiento</span>
+      <span>·</span>
+      <span>Pelo de mascota: soluciones reales</span>
     </div>
   </div>
 
-  <!-- BARRA CATEGORÍA -->
+  <!-- CABECERA DE MEDIO -->
+  <div class="adv2-media-header">
+    <div class="adv2-media-left">
+      <div class="adv2-media-logo">El <em>Diario</em> Mascotero</div>
+      <div class="adv2-media-date">Lunes 23 de junio de 2026</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div class="adv2-media-nav">
+        <a href="#" class="active">Mascotas</a>
+        <a href="#">Hogar</a>
+        <a href="#">Salud</a>
+        <a href="#">Opinión</a>
+      </div>
+      <span class="adv2-media-live">EN VIVO</span>
+    </div>
+  </div>
+
+  <!-- BREADCRUMB -->
   <div class="adv2-cat-bar">
-    <span>Mascotas</span> / Hogar / Investigación · 23 de junio de 2026
+    <a href="#">El Diario Mascotero</a> <span class="sep">›</span> <a href="#">Hogar</a> <span class="sep">›</span> Investigación · Martes, 23 de junio de 2026
   </div>
 
   <!-- ARTÍCULO -->
@@ -290,7 +380,7 @@
     </div>
 
     <!-- TITULAR -->
-    <h1 class="adv2-headline">La razón por la que los lavarropas de dueños de mascotas duran menos — y el polvo argentino que miles ya están usando para frenarlo</h1>
+    <h1 class="adv2-headline">La razón por la que los lavarropas duran menos — y el polvo argentino que miles ya usan para alargar la vida útil</h1>
 
     <!-- BAJADA -->
     <p class="adv2-deck">Por qué el detergente común no alcanza cuando tenés perro o gato en casa, y cómo una fórmula enzimática está cambiando la forma de lavar en Argentina.</p>
@@ -429,7 +519,7 @@
 
   <!-- FOOTER -->
   <div class="adv2-footer">
-    <p>© 2026 Informe Especial — Vida con Mascotas · Contenido patrocinado. Los resultados pueden variar según el tipo de tela, la carga y el nivel de acumulación. K9Clean no reemplaza el mantenimiento regular de tu lavarropas. No apto para lana, seda, cuero, cachemir ni plumón. Usar según las indicaciones del fabricante.</p>
+    <p>© 2026 El Diario Mascotero · Contenido patrocinado. Los resultados pueden variar según el tipo de tela, la carga y el nivel de acumulación. K9Clean no reemplaza el mantenimiento regular de tu lavarropas. No apto para lana, seda, cuero, cachemir ni plumón. Usar según las indicaciones del fabricante.</p>
   </div>
 
 </div>
