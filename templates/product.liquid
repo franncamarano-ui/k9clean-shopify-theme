@@ -239,8 +239,8 @@
     .formulado-grid { grid-template-columns: 1fr 1fr !important; gap: 48px !important; }
   }
   .formulado__item { margin-bottom: 20px; }
-  .formulado__item h3 { font-size: 16px; color: var(--verde-oscuro); margin-bottom: 6px; }
-  .formulado__item p { font-size: 14px; color: var(--texto-medio); line-height: 1.6; }
+  .formulado__item h3 { font-size: 16px; color: var(--dorado); margin-bottom: 6px; border-bottom: 1px solid rgba(201,169,97,0.3); padding-bottom: 4px; display: inline-block; }
+  .formulado__item p { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
 
   /* Resultados grid */
   .resultados-grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
@@ -352,6 +352,7 @@
           </div>
           <div class="offer-option__price">
             <p class="offer-option__current">$39.990</p>
+            <p class="offer-option__original">$46.990</p>
           </div>
         </div>
 
@@ -413,7 +414,7 @@
       <!-- INFO TABS -->
       <div class="info-tabs">
         <div class="info-tabs__nav">
-          <button class="info-tab-btn active" data-infotab="aprobado">Aprobado por duenos</button>
+          <button class="info-tab-btn active" data-infotab="aprobado">Aprobado por dueños</button>
           <button class="info-tab-btn" data-infotab="ingredientes">Ingredientes clave</button>
           <button class="info-tab-btn" data-infotab="instrucciones">Instrucciones</button>
           <button class="info-tab-btn" data-infotab="beneficios">Beneficios</button>
@@ -421,7 +422,7 @@
 
         <div class="info-tab-panel active" id="infotab-aprobado">
           <blockquote style="font-family:var(--font-display);font-size:14px;font-style:italic;color:var(--verde-oscuro);line-height:1.5;padding:16px;background:var(--crema-alt);border-radius:8px;border-left:3px solid var(--dorado);margin-bottom:12px;">
-            "Tengo dos pastores alemanes y el lavarropas estaba hecho pelota de tanto pelo acumulado. Con un solo lavado con K9Clean, el lavarropas empezo a andar mas tranquilo y ya no vivo con miedo de que se me rompa. Es lo primero que realmente funciona."
+            "Tengo dos pastores alemanes y el lavarropas estaba hecho pelota de tanto pelo acumulado. Con un solo lavado con K9Clean, el lavarropas empezó a andar más tranquilo y ya no vivo con miedo de que se me rompa. Es lo primero que realmente funciona."
           </blockquote>
           <div style="display:flex;align-items:center;gap:10px;">
             <div style="width:32px;height:32px;border-radius:50%;background:var(--verde-oscuro);color:var(--dorado);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;">CH</div>
@@ -781,9 +782,9 @@
     btn.addEventListener('click', function(){
       tabBtns.forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
-      document.querySelectorAll('.info-tab-panel').forEach(function(p){ p.classList.remove('active'); });
+      document.querySelectorAll('.info-tab-panel').forEach(function(p){ p.classList.remove('active'); p.style.display = 'none'; });
       var target = document.getElementById('infotab-' + btn.dataset.infotab);
-      if (target) target.classList.add('active');
+      if (target) { target.classList.add('active'); target.style.display = 'block'; }
     });
   });
 
