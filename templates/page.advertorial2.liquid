@@ -1,0 +1,359 @@
+{% layout 'theme.info' %}
+
+<style>
+  .adv2 {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.8;
+    font-size: 17px;
+  }
+  .adv2 *, .adv2 *::before, .adv2 *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* HEADER DE MEDIO */
+  .adv2-media-header {
+    border-bottom: 3px solid #17433c;
+    padding: 16px 20px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .adv2-media-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #17433c;
+    letter-spacing: -0.5px;
+  }
+  .adv2-media-tagline {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+  }
+  .adv2-media-nav {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: #666;
+    flex-wrap: wrap;
+  }
+  .adv2-media-nav span { font-weight: 600; color: #17433c; }
+
+  /* ARTÍCULO */
+  .adv2-article {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 32px 20px 64px;
+  }
+
+  /* META */
+  .adv2-meta {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .adv2-meta span { color: #17433c; font-weight: 600; }
+
+  /* TITULAR */
+  .adv2-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(28px, 5vw, 42px);
+    line-height: 1.15;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    font-weight: 700;
+  }
+
+  /* BAJADA */
+  .adv2-deck {
+    font-size: 19px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-style: italic;
+    border-left: 3px solid #c9a961;
+    padding-left: 16px;
+  }
+
+  /* AUTOR */
+  .adv2-byline {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .adv2-byline strong { color: #333; }
+
+  /* BODY */
+  .adv2-article p {
+    margin-bottom: 1.4em;
+    color: #333;
+  }
+
+  .adv2-article h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
+    color: #17433c;
+    margin: 40px 0 16px;
+    line-height: 1.3;
+  }
+
+  .adv2-article h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    color: #333;
+    margin: 32px 0 12px;
+  }
+
+  /* CITA TESTIMONIAL */
+  .adv2-quote {
+    margin: 28px 0;
+    padding: 24px 28px;
+    background: #f9f7f2;
+    border-radius: 8px;
+    border-left: 4px solid #c9a961;
+    font-style: italic;
+    color: #333;
+    line-height: 1.7;
+  }
+  .adv2-quote cite {
+    display: block;
+    margin-top: 10px;
+    font-style: normal;
+    font-size: 14px;
+    color: #888;
+    font-weight: 600;
+  }
+
+  /* IMAGEN */
+  .adv2-img {
+    margin: 32px -20px;
+    text-align: center;
+  }
+  .adv2-img img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    display: block;
+  }
+  .adv2-img-caption {
+    font-size: 12px;
+    color: #999;
+    margin-top: 8px;
+    text-align: center;
+    font-style: italic;
+    padding: 0 20px;
+  }
+
+  @media (min-width: 768px) {
+    .adv2-img {
+      margin: 40px 0;
+    }
+    .adv2-img img { border-radius: 8px; }
+  }
+
+  /* DESTACADO */
+  .adv2-highlight {
+    font-size: 20px;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #17433c;
+    text-align: center;
+    padding: 28px 0;
+    margin: 32px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* CTA FINAL */
+  .adv2-cta-box {
+    margin: 48px 0 32px;
+    padding: 32px 28px;
+    background: #f4f1eb;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .adv2-cta-box h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    color: #17433c;
+    margin: 0 0 12px;
+  }
+  .adv2-cta-box p {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  .adv2-cta-btn {
+    display: inline-block;
+    background: #17433c;
+    color: #fff;
+    padding: 16px 40px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+  }
+  .adv2-cta-btn:hover { background: #1d5a51; }
+  .adv2-cta-trust {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #999;
+  }
+
+  /* FOOTER */
+  .adv2-footer {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+    font-size: 11px;
+    color: #aaa;
+    border-top: 1px solid #eee;
+    line-height: 1.6;
+  }
+</style>
+
+<div class="adv2">
+
+  <!-- CABECERA DE MEDIO -->
+  <div class="adv2-media-header">
+    <div class="adv2-media-name">Revista Hogar & Mascotas</div>
+    <div class="adv2-media-tagline">Información para quienes comparten su vida con animales</div>
+    <div class="adv2-media-nav">
+      <span>Mascotas</span> Hogar Salud Tecnología Opinión
+    </div>
+  </div>
+
+  <!-- ARTÍCULO -->
+  <article class="adv2-article">
+
+    <!-- META -->
+    <p class="adv2-meta"><span>Mascotas / Hogar</span> — 23 de junio de 2026</p>
+
+    <!-- TITULAR -->
+    <h1 class="adv2-headline">La razón por la que los lavarropas de dueños de mascotas duran menos — y cómo lo están solucionando miles de argentinos</h1>
+
+    <!-- BAJADA -->
+    <p class="adv2-deck">Una investigación sobre por qué el detergente común no alcanza cuando tenés perro o gato en casa, y el polvo enzimático que está cambiando las reglas del lavado en Argentina.</p>
+
+    <!-- AUTORA -->
+    <p class="adv2-byline">Por <strong>Valeria Méndez</strong>, redactora de tecnología del hogar · 8 min de lectura</p>
+
+    <!-- LEAD -->
+    <p>Si vivís con un perro o un gato, ya sabés que el día de lavar ropa tiene un problema que ningún detergente resuelve del todo. La ropa sale del lavarropas y sigue con pelo. Las sábanas, las toallas, las mantas de la cucha — todo conserva ese residuo invisible que después aparece en la remera negra justo cuando estás por salir.</p>
+
+    <p>Pero lo que la mayoría de los dueños de mascotas no sabe es que el pelo que ven en la ropa es solo una parte del problema. La otra parte — la más costosa — está adentro del lavarropas.</p>
+
+    <!-- IMAGEN HERO -->
+    <div class="adv2-img">
+      <img src="{{ 'producto1.png' | asset_url }}" alt="K9Clean polvo disolvente de pelo de mascota" loading="lazy">
+      <p class="adv2-img-caption">El polvo que está cambiando la rutina de lavado de miles de hogares con mascotas en Argentina.</p>
+    </div>
+
+    <!-- BLOQUE 1: EL PROBLEMA -->
+    <h2>Lo que pasa adentro de tu lavarropas (y que nadie te cuenta)</h2>
+
+    <p>Cada vez que lavás ropa que estuvo en contacto con tu mascota, miles de pelos microscópicos entran al tambor. El detergente los mueve, pero no los elimina. Con el tiempo, esos pelos se acumulan en las partes internas: el filtro, la bomba de desagüe, las mangueras, la goma de la puerta.</p>
+
+    <p>El pelo de mascota está compuesto por queratina, la misma proteína que forma nuestras uñas. Es resistente al agua, al jabón y a la temperatura. Por eso, por más que subas la temperatura del ciclo o pongas doble enjuague, el pelo no se disuelve. Se queda.</p>
+
+    <p>Y cuando se acumula lo suficiente, empiezan los problemas: olores extraños, ruidos en el centrifugado, ropa que sale más sucia de lo que entró. En los peores casos, el técnico te dice que hay que cambiar la bomba.</p>
+
+    <div class="adv2-highlight">"El 80% de las reparaciones de lavarropas en hogares con mascotas están relacionadas con acumulación de pelo en componentes internos."</div>
+
+    <!-- BLOQUE 2: POR QUÉ NADA FUNCIONA -->
+    <h2>Las soluciones que probaste y por qué no alcanzan</h2>
+
+    <p>Si ya intentaste resolver el tema del pelo, probablemente pasaste por la misma lista que todos: rodillo quitapelusas antes de meter la ropa, bolitas de goma atrapapelos, bolsas de malla, vinagre en el enjuague, lavar la ropa dos veces.</p>
+
+    <p>Todas esas soluciones tienen algo en común: son mecánicas. Intentan atrapar el pelo o moverlo de lugar. Pero ninguna lo elimina. El pelo sigue ahí — en la ropa o en el lavarropas.</p>
+
+    <div class="adv2-quote">
+      "Yo probé todo lo que encontré en MercadoLibre. Las bolitas, los filtros, las bolsas. Gastaba plata todos los meses y la ropa seguía igual. Ya me había resignado a que era parte de tener perro."
+      <cite>— Sol B., 34 años, Rosario. Dueña de un labrador retriever.</cite>
+    </div>
+
+    <p>El problema de fondo es químico, no mecánico. Y hasta hace poco, no existía en Argentina ningún producto diseñado específicamente para atacar la queratina del pelo de mascota durante el ciclo de lavado.</p>
+
+    <!-- BLOQUE 3: APARECE K9CLEAN -->
+    <h2>El polvo enzimático que llegó a Argentina para resolver lo que el detergente no puede</h2>
+
+    <p>K9Clean es un polvo a base de plantas que contiene proteasa — una enzima capaz de descomponer la queratina del pelo de mascota a nivel molecular. En términos simples: donde el detergente mueve el pelo, K9Clean lo disuelve.</p>
+
+    <p>Se agrega directo al tambor — dos cucharadas para mantenimiento mensual, cuatro si vas a lavar ropa de cama o mantas de la mascota — y funciona con el ciclo más caliente que permita la prenda. No requiere remojar, ni prelavar, ni cambiar nada de tu rutina.</p>
+
+    <div class="adv2-img">
+      <img src="{{ 'uso6.png' | asset_url }}" alt="Cómo usar K9Clean - 3 pasos" loading="lazy">
+      <p class="adv2-img-caption">El proceso es simple: cargás, agregás el polvo, y activás el ciclo. Funciona en lavarropas de carga frontal y superior.</p>
+    </div>
+
+    <p>Es compatible con todo tipo de lavarropas — carga frontal, superior, con o sin ciclo de autolimpieza — y es seguro para pozo séptico y cañerías. La fórmula es biodegradable y no contiene fragancias artificiales.</p>
+
+    <p>Lo que no es: no es un detergente. No es un perfumante. No es un limpiador de lavarropas genérico. Es una fórmula diseñada con un solo objetivo: eliminar el pelo de mascota que el detergente común no puede tocar.</p>
+
+    <h3>Lo que dicen los que ya lo probaron</h3>
+
+    <p>Hablamos con tres personas que llevan entre uno y tres meses usando el producto. Las respuestas coinciden en algo que no esperábamos: más que hablar de ropa limpia, hablan de tranquilidad.</p>
+
+    <div class="adv2-quote">
+      "Mi lavarropas venía haciendo un ruido raro en el centrifugado. No fuerte, pero se notaba. Empecé a usar K9Clean una vez al mes y al tercer ciclo el ruido se fue. Me ahorré la visita del técnico, fácil."
+      <cite>— Martín R., 41 años, Córdoba. Tiene dos labradores y un lavarropas Samsung de 3 años.</cite>
+    </div>
+
+    <div class="adv2-quote">
+      "Trabajo en una oficina y siempre llegaba con pelo de mi golden en el pantalón. Me daba vergüenza. Ahora me visto y salgo sin pensar. Suena tonto, pero eso para mí es mucho."
+      <cite>— Carolina D., 29 años, Palermo, Buenos Aires. Dueña de un golden retriever.</cite>
+    </div>
+
+    <div class="adv2-quote">
+      "Vi esto scrolleando en Instagram y fui escéptica. No entendía cómo un polvo podía disolver el pelo. Pero después de tres lavados estoy genuinamente sorprendida. La ropa sale más limpia, el lavarropas huele mejor. Ojalá lo hubiera encontrado antes."
+      <cite>— Florencia L., 37 años, Núñez. Tiene dos gatos persas y un depto de 2 ambientes.</cite>
+    </div>
+
+    <!-- BLOQUE 4: LO QUE SIGNIFICA -->
+
+    <h2>No es solo ropa limpia — es dejar de preocuparte</h2>
+
+    <p>Lo que encontramos hablando con usuarios es que el beneficio real no es la limpieza. Es el alivio. Dejar de pensar en el pelo antes de salir. Dejar de revisar la ropa en la puerta. Dejar de calcular cuándo fue la última vez que limpiaste el filtro.</p>
+
+    <p>Para los que protegen su lavarropas como inversión, la promesa es otra: prevención. Un ciclo mensual con K9Clean elimina la acumulación interna que con el tiempo genera ruidos, olores y roturas. Es mantenimiento, no reparación.</p>
+
+    <div class="adv2-img">
+      <img src="{{ 'antesdespues3.png' | asset_url }}" alt="Antes y después con K9Clean" loading="lazy">
+      <p class="adv2-img-caption">Tela tratada con K9Clean (derecha) vs. lavado convencional (izquierda). La diferencia se nota desde el primer uso.</p>
+    </div>
+
+    <p>Y para los que están cansados de probar cosas que no funcionan, el punto de diferenciación es claro: esto no es una solución mecánica más. Es la primera solución enzimática disponible en Argentina que ataca el pelo a nivel molecular. No lo mueve — lo elimina.</p>
+
+    <!-- BLOQUE 5: CIERRE PERIODÍSTICO -->
+    <h2>Dónde conseguirlo</h2>
+
+    <p>K9Clean se vende exclusivamente a través de su tienda online, con envío a todo el país y pago por Mercado Pago. Ofrecen una garantía de 30 días: si no funciona, devuelven la plata.</p>
+
+    <p>Al momento de publicar esta nota, el stock disponible es limitado — se trata de la primera tanda de producción para el mercado argentino. Las opciones van desde una unidad de prueba hasta packs de dos o tres unidades con descuento.</p>
+
+    <!-- CTA -->
+    <div class="adv2-cta-box">
+      <h3>¿Querés probarlo vos?</h3>
+      <p>K9Clean está disponible con envío a todo Argentina, pago seguro por Mercado Pago y garantía de devolución de 30 días.</p>
+      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="adv2-cta-btn">Ver opciones y comprar</a>
+      <p class="adv2-cta-trust">🛡️ Garantía 30 días · 🚚 Envío a todo el país · 🔒 Pago seguro</p>
+    </div>
+
+  </article>
+
+  <!-- FOOTER -->
+  <div class="adv2-footer">
+    <p>© 2026 Revista Hogar & Mascotas · Contenido patrocinado. K9Clean no reemplaza el mantenimiento regular de tu lavarropas. Los resultados pueden variar según el tipo de tela, la carga y el nivel de acumulación. No apto para lana, seda, cuero, cachemir ni plumón. Usar según las indicaciones del fabricante.</p>
+  </div>
+
+</div>
