@@ -57,8 +57,8 @@
 
       <!-- Kaching Bundles se inyecta acá automáticamente -->
 
-      <!-- Formulario de compra (fallback si Kaching no está activo) -->
-      <div class="product-cta">
+      <!-- Botones de compra -->
+      <div class="product-cta" style="display:flex;flex-direction:column;gap:10px;">
         {% form 'product', product %}
           <select name="id" id="productSelect" style="display:none;">
             {% for variant in product.variants %}
@@ -67,8 +67,15 @@
               </option>
             {% endfor %}
           </select>
-          <input type="hidden" name="return_to" value="/checkout">
           <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;font-size:16px;cursor:pointer;">Comprar ahora</button>
+        {% endform %}
+        {% form 'product', product %}
+          <select name="id" style="display:none;">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>{{ variant.title }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="btn btn-outline" style="width:100%;padding:14px;font-size:14px;cursor:pointer;background:transparent;color:var(--verde-oscuro);border:2px solid var(--dorado);">🛒 Agregar al carrito</button>
         {% endform %}
       </div>
 
