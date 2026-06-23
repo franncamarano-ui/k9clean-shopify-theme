@@ -1,12 +1,18 @@
 <!-- PRODUCTO — K9 Clean Argentina -->
 <style>
   /* Force product grid layout with !important to override theme defaults */
+  .product-hero { overflow-x: hidden !important; }
   .product-hero .container {
     display: grid !important;
     grid-template-columns: 1fr !important;
     gap: 28px !important;
     align-items: start !important;
+    max-width: 100% !important;
+    padding: 0 16px !important;
+    overflow: hidden !important;
   }
+  .product-gallery, .product-info { max-width: 100% !important; overflow: hidden !important; }
+  .product-gallery img { max-width: 100% !important; height: auto !important; }
   @media (min-width: 768px) {
     .product-hero .container {
       grid-template-columns: 1fr 1fr !important;
