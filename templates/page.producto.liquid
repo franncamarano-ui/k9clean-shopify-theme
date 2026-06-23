@@ -55,44 +55,45 @@
         </div>
       </div>
 
+      <!-- POCO STOCK -->
+      <div style="background:#fff3cd;border:1px solid #e6c34d;border-radius:8px;padding:10px 16px;margin-bottom:16px;text-align:center;">
+        <p style="font-size:13px;font-weight:700;color:#856404;margin:0;">🔥 ¡Poco stock disponible! — Primera tanda de producción</p>
+      </div>
+
       <div class="offer-section">
         <p class="offer-section__title">— Oferta por tiempo limitado —</p>
         <div class="offer-option" data-pack="1" data-variant="48632621433015">
           <div class="offer-option__radio"></div>
-          <span class="offer-option__icon">📦</span>
+          <img src="{{ 'producto1.png' | asset_url }}" alt="1 Unidad" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;">
           <div class="offer-option__info">
-            <p class="offer-option__name">1 Unidad <span class="offer-option__wash">$4.999/lavado</span></p>
-            <p class="offer-option__sub">Para probar</p>
+            <p class="offer-option__name">1 Unidad</p>
+            <p class="offer-option__sub">3 cuotas sin interés</p>
           </div>
           <div class="offer-option__price"><p class="offer-option__current">$39.990</p></div>
         </div>
-        <div class="offer-option selected" data-pack="2" data-variant="48632716492983">
+        <div class="offer-option selected" data-pack="2" data-variant="48745925116087">
           <span class="offer-option__badge">Más elegida</span>
           <div class="offer-option__radio"></div>
-          <span class="offer-option__icon">📦📦</span>
+          <img src="{{ 'producto1.png' | asset_url }}" alt="2 Unidades" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;"><img src="{{ 'producto1.png' | asset_url }}" alt="" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;margin-left:-8px;">
           <div class="offer-option__info">
-            <p class="offer-option__name">2 Unidades <span class="offer-option__wash">$2.812/lavado</span></p>
-            <p class="offer-option__sub">Para mudas regulares</p>
+            <p class="offer-option__name">2 Unidades</p>
+            <p class="offer-option__sub">3 cuotas sin interés + Envío Gratis</p>
           </div>
           <div class="offer-option__price"><p class="offer-option__current">$44.990</p><p class="offer-option__original">$79.980</p></div>
         </div>
-        <div class="offer-option" data-pack="3" data-variant="48632716525751">
+        <div class="offer-option" data-pack="3" data-variant="48745925148855">
           <div class="offer-option__radio"></div>
-          <span class="offer-option__icon">📦📦📦</span>
+          <img src="{{ 'producto1.png' | asset_url }}" alt="3 Unidades" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;"><img src="{{ 'producto1.png' | asset_url }}" alt="" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;margin-left:-8px;"><img src="{{ 'producto1.png' | asset_url }}" alt="" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;margin-left:-8px;">
           <div class="offer-option__info">
-            <p class="offer-option__name">3 Unidades <span class="offer-option__wash">$2.083/lavado</span></p>
-            <p class="offer-option__sub">Máximo ahorro</p>
+            <p class="offer-option__name">3 Unidades</p>
+            <p class="offer-option__sub">3 cuotas sin interés + Envío Gratis</p>
           </div>
           <div class="offer-option__price"><p class="offer-option__current">$49.990</p><p class="offer-option__original">$119.970</p></div>
         </div>
       </div>
 
-      <div class="product-cta">
-        <form id="addToCartForm" action="/cart/add" method="POST">
-          <input type="hidden" name="id" id="selectedVariant" value="48632621433015">
-          <input type="hidden" name="quantity" value="1">
-          <button type="submit" class="btn btn-primary" style="width:100%;padding:16px;font-size:16px;cursor:pointer;">Comprar ahora</button>
-        </form>
+      <div class="product-cta" style="display:flex;flex-direction:column;gap:10px;">
+        <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="btn btn-primary" style="width:100%;padding:16px;font-size:16px;text-align:center;">Comprar ahora</a>
       </div>
 
       <div class="product-trust">
