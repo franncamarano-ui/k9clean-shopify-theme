@@ -342,7 +342,7 @@
       <!-- KACHING BUNDLES + FORMULARIO NATIVO -->
       <div class="shop-product-section" data-product-id="{{ product.id }}">
         {% form 'product', product, id: 'product-form', class: 'product-form' %}
-          <select name="id" id="productSelect" style="margin-bottom:12px;padding:10px;border:1px solid #ddd;border-radius:8px;width:100%;font-size:15px;">
+          <select name="id" id="productSelect" style="display:none;">
             {% for variant in product.variants %}
               <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
                 {{ variant.title }} — {{ variant.price | money }}
