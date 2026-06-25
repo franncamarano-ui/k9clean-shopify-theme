@@ -60,6 +60,17 @@ ul { list-style: none; }
   padding: 0 20px;
 }
 
+/* Ocultar picker de Kaching Bundles */
+.kaching-bundles__block .kaching-bundles__product-picker,
+.kaching-bundles__block .kaching-bundles__product-item,
+.kaching-bundles__block .kaching-bundles__add-product-btn,
+.kaching-bundles__block [class*="product-picker"],
+.kaching-bundles__block [class*="choose"],
+.kaching-bundles .kb-product-picker,
+.kaching-bundles .kb-add-btn {
+  display: none !important;
+}
+
 /* ============================================
    COUNTDOWN BANNER (shared)
    ============================================ */
