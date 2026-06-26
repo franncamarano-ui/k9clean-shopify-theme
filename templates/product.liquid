@@ -339,52 +339,18 @@
         <p style="font-size:13px;font-weight:700;color:#856404;margin:0;">🔥 ¡Poco stock disponible!</p>
       </div>
 
-      <!-- OFERTAS -->
-      <div class="offer-section">
-        <p class="offer-section__title">— Oferta por tiempo limitado —</p>
-        <div class="offer-option" data-pack="1" data-variant="{{ product.variants[0].id }}" data-qty="1">
-          <div class="offer-option__radio"></div>
-          <img src="{{ 'producto1.png' | asset_url }}" alt="1 Unidad" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;">
-          <div class="offer-option__info">
-            <p class="offer-option__name">1 Unidad</p>
-            <p class="offer-option__sub">3 cuotas sin interés</p>
-          </div>
-          <div class="offer-option__price">
-            <p class="offer-option__current">$44.990</p>
-            <p class="offer-option__original">$54.990</p>
-          </div>
-        </div>
-        <div class="offer-option selected" data-pack="2" data-variant="{{ product.variants[1].id }}" data-qty="1">
-          <span class="offer-option__badge">Más elegida</span>
-          <div class="offer-option__radio"></div>
-          <img src="{{ 'producto1.png' | asset_url }}" alt="2 Unidades" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;">
-          <div class="offer-option__info">
-            <p class="offer-option__name">2 Unidades</p>
-            <p class="offer-option__sub">3 cuotas sin interés + Envío Gratis</p>
-          </div>
-          <div class="offer-option__price">
-            <p class="offer-option__current">$49.990</p>
-            <p class="offer-option__original">$89.980</p>
-          </div>
-        </div>
-        <div class="offer-option" data-pack="3" data-variant="{{ product.variants[2].id }}" data-qty="1">
-          <div class="offer-option__radio"></div>
-          <img src="{{ 'producto1.png' | asset_url }}" alt="3 Unidades" style="width:36px;height:36px;border-radius:6px;object-fit:cover;flex-shrink:0;">
-          <div class="offer-option__info">
-            <p class="offer-option__name">3 Unidades</p>
-            <p class="offer-option__sub">3 cuotas sin interés + Envío Gratis</p>
-          </div>
-          <div class="offer-option__price">
-            <p class="offer-option__current">$54.990</p>
-            <p class="offer-option__original">$134.970</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- BOTONES -->
-      <div class="product-cta">
-        <button id="buyNowBtn" class="btn-buy">Comprar ahora</button>
-        <button id="addToCartBtn" class="btn-cart">🛒 Agregar al carrito</button>
+      <!-- KACHING BUNDLES + FORMULARIO NATIVO -->
+      <div class="shop-product-section" data-product-id="{{ product.id }}">
+        {% form 'product', product, id: 'product-form', class: 'product-form' %}
+          <select name="id" id="productSelect" style="display:none;">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+                {{ variant.title }} — {{ variant.price | money }}
+              </option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="btn-buy" style="width:100%;padding:16px;font-size:16px;cursor:pointer;background:linear-gradient(135deg,#c9a961,#b8943f);color:#17433c;border:none;border-radius:40px;font-weight:700;text-transform:uppercase;">Comprar ahora</button>
+        {% endform %}
       </div>
 
       <!-- TRUST BADGES -->
