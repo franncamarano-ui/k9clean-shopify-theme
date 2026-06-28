@@ -9,8 +9,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 
+  <link rel="preload" href="{{ 'k9clean.css' | asset_url }}" as="style">
   {{ 'k9clean.css' | asset_url | stylesheet_tag }}
   {{ content_for_header }}
 </head>
@@ -118,7 +120,7 @@
             {% if item.image %}
               <img src="{{ item.image | img_url: '120x120' }}" style="width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0;">
             {% else %}
-              <img src="{{ 'producto1.png' | asset_url }}" style="width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0;">
+              <img src="{{ 'producto1.jpg' | asset_url }}" style="width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0;">
             {% endif %}
             <div style="flex:1;min-width:0;">
               <p style="font-size:14px;font-weight:600;color:var(--verde-oscuro);margin:0 0 2px;">{{ item.product.title }}</p>
