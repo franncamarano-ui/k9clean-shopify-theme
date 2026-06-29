@@ -302,6 +302,14 @@
     <div class="product-info fade-in">
       <h1 class="product-info__title">K9Clean Disolvente de Pelo de Mascota</h1>
 
+      <!-- PRECIO VISIBLE ANTES DEL FOLD -->
+      <div style="margin-bottom:12px;">
+        <span style="font-size:28px;font-weight:800;color:var(--verde-oscuro);">{{ product.price | money }}</span>
+        {% if product.compare_at_price > product.price %}
+          <span style="font-size:16px;color:var(--texto-claro);text-decoration:line-through;margin-left:8px;">{{ product.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+
       <p class="product-info__meta">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--verde-oscuro)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         100g / ~8 ciclos de lavado
@@ -349,11 +357,12 @@
               </option>
             {% endfor %}
           </select>
-          <button type="submit" class="btn-buy" style="width:100%;padding:16px;font-size:16px;cursor:pointer;background:linear-gradient(135deg,#c9a961,#b8943f);color:#17433c;border:none;border-radius:40px;font-weight:700;text-transform:uppercase;">Comprar ahora</button>
+          <!-- Botón directo al checkout -->
+          <button type="submit" name="checkout" class="btn-buy" id="buyNowBtnProduct" style="width:100%;padding:16px;font-size:16px;cursor:pointer;background:linear-gradient(135deg,#c9a961,#b8943f);color:#17433c;border:none;border-radius:40px;font-weight:700;text-transform:uppercase;">Comprar ahora</button>
         {% endform %}
       </div>
 
-      <!-- TRUST BADGES -->
+      <!-- TRUST BADGES (visibles sin abrir nada) -->
       <div class="product-trust">
         <span class="product-trust__item">
           <svg viewBox="0 0 24 24" fill="var(--dorado)" stroke="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10" fill="none" stroke="var(--verde-oscuro)" stroke-width="2" stroke-linecap="round"/></svg>
@@ -372,6 +381,16 @@
         <span>&#128179; Visa</span>
         <span>&#128181; Mercado Pago</span>
         <span>&#127974; Rapipago</span>
+      </div>
+
+      <!-- ESTIMADOR DE ENVÍO -->
+      <div style="margin:16px 0;padding:16px;border:1px solid var(--borde-sutil);border-radius:10px;background:var(--crema-alt);">
+        <p style="font-size:13px;font-weight:700;color:var(--verde-oscuro);margin:0 0 8px;">🚚 Calculá el costo de envío</p>
+        <div style="display:flex;gap:8px;">
+          <input type="text" id="cpInput" placeholder="Tu código postal" maxlength="4" style="flex:1;padding:10px 12px;border:1px solid var(--borde-sutil);border-radius:8px;font-size:14px;font-family:var(--font-body);">
+          <button id="cpBtn" style="padding:10px 16px;background:var(--verde-oscuro);color:var(--crema);border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">Calcular</button>
+        </div>
+        <div id="cpResult" style="display:none;margin-top:10px;padding:10px;background:#fff;border-radius:6px;font-size:13px;color:var(--verde-oscuro);font-weight:600;"></div>
       </div>
 
       <!-- INFO TABS -->
@@ -932,5 +951,53 @@
     window.addEventListener('touchmove', function(e){ if (dragging) moveSlider(e.touches[0].clientX); }, {passive:true});
     window.addEventListener('touchend', function(){ dragging = false; });
   }
+})();
+
+/* ---- ESTIMADOR DE ENVÍO ---- */
+(function(){
+  var btn = document.getElementById('cpBtn');
+  var input = document.getElementById('cpInput');
+  var result = document.getElementById('cpResult');
+  if (!btn || !input || !result) return;
+
+  btn.addEventListener('click', function(){
+    var cp = input.value.trim();
+    if (cp.length < 4) { result.style.display = 'block'; result.innerHTML = '⚠️ Ingresá un código postal válido de 4 dígitos.'; return; }
+
+    var envioGratis = ['1000','1001','1002','1003','1004','1005','1006','1007','1008','1009','1010','1011','1012','1013','1014','1015','1016','1017','1018','1019','1020','1021','1022','1023','1024','1025','1026','1027','1028','1029','1030','1031','1032','1033','1034','1035','1036','1037','1038','1039','1040','1041','1042','1043','1044','1045','1046','1047','1048','1049','1050','1051','1052','1053','1054','1055','1056','1057','1058','1059','1060','1061','1062','1063','1064','1065','1066','1067','1068','1069','1070','1071','1072','1073','1074','1075','1076','1077','1078','1079','1080','1081','1082','1083','1084','1085','1086','1087','1088','1089','1090','1091','1092','1093','1094','1095','1096','1097','1098','1099','1100','1414','1416','1417','1418','1419','1420','1425','1426','1427','1428','1429','1430'];
+
+    result.style.display = 'block';
+    if (envioGratis.indexOf(cp) !== -1) {
+      result.innerHTML = '✅ <strong>¡Envío GRATIS!</strong> — Llega en 2-4 días hábiles a tu zona.';
+    } else {
+      result.innerHTML = '📦 Envío a CP ' + cp + ': <strong>$3.990</strong> — Llega en 3-5 días hábiles.';
+    }
+  });
+
+  input.addEventListener('keypress', function(e){ if (e.key === 'Enter') btn.click(); });
+})();
+
+/* ---- STICKY BUTTON MOBILE PRODUCTO ---- */
+(function(){
+  var form = document.getElementById('product-form');
+  if (!form) return;
+
+  var sticky = document.createElement('div');
+  sticky.id = 'productSticky';
+  sticky.style.cssText = 'display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px 16px;box-shadow:0 -4px 16px rgba(0,0,0,0.1);z-index:997;text-align:center;';
+  sticky.innerHTML = '<button onclick="document.getElementById(\'buyNowBtnProduct\').click()" style="width:100%;max-width:400px;padding:14px;font-size:15px;cursor:pointer;background:linear-gradient(135deg,#c9a961,#b8943f);color:#17433c;border:none;border-radius:40px;font-weight:700;text-transform:uppercase;">Comprar ahora</button>';
+  document.body.appendChild(sticky);
+
+  function checkSticky(){
+    if (window.innerWidth > 767) { sticky.style.display = 'none'; return; }
+    var btn = document.getElementById('buyNowBtnProduct');
+    if (btn && btn.getBoundingClientRect().bottom < 0) {
+      sticky.style.display = 'block';
+    } else {
+      sticky.style.display = 'none';
+    }
+  }
+  window.addEventListener('scroll', checkSticky, {passive:true});
+  window.addEventListener('resize', checkSticky);
 })();
 </script>
