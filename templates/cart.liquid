@@ -1,82 +1,13 @@
-<style>
-  .cart-page { max-width: 800px; margin: 0 auto; padding: 32px 20px 64px; }
-  .cart-page h1 { font-family: var(--font-display); font-size: 32px; color: var(--verde-oscuro); text-align: center; margin-bottom: 32px; }
-  .cart-item {
-    display: flex; gap: 16px; align-items: center; padding: 20px 0;
-    border-bottom: 1px solid rgba(201,169,97,0.25);
-  }
-  .cart-item__img {
-    width: 80px; height: 80px; border-radius: 8px; object-fit: cover;
-    background: var(--crema-alt); flex-shrink: 0;
-  }
-  .cart-item__info { flex: 1; }
-  .cart-item__title { font-weight: 700; color: var(--verde-oscuro); font-size: 15px; margin-bottom: 2px; }
-  .cart-item__variant { font-size: 13px; color: var(--texto-medio); }
-  .cart-item__qty { font-size: 13px; color: var(--texto-medio); margin-top: 4px; }
-  .cart-item__price { font-size: 18px; font-weight: 700; color: var(--verde-oscuro); text-align: right; min-width: 100px; }
-  .cart-item__remove {
-    background: none; border: none; color: #cc0000; font-size: 13px;
-    cursor: pointer; padding: 4px 8px; font-weight: 600; text-decoration: underline;
-  }
-  .cart-item__remove:hover { color: #990000; }
-  .cart-total {
-    text-align: right; padding: 24px 0; border-top: 2px solid var(--verde-oscuro);
-  }
-  .cart-total__label { font-size: 14px; color: var(--texto-medio); margin-bottom: 4px; }
-  .cart-total__price { font-size: 28px; font-weight: 700; color: var(--verde-oscuro); }
-  .cart-actions { text-align: center; margin-top: 24px; }
-  .cart-actions .btn { width: 100%; max-width: 400px; padding: 18px; font-size: 18px; }
-  .cart-continue { display: inline-block; margin-top: 12px; font-size: 13px; color: var(--dorado); font-weight: 600; text-decoration: underline; }
-  .cart-empty { text-align: center; padding: 64px 0; }
-  .cart-empty__icon { font-size: 56px; margin-bottom: 16px; }
-  .cart-empty p { font-size: 18px; color: var(--texto-medio); margin-bottom: 24px; }
-</style>
-
-<div class="cart-page">
-  <h1>Tu Carrito</h1>
-
-  {% if cart.item_count > 0 %}
-    <form action="/cart" method="post">
-      {% for item in cart.items %}
-        <div class="cart-item">
-          {% if item.image %}
-            <img class="cart-item__img" src="{{ item.image | img_url: '160x160' }}" alt="{{ item.title }}">
-          {% else %}
-            <div class="cart-item__img" style="display:flex;align-items:center;justify-content:center;font-size:24px;">📦</div>
-          {% endif %}
-
-          <div class="cart-item__info">
-            <p class="cart-item__title">{{ item.product.title }}</p>
-            {% unless item.variant.title == 'Default Title' %}
-              <p class="cart-item__variant">{{ item.variant.title }}</p>
-            {% endunless %}
-            <p class="cart-item__qty">Cantidad: {{ item.quantity }}</p>
-            <a href="/cart/change?id={{ item.key }}&quantity=0" class="cart-item__remove">✕ Eliminar</a>
-          </div>
-
-          <p class="cart-item__price">{{ item.line_price | money }}</p>
-        </div>
-      {% endfor %}
-
-      <div class="cart-total">
-        <p class="cart-total__label">Subtotal</p>
-        <p class="cart-total__price">{{ cart.total_price | money }}</p>
-      </div>
-
-      <div class="cart-actions">
-        <button type="submit" name="checkout" class="btn btn-primary" style="cursor:pointer;">
-          Finalizar compra
-        </button>
-        <br>
-        <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="cart-continue">← Seguir comprando</a>
-      </div>
-    </form>
-
-  {% else %}
-    <div class="cart-empty">
-      <div class="cart-empty__icon">🛒</div>
-      <p>Tu carrito está vacío</p>
-      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="btn btn-primary">Ver producto</a>
-    </div>
-  {% endif %}
-</div>
+{% if cart.item_count > 0 %}
+  <script>window.location.replace('/checkout');</script>
+  <div style="padding:48px 20px;text-align:center;">
+    <p style="font-size:16px;color:var(--verde-oscuro);">Redirigiendo al checkout...</p>
+  </div>
+{% else %}
+  <div style="padding:64px 20px;text-align:center;max-width:500px;margin:0 auto;">
+    <h1 style="font-family:var(--font-display);font-size:32px;color:var(--verde-oscuro);margin-bottom:16px;">Tu Carrito</h1>
+    <p style="font-size:48px;margin-bottom:16px;">🛒</p>
+    <p style="font-size:16px;color:var(--texto-medio);margin-bottom:24px;">Tu carrito está vacío</p>
+    <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="btn btn-primary" style="display:inline-block;padding:14px 32px;background:var(--dorado);color:var(--verde-oscuro);border-radius:40px;font-weight:700;text-decoration:none;">Ver producto</a>
+  </div>
+{% endif %}
