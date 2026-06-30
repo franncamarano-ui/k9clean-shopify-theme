@@ -13,181 +13,188 @@
   /* HOOK / HERO */
   .advp-hook {
     background: #17433c;
-    padding: 40px 20px 0;
+    padding: 48px 20px 0;
     text-align: center;
   }
   .advp-hook-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.1);
+    display: block;
     color: #c9a961;
-    border: 1px solid rgba(201,169,97,0.4);
-    padding: 5px 14px;
-    border-radius: 40px;
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 18px;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
   }
   .advp-headline {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(26px, 6vw, 38px);
+    font-weight: 600;
+    font-size: clamp(27px, 5.2vw, 36px);
     color: #fff;
-    line-height: 1.2;
-    max-width: 700px;
-    margin: 0 auto 16px;
-    font-weight: 700;
+    line-height: 1.28;
+    letter-spacing: -0.2px;
+    max-width: 660px;
+    margin: 0 auto 18px;
   }
-  .advp-headline em { color: #c9a961; font-style: italic; }
+  .advp-headline strong { font-weight: 700; }
   .advp-hook-sub {
-    color: rgba(255,255,255,0.75);
+    color: rgba(255,255,255,0.7);
     font-size: 16px;
-    max-width: 560px;
-    margin: 0 auto 28px;
+    max-width: 540px;
+    margin: 0 auto 32px;
   }
   .advp-hook-img {
-    max-width: 720px;
+    max-width: 680px;
     margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.12);
   }
   .advp-hook-img img { width: 100%; display: block; }
   .advp-hook-img-caption {
-    background: #fff3cd;
-    color: #856404;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 8px 16px;
+    color: rgba(255,255,255,0.5);
+    font-size: 12.5px;
+    font-style: italic;
+    padding: 10px 16px 0;
     text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
   }
+  .advp-hook-spacer { height: 32px; }
 
   /* WRAP */
-  .advp-wrap { max-width: 680px; margin: 0 auto; padding: 40px 20px; }
+  .advp-wrap { max-width: 660px; margin: 0 auto; padding: 44px 20px; }
 
-  .advp-wrap p { margin-bottom: 1.3em; color: #333; }
+  .advp-wrap p { margin-bottom: 1.3em; color: #2b2b2b; }
   .advp-wrap h2 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 26px;
+    font-weight: 600;
+    font-size: 24px;
     color: #17433c;
-    margin: 36px 0 16px;
-    line-height: 1.3;
+    margin: 40px 0 16px;
+    line-height: 1.35;
+    letter-spacing: -0.1px;
   }
-  .advp-wrap h2 em { color: #c9a961; font-style: italic; }
 
   /* LISTA DE PROBLEMAS */
-  .advp-problem-list { margin: 20px 0 28px; }
+  .advp-problem-list { margin: 22px 0 30px; }
   .advp-problem-item {
     display: flex;
-    gap: 14px;
-    padding: 16px 0;
-    border-bottom: 1px solid #eee;
+    gap: 18px;
+    padding: 18px 0;
+    border-top: 1px solid #e8e5dd;
   }
+  .advp-problem-item:last-child { border-bottom: 1px solid #e8e5dd; }
   .advp-problem-icon {
-    width: 32px; height: 32px;
-    background: #fdecea;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
+    width: 30px;
     flex-shrink: 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
     font-size: 16px;
+    color: #c9a961;
   }
-  .advp-problem-text h4 { font-size: 15px; color: #17433c; margin-bottom: 4px; }
-  .advp-problem-text p { font-size: 14px; color: #555; margin: 0; }
+  .advp-problem-text h4 { font-size: 15.5px; font-weight: 700; color: #17433c; margin-bottom: 5px; }
+  .advp-problem-text p { font-size: 14.5px; color: #555; margin: 0; }
 
   /* CALLOUT PRECIO */
   .advp-cost-callout {
     background: #17433c;
     color: #fff;
-    border-radius: 12px;
-    padding: 24px;
+    border-radius: 6px;
+    padding: 28px 24px;
     text-align: center;
-    margin: 28px 0;
+    margin: 30px 0;
   }
+  .advp-cost-callout .label { font-size: 13px; color: rgba(255,255,255,0.65); }
   .advp-cost-callout .amount {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 36px;
-    color: #c9a961;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 38px;
     font-weight: 700;
+    color: #fff;
     display: block;
-    margin: 6px 0;
+    margin: 8px 0;
+    letter-spacing: -0.5px;
   }
-  .advp-cost-callout p { color: rgba(255,255,255,0.8); font-size: 13px; margin: 0; }
+  .advp-cost-callout .note { color: rgba(255,255,255,0.55); font-size: 12.5px; margin: 0; }
 
   /* IMAGEN INLINE */
-  .advp-img { margin: 28px -20px; }
+  .advp-img { margin: 30px -20px; }
   .advp-img img { width: 100%; display: block; }
   @media (min-width: 768px) {
-    .advp-img { margin: 32px 0; }
-    .advp-img img { border-radius: 10px; }
+    .advp-img { margin: 34px 0; }
+    .advp-img img { border-radius: 4px; }
   }
 
   /* QUOTE TÉCNICO */
   .advp-quote-tech {
-    background: #f4f1eb;
-    border-left: 4px solid #17433c;
-    border-radius: 0 8px 8px 0;
-    padding: 20px 24px;
-    margin: 24px 0;
+    position: relative;
+    padding: 6px 0 6px 24px;
+    margin: 30px 0;
+    border-left: 2px solid #c9a961;
+    font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
-    color: #333;
+    font-size: 19px;
+    line-height: 1.5;
+    color: #17433c;
   }
 
   /* SOLUCIÓN BOX */
   .advp-solution-box {
-    background: #fff;
-    border: 2px solid #c9a961;
-    border-radius: 14px;
-    padding: 28px 24px;
-    margin: 32px 0;
+    background: #faf9f6;
+    border: 1px solid #e8e5dd;
+    border-radius: 6px;
+    padding: 30px 24px;
+    margin: 34px 0;
     text-align: center;
   }
-  .advp-solution-box img { width: 140px; margin: 0 auto 16px; display: block; border-radius: 10px; }
+  .advp-solution-box img { width: 130px; margin: 0 auto 18px; display: block; }
   .advp-solution-box h3 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 22px;
+    font-weight: 600;
+    font-size: 20px;
     color: #17433c;
     margin-bottom: 10px;
   }
-  .advp-solution-box p { font-size: 14px; color: #555; }
+  .advp-solution-box p { font-size: 14px; color: #555; max-width: 420px; margin: 0 auto; }
 
   /* CTA */
-  .advp-cta-wrap { text-align: center; margin: 32px 0; }
+  .advp-cta-wrap { text-align: center; margin: 34px 0; }
   .advp-cta-btn {
     display: inline-block;
-    background: linear-gradient(135deg, #c9a961, #b8943f);
-    color: #17433c;
-    padding: 16px 44px;
-    border-radius: 40px;
-    font-size: 16px;
-    font-weight: 800;
+    background: #17433c;
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15.5px;
+    font-weight: 600;
     text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: background 0.2s;
   }
-  .advp-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,169,97,0.4); }
-  .advp-cta-trust { margin-top: 12px; font-size: 12px; color: #999; }
+  .advp-cta-btn:hover { background: #0f2e29; }
+  .advp-cta-trust { margin-top: 14px; font-size: 12.5px; color: #999; letter-spacing: 0.1px; }
 
   /* TESTIMONIOS */
-  .advp-testi-section { background: #f4f1eb; padding: 40px 0; margin: 32px 0; }
+  .advp-testi-section { background: #faf9f6; padding: 44px 0; margin: 36px 0; border-top: 1px solid #e8e5dd; border-bottom: 1px solid #e8e5dd; }
   .advp-testi-section h2 { text-align: center; }
-  .advp-testi-grid { display: grid; gap: 16px; margin-top: 24px; }
+  .advp-testi-grid { display: grid; gap: 16px; margin-top: 28px; }
   .advp-testi-card {
     background: #fff;
-    border-radius: 10px;
-    padding: 20px;
+    border: 1px solid #e8e5dd;
+    border-radius: 6px;
+    padding: 22px;
   }
-  .advp-testi-stars { color: #c9a961; font-size: 15px; margin-bottom: 8px; }
-  .advp-testi-card p { font-size: 14px; color: #444; margin-bottom: 10px; }
+  .advp-testi-stars { color: #c9a961; font-size: 14px; margin-bottom: 10px; letter-spacing: 1px; }
+  .advp-testi-card p { font-size: 14.5px; color: #444; margin-bottom: 12px; font-style: italic; }
   .advp-testi-card cite {
     font-style: normal;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 12.5px;
+    font-weight: 600;
     color: #17433c;
   }
 
   /* FOOTER LEGAL */
   .advp-footer {
-    max-width: 680px;
+    max-width: 660px;
     margin: 0 auto;
-    padding: 20px 20px 40px;
+    padding: 24px 20px 44px;
     font-size: 11px;
     color: #aaa;
     border-top: 1px solid #eee;
@@ -200,12 +207,13 @@
   <!-- HOOK -->
   <div class="advp-hook">
     <span class="advp-hook-badge">Nota de un técnico</span>
-    <h1 class="advp-headline">Como técnico, veo esto en el <em>90% de las casas con mascotas</em> — y nadie te lo cuenta</h1>
+    <h1 class="advp-headline">Como técnico, veo esto en el <strong>90% de las casas con mascotas</strong> — y nadie te lo cuenta</h1>
     <p class="advp-hook-sub">Hace 12 años que arreglo lavarropas en Buenos Aires. Hay un problema que se repite en casi todas las casas con perro o gato, y que la mayoría de la gente ni se imagina que existe.</p>
     <div class="advp-hook-img">
       <img src="{{ 'filtroperro.jpg' | asset_url }}" alt="Filtro de lavarropas tapado de pelo de mascota" loading="lazy">
+      <p class="advp-hook-img-caption">Esto es lo que encuentro cuando destapo el filtro de un lavarropas en una casa con mascota</p>
     </div>
-    <div class="advp-hook-img-caption">⚠️ Esto es lo que encuentro cuando destapo el filtro de un lavarropas en una casa con mascota</div>
+    <div class="advp-hook-spacer"></div>
   </div>
 
   <!-- ARTÍCULO -->
@@ -221,21 +229,21 @@
 
     <div class="advp-problem-list">
       <div class="advp-problem-item">
-        <div class="advp-problem-icon">🧫</div>
+        <div class="advp-problem-icon">01</div>
         <div class="advp-problem-text">
           <h4>El tambor se ensucia más de lo que pensás</h4>
           <p>El pelo retiene humedad y restos de detergente. Con el tiempo, eso genera un ambiente húmedo donde se acumula moho — algo que en muchas casas termina siendo más sucio que el inodoro, literalmente.</p>
         </div>
       </div>
       <div class="advp-problem-item">
-        <div class="advp-problem-icon">🤧</div>
+        <div class="advp-problem-icon">02</div>
         <div class="advp-problem-text">
           <h4>Eso afecta a la familia, no solo a la máquina</h4>
           <p>Más de una vez un cliente me comentó que sus hijos tenían picazón en la piel o se resfriaban seguido, sin saber que la causa podía estar en la ropa que salía "limpia" del lavarropas pero con restos orgánicos acumulados.</p>
         </div>
       </div>
       <div class="advp-problem-item">
-        <div class="advp-problem-icon">🔧</div>
+        <div class="advp-problem-icon">03</div>
         <div class="advp-problem-text">
           <h4>El pelo tapa filtros, mangueras y la bomba de desagüe</h4>
           <p>Cuando se acumula lo suficiente, el lavarropas empieza a hacer ruidos raros, a centrifugar mal, o directamente a no desagotar. Ahí es cuando me llaman a mí.</p>
@@ -244,12 +252,12 @@
     </div>
 
     <div class="advp-cost-callout">
-      <p>Una reparación típica por acumulación de pelo (cambio de bomba, destape de mangueras, limpieza de filtro)</p>
+      <p class="label">Una reparación típica por acumulación de pelo (cambio de bomba, destape de mangueras, limpieza de filtro)</p>
       <span class="amount">+$90.000</span>
-      <p>Sin contar la visita técnica ni los días sin lavarropas</p>
+      <p class="note">Sin contar la visita técnica ni los días sin lavarropas</p>
     </div>
 
-    <h2>Cuando me llaman por <em>un perro o gato en la casa</em>, ya sé qué voy a encontrar</h2>
+    <h2>Cuando me llaman por un perro o gato en la casa, ya sé qué voy a encontrar</h2>
 
     <p>La verdad que, después de tantos años en esto, ya casi puedo diagnosticar el problema por teléfono. Si me dicen "tenemos perro" y "hace un ruido raro" o "no centrifuga bien", ya tengo bastante clarito lo que me espera cuando abra la máquina.</p>
 
@@ -276,7 +284,7 @@
     <!-- CTA 1 -->
     <div class="advp-cta-wrap">
       <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advp-cta-btn">Quiero el mío</a>
-      <p class="advp-cta-trust">🛡️ Garantía 30 días · 🚚 Envío a todo el país</p>
+      <p class="advp-cta-trust">Garantía 30 días · Envío a todo el país</p>
     </div>
 
   </div>
@@ -313,7 +321,7 @@
     <!-- CTA 2 -->
     <div class="advp-cta-wrap">
       <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advp-cta-btn">Quiero el mío</a>
-      <p class="advp-cta-trust">🛡️ Garantía 30 días · 🚚 Envío a todo el país · 🔒 Pago seguro con Mercado Pago</p>
+      <p class="advp-cta-trust">Garantía 30 días · Envío a todo el país · Pago seguro con Mercado Pago</p>
     </div>
   </div>
 
