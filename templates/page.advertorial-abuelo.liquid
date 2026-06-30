@@ -1,0 +1,383 @@
+{% layout 'theme.info' %}
+
+<style>
+  .adva {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.8;
+    font-size: 17px;
+  }
+  .adva *, .adva *::before, .adva *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* HOOK / HERO */
+  .adva-hook {
+    background: #17433c;
+    padding: 48px 20px 0;
+    text-align: center;
+  }
+  .adva-hook-badge {
+    display: block;
+    color: #c9a961;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+  .adva-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-style: italic;
+    font-size: clamp(26px, 5vw, 35px);
+    color: #fff;
+    line-height: 1.32;
+    letter-spacing: -0.2px;
+    max-width: 640px;
+    margin: 0 auto 18px;
+  }
+  .adva-hook-sub {
+    font-style: normal;
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    max-width: 540px;
+    margin: 0 auto 32px;
+  }
+  .adva-hook-img {
+    max-width: 680px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .adva-hook-img img { width: 100%; display: block; }
+  .adva-hook-img-caption {
+    color: rgba(255,255,255,0.5);
+    font-size: 12.5px;
+    font-style: italic;
+    padding: 10px 16px 0;
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .adva-hook-trust {
+    color: rgba(255,255,255,0.55);
+    font-size: 12.5px;
+    padding: 18px 16px 0;
+    text-align: center;
+  }
+  .adva-hook-spacer { height: 32px; }
+
+  /* STOCK */
+  .adva-stock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: max-content;
+    max-width: 100%;
+    background: #fdf2ee;
+    border: 1px solid #e8c4b6;
+    border-radius: 30px;
+    padding: 9px 20px;
+    margin: 28px auto;
+  }
+  .adva-stock-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b3492f;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(179,73,47,0.5);
+    animation: adva-pulse 1.8s infinite;
+  }
+  .adva-stock p {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 600;
+    color: #8a3a26;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+  }
+  @keyframes adva-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(179,73,47,0.45); }
+    70% { box-shadow: 0 0 0 6px rgba(179,73,47,0); }
+    100% { box-shadow: 0 0 0 0 rgba(179,73,47,0); }
+  }
+
+  /* WRAP */
+  .adva-wrap { max-width: 660px; margin: 0 auto; padding: 44px 20px; }
+
+  .adva-wrap p { margin-bottom: 1.3em; color: #2b2b2b; }
+  .adva-wrap h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #17433c;
+    margin: 40px 0 16px;
+    line-height: 1.35;
+    letter-spacing: -0.1px;
+  }
+
+  /* LISTA DE PROBLEMAS */
+  .adva-problem-list { margin: 22px 0 30px; }
+  .adva-problem-item {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-top: 1px solid #e8e5dd;
+  }
+  .adva-problem-item:last-child { border-bottom: 1px solid #e8e5dd; }
+  .adva-problem-icon {
+    width: 30px;
+    flex-shrink: 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #c9a961;
+  }
+  .adva-problem-text h4 { font-size: 15.5px; font-weight: 700; color: #17433c; margin-bottom: 5px; }
+  .adva-problem-text p { font-size: 14.5px; color: #555; margin: 0; }
+
+  /* IMAGEN INLINE */
+  .adva-img { margin: 30px -20px; }
+  .adva-img img { width: 100%; display: block; }
+  @media (min-width: 768px) {
+    .adva-img { margin: 34px 0; }
+    .adva-img img { border-radius: 4px; }
+  }
+
+  /* QUOTE EMOTIVA */
+  .adva-quote {
+    position: relative;
+    padding: 6px 0 6px 24px;
+    margin: 30px 0;
+    border-left: 2px solid #c9a961;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: #17433c;
+  }
+
+  /* SOLUCIÓN BOX */
+  .adva-solution-box {
+    background: #faf9f6;
+    border: 1px solid #e8e5dd;
+    border-radius: 6px;
+    padding: 30px 24px;
+    margin: 34px 0;
+    text-align: center;
+  }
+  .adva-solution-box img { width: 130px; margin: 0 auto 18px; display: block; }
+  .adva-solution-box h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #17433c;
+    margin-bottom: 10px;
+  }
+  .adva-solution-box p { font-size: 14px; color: #555; max-width: 440px; margin: 0 auto; }
+
+  /* CIERRE EMOTIVO */
+  .adva-closing {
+    background: #faf9f6;
+    border-left: 3px solid #c9a961;
+    border-radius: 0 6px 6px 0;
+    padding: 26px 24px;
+    margin: 34px 0;
+  }
+  .adva-closing p { font-size: 15.5px; color: #3a3a3a; margin-bottom: 0; }
+  .adva-closing p:last-child { margin-bottom: 0; }
+
+  /* CTA */
+  .adva-cta-wrap { text-align: center; margin: 34px 0; }
+  .adva-cta-btn {
+    display: inline-block;
+    background: #17433c;
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .adva-cta-btn:hover { background: #0f2e29; }
+  .adva-cta-trust { margin-top: 14px; font-size: 12.5px; color: #999; letter-spacing: 0.1px; }
+
+  /* TESTIMONIOS */
+  .adva-testi-section { background: #faf9f6; padding: 44px 0; margin: 36px 0; border-top: 1px solid #e8e5dd; border-bottom: 1px solid #e8e5dd; }
+  .adva-testi-section h2 { text-align: center; }
+  .adva-testi-grid { display: grid; gap: 16px; margin-top: 28px; }
+  .adva-testi-card {
+    background: #fff;
+    border: 1px solid #e8e5dd;
+    border-radius: 6px;
+    padding: 22px;
+  }
+  .adva-testi-stars { color: #c9a961; font-size: 14px; margin-bottom: 10px; letter-spacing: 1px; }
+  .adva-testi-card p { font-size: 14.5px; color: #444; margin-bottom: 12px; font-style: italic; }
+  .adva-testi-card cite {
+    font-style: normal;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #17433c;
+  }
+
+  /* FOOTER LEGAL */
+  .adva-footer {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 24px 20px 44px;
+    font-size: 11px;
+    color: #aaa;
+    border-top: 1px solid #eee;
+    line-height: 1.6;
+  }
+</style>
+
+<div class="adva">
+
+  <!-- HOOK -->
+  <div class="adva-hook">
+    <span class="adva-hook-badge">Una historia familiar</span>
+    <h1 class="adva-headline">Lo último que mi abuelo me enseñó antes de irse, todavía lo uso cada semana</h1>
+    <p class="adva-hook-sub">No fue un gran consejo de vida. Fue algo chiquito, sobre la casa y sobre Toby — pero es lo que más pienso cuando hago algo tan simple como poner un lavado.</p>
+    <div class="adva-hook-img">
+      <img src="{{ 'humanoperro.jpg' | asset_url }}" alt="Mano de un abuelo sosteniendo la pata de su perro" loading="lazy">
+      <p class="adva-hook-img-caption">Mi abuelo y Toby, en el sillón donde pasaban las tardes de domingo</p>
+    </div>
+    <p class="adva-hook-trust">Garantía de 30 días · Hecho en Argentina</p>
+    <div class="adva-hook-spacer"></div>
+  </div>
+
+  <!-- ARTÍCULO -->
+  <div class="adva-wrap">
+
+    <p>Me llamo Tomás, tengo 27 años, y mi abuelo Aldo me crió tanto como mis viejos. Vivíamos a dos cuadras de su casa y yo pasaba ahí más tardes de las que puedo contar — con él, con mi abuela, y con Toby, el ovejero que tuvieron casi quince años.</p>
+
+    <p>Mi abuelo no era de dar consejos grandes. No hablaba de la vida ni de qué hacer con el futuro. Hablaba de cosas chiquitas: cómo cebar bien un mate, cómo cuidar las plantas, cómo mantener la casa en orden con la plata justa y un perro grande dando vueltas todo el día.</p>
+
+    <h2>El último domingo que pasamos juntos</h2>
+
+    <p>Unas semanas antes de irse, estábamos doblando ropa recién lavada en su living, y me acuerdo que se rió mientras sacaba pelo de un buzo mío. "Esto nunca se va, eh", me dijo. "El detergente lo mueve para todos lados, pero no lo saca. Hay que tratarlo distinto."</p>
+
+    <div class="adva-quote">
+      "El pelo no es como la tierra, Tomy. No se va solo con jabón y agua. Hay que romperlo, no arrastrarlo."
+    </div>
+
+    <p>Me explicó, a su manera, que ya usaba algo que un vecino le había recomendado para esto — un polvo que se agregaba directo al lavarropas. No le di mucha importancia en el momento. Era una charla más, doblando ropa un domingo cualquiera. Pero unas semanas después mi abuelo se fue, y esa frase se me quedó grabada de una forma que no esperaba.</p>
+
+    <div class="adva-img">
+      <img src="{{ 'antes.jpg' | asset_url }}" alt="Acumulación de pelo de mascota en la ropa" loading="lazy">
+    </div>
+
+    <h2>El problema que mi abuelo ya había entendido</h2>
+
+    <p>Con el tiempo entendí lo que me había querido decir. El pelo de mascota no es solo antiestético — se acumula en la ropa, en los sillones, y en el lavarropas mismo. El detergente común lo mueve de un lado a otro, pero no lo disuelve. Por eso siempre vuelve: en la ropa recién lavada, en el sillón recién aspirado, en el aire de la casa con ese olor que ningún ambientador termina de sacar.</p>
+
+    <div class="adva-problem-list">
+      <div class="adva-problem-item">
+        <div class="adva-problem-icon">01</div>
+        <div class="adva-problem-text">
+          <h4>La ropa sale del lavarropas con pelo igual</h4>
+          <p>El ciclo de lavado mueve el pelo de prenda en prenda, pero no lo elimina. Termina pegado en la ropa "limpia".</p>
+        </div>
+      </div>
+      <div class="adva-problem-item">
+        <div class="adva-problem-icon">02</div>
+        <div class="adva-problem-text">
+          <h4>El sillón y la cama nunca quedan del todo limpios</h4>
+          <p>Por más que aspires, el pelo que ya quedó incrustado en la tela vuelve a salir a los pocos días.</p>
+        </div>
+      </div>
+      <div class="adva-problem-item">
+        <div class="adva-problem-icon">03</div>
+        <div class="adva-problem-text">
+          <h4>Un olor persistente que no se va con detergente común</h4>
+          <p>La acumulación de pelo retiene humedad y genera ese olor de fondo que con el tiempo dejás de notar, pero que sigue ahí.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Lo que terminé descubriendo</h2>
+
+    <p>Un tiempo después, ya extrañándolo, le estaba contando esto a un amigo, y terminé leyendo sobre disolventes enzimáticos para pelo de mascota. Así llegué a K9Clean — un polvo enzimático fabricado en Argentina, formulado para descomponer el pelo a nivel molecular en vez de solo moverlo. Era exactamente lo que mi abuelo me había descrito esa tarde, sin saber el nombre técnico.</p>
+
+    <p>Lo probé. Y funcionó. La ropa empezó a salir realmente limpia, el sillón dejó de juntar pelo invisible, y ese olor que ya ni notaba por costumbre, desapareció. Fue raro: una cosa tan chica terminó conectándome de nuevo con algo que mi abuelo me había dicho sin darle mayor importancia.</p>
+
+    <div class="adva-solution-box">
+      <img src="{{ 'producto1.jpg' | asset_url }}" alt="K9Clean">
+      <h3>K9Clean — lo que mi abuelo ya sabía, sin el nombre técnico</h3>
+      <p>Un polvo enzimático fabricado en Argentina que se agrega directo al lavarropas y disuelve el pelo de mascota a nivel molecular, en vez de simplemente moverlo de lugar.</p>
+    </div>
+
+    <!-- STOCK -->
+    <div class="adva-stock">
+      <span class="adva-stock-dot"></span>
+      <p>Poco stock disponible</p>
+    </div>
+
+    <!-- CTA 1 -->
+    <div class="adva-cta-wrap">
+      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="adva-cta-btn">Quiero el mío</a>
+      <p class="adva-cta-trust">Garantía 30 días · Envío a todo el país</p>
+    </div>
+
+  </div>
+
+  <!-- TESTIMONIOS -->
+  <!-- NOTA: Los testimonios son ilustrativos. Reemplazar por reseñas reales cuando estén disponibles. -->
+  <div class="adva-testi-section">
+    <div class="adva-wrap" style="padding-top:0;padding-bottom:0;">
+      <h2>Lo que dicen los que ya lo usan</h2>
+      <div class="adva-testi-grid">
+        <div class="adva-testi-card">
+          <div class="adva-testi-stars">★★★★★</div>
+          <p>"Tengo dos gatos y la casa ya no huele a pelo mojado después de lavar. Es la primera vez que un producto realmente cumple lo que promete."</p>
+          <cite>— Carolina P., Mendoza</cite>
+        </div>
+        <div class="adva-testi-card">
+          <div class="adva-testi-stars">★★★★★</div>
+          <p>"Mi mamá me lo recomendó después de probarlo ella, y ahora lo compro yo también. Se nota la diferencia en la ropa desde el primer lavado."</p>
+          <cite>— Lucas F., Rosario</cite>
+        </div>
+        <div class="adva-testi-card">
+          <div class="adva-testi-stars">★★★★☆</div>
+          <p>"Sencillo de usar y funciona de verdad. El sillón dejó de juntar pelo de un día para el otro."</p>
+          <cite>— Agustina V., Córdoba</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="adva-wrap" style="padding-top:0;">
+    <h2>Lo que significa para mí ahora</h2>
+
+    <div class="adva-closing">
+      <p>Cada vez que agrego K9Clean al lavado, pienso un segundo en esa tarde de domingo, doblando ropa con mi abuelo. No es una herencia grande ni una lección de esas que cambian la vida. Es una costumbre chiquita que él me dejó sin darse cuenta — cuidar la casa, cuidar al perro, cuidar lo simple. Y para mí, usarlo cada semana es una forma de seguir teniéndolo cerca.</p>
+    </div>
+
+    <!-- STOCK -->
+    <div class="adva-stock">
+      <span class="adva-stock-dot"></span>
+      <p>Poco stock disponible</p>
+    </div>
+
+    <!-- CTA 2 -->
+    <div class="adva-cta-wrap">
+      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="adva-cta-btn">Quiero el mío</a>
+      <p class="adva-cta-trust">Garantía 30 días · Envío a todo el país · Pago seguro con Mercado Pago</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="adva-footer">
+    <p>© 2026 Contenido basado en una historia personal. K9Clean no reemplaza el mantenimiento regular de tu lavarropas. Los resultados pueden variar según el tipo de tela, la carga y el nivel de acumulación. No apto para lana, seda, cuero, cachemir ni plumón. Usar según las indicaciones del fabricante.</p>
+  </div>
+
+</div>
