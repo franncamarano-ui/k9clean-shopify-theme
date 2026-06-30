@@ -57,7 +57,24 @@
     max-width: 480px;
     margin: 0 auto;
   }
+  .advp-hook-trust {
+    color: rgba(255,255,255,0.55);
+    font-size: 12.5px;
+    padding: 18px 16px 0;
+    text-align: center;
+  }
   .advp-hook-spacer { height: 32px; }
+
+  /* STOCK */
+  .advp-stock {
+    background: #fff3cd;
+    border: 1px solid #e6c34d;
+    border-radius: 8px;
+    padding: 10px 16px;
+    margin: 28px 0;
+    text-align: center;
+  }
+  .advp-stock p { font-size: 13px; font-weight: 700; color: #856404; margin: 0; }
 
   /* WRAP */
   .advp-wrap { max-width: 660px; margin: 0 auto; padding: 44px 20px; }
@@ -95,24 +112,34 @@
 
   /* CALLOUT PRECIO */
   .advp-cost-callout {
-    background: #17433c;
-    color: #fff;
+    background: #fdf2ee;
+    border: 1px solid #e8c4b6;
+    border-left: 4px solid #b3492f;
     border-radius: 6px;
-    padding: 28px 24px;
+    padding: 26px 24px;
     text-align: center;
-    margin: 30px 0;
+    margin: 32px 0;
   }
-  .advp-cost-callout .label { font-size: 13px; color: rgba(255,255,255,0.65); }
+  .advp-cost-callout .eyebrow {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #b3492f;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .advp-cost-callout .label { font-size: 13.5px; color: #6b4338; }
   .advp-cost-callout .amount {
     font-family: 'DM Sans', sans-serif;
-    font-size: 38px;
+    font-size: 42px;
     font-weight: 700;
-    color: #fff;
+    color: #b3492f;
     display: block;
     margin: 8px 0;
     letter-spacing: -0.5px;
   }
-  .advp-cost-callout .note { color: rgba(255,255,255,0.55); font-size: 12.5px; margin: 0; }
+  .advp-cost-callout .note { color: #8a6358; font-size: 12.5px; margin: 0; }
 
   /* IMAGEN INLINE */
   .advp-img { margin: 30px -20px; }
@@ -213,6 +240,7 @@
       <img src="{{ 'filtroperro.jpg' | asset_url }}" alt="Filtro de lavarropas tapado de pelo de mascota" loading="lazy">
       <p class="advp-hook-img-caption">Esto es lo que encuentro cuando destapo el filtro de un lavarropas en una casa con mascota</p>
     </div>
+    <p class="advp-hook-trust">Garantía de 30 días · Hecho en Argentina</p>
     <div class="advp-hook-spacer"></div>
   </div>
 
@@ -252,6 +280,7 @@
     </div>
 
     <div class="advp-cost-callout">
+      <span class="eyebrow">Lo que te puede costar no prevenirlo</span>
       <p class="label">Una reparación típica por acumulación de pelo (cambio de bomba, destape de mangueras, limpieza de filtro)</p>
       <span class="amount">+$90.000</span>
       <p class="note">Sin contar la visita técnica ni los días sin lavarropas</p>
@@ -281,9 +310,14 @@
       <p>Lo que les recomiendo a mis clientes con mascotas para prevenir el problema antes de que termine en una visita técnica.</p>
     </div>
 
+    <!-- STOCK -->
+    <div class="advp-stock">
+      <p>¡Poco stock disponible!</p>
+    </div>
+
     <!-- CTA 1 -->
     <div class="advp-cta-wrap">
-      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advp-cta-btn">Quiero el mío</a>
+      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advp-cta-btn">Conseguir K9Clean</a>
       <p class="advp-cta-trust">Garantía 30 días · Envío a todo el país</p>
     </div>
 
@@ -318,9 +352,14 @@
     <h2>Mi recomendación como técnico</h2>
     <p>No hace falta esperar a que el lavarropas empiece a fallar. Si tenés mascota en casa, agregar K9Clean una vez al mes a tu lavado es la forma más simple de evitar que el pelo se acumule en las partes internas de la máquina — y de ahorrarte una visita técnica que se puede prevenir.</p>
 
+    <!-- STOCK -->
+    <div class="advp-stock">
+      <p>¡Poco stock disponible!</p>
+    </div>
+
     <!-- CTA 2 -->
     <div class="advp-cta-wrap">
-      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advp-cta-btn">Quiero el mío</a>
+      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advp-cta-btn">Conseguir K9Clean</a>
       <p class="advp-cta-trust">Garantía 30 días · Envío a todo el país · Pago seguro con Mercado Pago</p>
     </div>
   </div>
