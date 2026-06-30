@@ -1,0 +1,413 @@
+{% layout 'theme.info' %}
+
+<style>
+  .advc {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.8;
+    font-size: 17px;
+  }
+  .advc *, .advc *::before, .advc *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* HOOK / HERO */
+  .advc-hook {
+    background: #17433c;
+    padding: 48px 20px 0;
+    text-align: center;
+  }
+  .advc-hook-badge {
+    display: block;
+    color: #c9a961;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+  .advc-headline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(26px, 5vw, 35px);
+    color: #fff;
+    line-height: 1.32;
+    letter-spacing: -0.2px;
+    max-width: 640px;
+    margin: 0 auto 18px;
+  }
+  .advc-hook-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 16px;
+    max-width: 540px;
+    margin: 0 auto 32px;
+  }
+  .advc-hook-img {
+    max-width: 680px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .advc-hook-img img { width: 100%; display: block; }
+  .advc-hook-img-caption {
+    color: rgba(255,255,255,0.5);
+    font-size: 12.5px;
+    font-style: italic;
+    padding: 10px 16px 0;
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .advc-hook-trust {
+    color: rgba(255,255,255,0.55);
+    font-size: 12.5px;
+    padding: 18px 16px 0;
+    text-align: center;
+  }
+  .advc-hook-spacer { height: 32px; }
+
+  /* STOCK */
+  .advc-stock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: max-content;
+    max-width: 100%;
+    background: #fdf2ee;
+    border: 1px solid #e8c4b6;
+    border-radius: 30px;
+    padding: 9px 20px;
+    margin: 28px auto;
+  }
+  .advc-stock-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b3492f;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(179,73,47,0.5);
+    animation: advc-pulse 1.8s infinite;
+  }
+  .advc-stock p {
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 600;
+    color: #8a3a26;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    white-space: nowrap;
+  }
+  @keyframes advc-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(179,73,47,0.45); }
+    70% { box-shadow: 0 0 0 6px rgba(179,73,47,0); }
+    100% { box-shadow: 0 0 0 0 rgba(179,73,47,0); }
+  }
+
+  /* WRAP */
+  .advc-wrap { max-width: 660px; margin: 0 auto; padding: 44px 20px; }
+
+  .advc-wrap p { margin-bottom: 1.3em; color: #2b2b2b; }
+  .advc-wrap h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #17433c;
+    margin: 40px 0 16px;
+    line-height: 1.35;
+    letter-spacing: -0.1px;
+  }
+
+  /* LISTA "YA PROBÉ DE TODO" */
+  .advc-problem-list { margin: 22px 0 30px; }
+  .advc-problem-item {
+    display: flex;
+    gap: 18px;
+    padding: 18px 0;
+    border-top: 1px solid #e8e5dd;
+  }
+  .advc-problem-item:last-child { border-bottom: 1px solid #e8e5dd; }
+  .advc-problem-icon {
+    width: 30px;
+    flex-shrink: 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #c9a961;
+  }
+  .advc-problem-text h4 { font-size: 15.5px; font-weight: 700; color: #17433c; margin-bottom: 5px; }
+  .advc-problem-text p { font-size: 14.5px; color: #555; margin: 0; }
+
+  /* IMAGEN INLINE */
+  .advc-img { margin: 30px -20px; }
+  .advc-img img { width: 100%; display: block; }
+  @media (min-width: 768px) {
+    .advc-img { margin: 34px 0; }
+    .advc-img img { border-radius: 4px; }
+  }
+
+  /* QUOTE */
+  .advc-quote {
+    position: relative;
+    padding: 6px 0 6px 24px;
+    margin: 30px 0;
+    border-left: 2px solid #c9a961;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: #17433c;
+  }
+
+  /* CALLOUT DE VALOR */
+  .advc-value-callout {
+    background: #faf6ec;
+    border: 1px solid #e3d5a8;
+    border-left: 4px solid #c9a961;
+    border-radius: 6px;
+    padding: 26px 24px;
+    text-align: center;
+    margin: 32px 0;
+  }
+  .advc-value-callout .eyebrow {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #9c7d2e;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .advc-value-callout .label { font-size: 14.5px; color: #5b4a22; margin-bottom: 4px; }
+  .advc-value-callout .price {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #17433c;
+    display: block;
+    margin: 8px 0;
+    letter-spacing: -0.5px;
+  }
+  .advc-value-callout .note { color: #8a7a4a; font-size: 12.5px; margin: 0; }
+
+  /* SOLUCIÓN BOX */
+  .advc-solution-box {
+    background: #faf9f6;
+    border: 1px solid #e8e5dd;
+    border-radius: 6px;
+    padding: 30px 24px;
+    margin: 34px 0;
+    text-align: center;
+  }
+  .advc-solution-box img { width: 130px; margin: 0 auto 18px; display: block; }
+  .advc-solution-box h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #17433c;
+    margin-bottom: 10px;
+  }
+  .advc-solution-box p { font-size: 14px; color: #555; max-width: 440px; margin: 0 auto; }
+
+  /* CIERRE */
+  .advc-closing {
+    background: #faf9f6;
+    border-left: 3px solid #c9a961;
+    border-radius: 0 6px 6px 0;
+    padding: 26px 24px;
+    margin: 34px 0;
+  }
+  .advc-closing p { font-size: 15.5px; color: #3a3a3a; margin-bottom: 0; }
+  .advc-closing p:last-child { margin-bottom: 0; }
+
+  /* CTA */
+  .advc-cta-wrap { text-align: center; margin: 34px 0; }
+  .advc-cta-btn {
+    display: inline-block;
+    background: #17433c;
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .advc-cta-btn:hover { background: #0f2e29; }
+  .advc-cta-trust { margin-top: 14px; font-size: 12.5px; color: #999; letter-spacing: 0.1px; }
+
+  /* TESTIMONIOS */
+  .advc-testi-section { background: #faf9f6; padding: 44px 0; margin: 36px 0; border-top: 1px solid #e8e5dd; border-bottom: 1px solid #e8e5dd; }
+  .advc-testi-section h2 { text-align: center; }
+  .advc-testi-grid { display: grid; gap: 16px; margin-top: 28px; }
+  .advc-testi-card {
+    background: #fff;
+    border: 1px solid #e8e5dd;
+    border-radius: 6px;
+    padding: 22px;
+  }
+  .advc-testi-stars { color: #c9a961; font-size: 14px; margin-bottom: 10px; letter-spacing: 1px; }
+  .advc-testi-card p { font-size: 14.5px; color: #444; margin-bottom: 12px; font-style: italic; }
+  .advc-testi-card cite {
+    font-style: normal;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #17433c;
+  }
+
+  /* FOOTER LEGAL */
+  .advc-footer {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 24px 20px 44px;
+    font-size: 11px;
+    color: #aaa;
+    border-top: 1px solid #eee;
+    line-height: 1.6;
+  }
+</style>
+
+<div class="advc">
+
+  <!-- HOOK -->
+  <div class="advc-hook">
+    <span class="advc-hook-badge">Una situación más común de lo que pensás</span>
+    <h1 class="advc-headline">Fui a una reunión y todos miraban mi remera — no era lo que pensé</h1>
+    <p class="advc-hook-sub">Pensé que era un cumplido. Era pelo de gato. En una remera negra. Lavada esa misma mañana.</p>
+    <div class="advc-hook-img">
+      <img src="{{ 'antes.jpg' | asset_url }}" alt="Prenda oscura cubierta de pelo de mascota después de lavarla" loading="lazy">
+      <p class="advc-hook-img-caption">Así salió del lavarropas. Sí, recién lavada.</p>
+    </div>
+    <p class="advc-hook-trust">Garantía de 30 días · Hecho en Argentina</p>
+    <div class="advc-hook-spacer"></div>
+  </div>
+
+  <!-- ARTÍCULO -->
+  <div class="advc-wrap">
+
+    <p>Soy Vale, tengo 31 años, vivo con Simona — mi gata, una siamesa con una capacidad de soltar pelo que desafía toda lógica — y hace un mes pasé bastante vergüenza en un cumpleaños. Nada grave, nadie me dijo nada cruel. Pero yo me di cuenta. Y una vez que te das cuenta, ya no podés dejar de verlo.</p>
+
+    <p>Estaba en la cocina de la casa de una amiga, remera negra, la favorita, recién salida del lavarropas esa misma mañana. En un momento me agacho para agarrar algo y veo que tres personas me están mirando fijo la espalda. Pensé "che, qué buena onda, debo tener buena espalda hoy". No. Tenía un mapa completo de pelo de Simona dibujado en toda la remera, visible como si fuera intencional, como si fuera un estampado.</p>
+
+    <h2>Lo peor no fue la vergüenza, fue la bronca</h2>
+
+    <p>Porque no era la primera vez. Y lo más frustrante es que yo no soy de las que no lava la ropa, ni de las que no se ocupa de la casa. Al contrario — para esa fecha ya había probado prácticamente todo lo que se puede comprar en el súper para esto.</p>
+
+    <div class="advc-problem-list">
+      <div class="advc-problem-item">
+        <div class="advc-problem-icon">01</div>
+        <div class="advc-problem-text">
+          <h4>Detergentes "especial mascotas"</h4>
+          <p>Olían bien. No hacían absolutamente nada distinto a un detergente común. El pelo seguía ahí, intacto.</p>
+        </div>
+      </div>
+      <div class="advc-problem-item">
+        <div class="advc-problem-icon">02</div>
+        <div class="advc-problem-text">
+          <h4>Lint rollers — una caja entera al mes</h4>
+          <p>Funcionaban diez minutos. Para la tarde, la ropa volvía a estar igual. Y la plata en rollitos de cinta ya era un gasto fijo.</p>
+        </div>
+      </div>
+      <div class="advc-problem-item">
+        <div class="advc-problem-icon">03</div>
+        <div class="advc-problem-text">
+          <h4>Ciclos extra de lavado, "por si las moscas"</h4>
+          <p>Lavaba la misma prenda dos veces para asegurarme. Gastaba el doble de agua y de tiempo, y el resultado era prácticamente el mismo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="advc-quote">
+      "En algún momento me cayó la ficha: el problema no era cuánto lavaba. Era que nada de lo que usaba estaba realmente sacando el pelo — solo lo estaba moviendo de lugar."
+    </div>
+
+    <div class="advc-img">
+      <img src="{{ 'antesdespues3.jpg' | asset_url }}" alt="Comparación de prenda con pelo de mascota antes y después" loading="lazy">
+    </div>
+
+    <h2>El "ah, era por esto" que me cambió la cabeza</h2>
+
+    <p>Una compañera de trabajo —que tiene dos perros y la ropa siempre impecable, cosa que yo ya venía notando con sospecha— me explicó algo que ningún detergente te dice en la etiqueta: el pelo de mascota no se disuelve con agua y jabón común. El lavado normal lo arrastra de una prenda a otra dentro del tambor, pero no lo rompe. Por eso siempre "aparece" en otro lado, como si se escondiera.</p>
+
+    <p>Lo que necesitaba no era lavar más, ni lavar más fuerte. Necesitaba algo que actuara distinto: que disolviera el pelo a nivel molecular, no que lo empujara de un lugar a otro dentro del lavarropas.</p>
+
+    <div class="advc-solution-box">
+      <img src="{{ 'producto1.jpg' | asset_url }}" alt="K9Clean">
+      <h3>K9Clean — el polvo que rompe el pelo en vez de moverlo</h3>
+      <p>Enzimático, fabricado en Argentina, se agrega directo al lavarropas en cada lavado y descompone el pelo de mascota en vez de simplemente arrastrarlo de una prenda a otra.</p>
+    </div>
+
+    <div class="advc-value-callout">
+      <span class="eyebrow">Para ponerlo en perspectiva</span>
+      <p class="label">Entre lint rollers todos los meses y ciclos de lavado repetidos "por si las moscas", terminás gastando más plata y tiempo que en esto</p>
+      <span class="price">Desde $44.990</span>
+      <p class="note">Un tarro rinde varios lavados — se usa una vez al mes</p>
+    </div>
+
+    <!-- STOCK -->
+    <div class="advc-stock">
+      <span class="advc-stock-dot"></span>
+      <p>Poco stock disponible</p>
+    </div>
+
+    <!-- CTA 1 -->
+    <div class="advc-cta-wrap">
+      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advc-cta-btn">Conseguir K9Clean</a>
+      <p class="advc-cta-trust">Garantía 30 días · Envío a todo el país</p>
+    </div>
+
+  </div>
+
+  <!-- TESTIMONIOS -->
+  <!-- NOTA: Los testimonios son ilustrativos. Reemplazar por reseñas reales cuando estén disponibles. -->
+  <div class="advc-testi-section">
+    <div class="advc-wrap" style="padding-top:0;padding-bottom:0;">
+      <h2>No soy la única a la que le pasaba esto</h2>
+      <div class="advc-testi-grid">
+        <div class="advc-testi-card">
+          <div class="advc-testi-stars">★★★★★</div>
+          <p>"Tenía la misma escena de la remera con pelo en cada salida. Desde que uso esto, directamente dejé de revisarme antes de salir de casa."</p>
+          <cite>— Melina S., Buenos Aires</cite>
+        </div>
+        <div class="advc-testi-card">
+          <div class="advc-testi-stars">★★★★★</div>
+          <p>"Tiraba plata en lint rollers todos los meses y ni se notaba la diferencia. Con K9Clean lo dejé de necesitar."</p>
+          <cite>— Romina D., La Plata</cite>
+        </div>
+        <div class="advc-testi-card">
+          <div class="advc-testi-stars">★★★★☆</div>
+          <p>"Pensé que era un problema de mi lavarropas. Era que estaba usando mal el producto, no el lavarropas."</p>
+          <cite>— Brenda G., Mar del Plata</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIERRE -->
+  <div class="advc-wrap" style="padding-top:0;">
+    <h2>Ahora salgo de casa sin pensarlo dos veces</h2>
+
+    <div class="advc-closing">
+      <p>No es una historia heroica ni un antes-y-después de revista. Es simplemente que dejé de mirarme la ropa antes de salir, dejé de sentarme con cuidado en sillones ajenos, y dejé de gastar plata en soluciones que no solucionaban nada. Sigo teniendo a Simona tirando pelo por toda la casa — eso no cambió. Lo que cambió es que ya no es mi problema cuando salgo a la calle.</p>
+    </div>
+
+    <!-- STOCK -->
+    <div class="advc-stock">
+      <span class="advc-stock-dot"></span>
+      <p>Poco stock disponible</p>
+    </div>
+
+    <!-- CTA 2 -->
+    <div class="advc-cta-wrap">
+      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advc-cta-btn">Conseguir K9Clean</a>
+      <p class="advc-cta-trust">Garantía 30 días · Envío a todo el país · Pago seguro con Mercado Pago</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="advc-footer">
+    <p>© 2026 Contenido basado en una historia personal. K9Clean no reemplaza el mantenimiento regular de tu lavarropas. Los resultados pueden variar según el tipo de tela, la carga y el nivel de acumulación. No apto para lana, seda, cuero, cachemir ni plumón. Usar según las indicaciones del fabricante.</p>
+  </div>
+
+</div>
