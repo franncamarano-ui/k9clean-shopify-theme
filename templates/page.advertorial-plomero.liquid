@@ -67,14 +67,40 @@
 
   /* STOCK */
   .advp-stock {
-    background: #fff3cd;
-    border: 1px solid #e6c34d;
-    border-radius: 8px;
-    padding: 10px 16px;
-    margin: 28px 0;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: max-content;
+    max-width: 100%;
+    background: #fdf2ee;
+    border: 1px solid #e8c4b6;
+    border-radius: 30px;
+    padding: 9px 20px;
+    margin: 28px auto;
   }
-  .advp-stock p { font-size: 13px; font-weight: 700; color: #856404; margin: 0; }
+  .advp-stock-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #b3492f;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 0 rgba(179,73,47,0.5);
+    animation: advp-pulse 1.8s infinite;
+  }
+  .advp-stock p {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #8a3a26;
+    margin: 0;
+    letter-spacing: 0.1px;
+    white-space: nowrap;
+  }
+  @keyframes advp-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(179,73,47,0.45); }
+    70% { box-shadow: 0 0 0 6px rgba(179,73,47,0); }
+    100% { box-shadow: 0 0 0 0 rgba(179,73,47,0); }
+  }
 
   /* WRAP */
   .advp-wrap { max-width: 660px; margin: 0 auto; padding: 44px 20px; }
@@ -312,7 +338,8 @@
 
     <!-- STOCK -->
     <div class="advp-stock">
-      <p>¡Poco stock disponible!</p>
+      <span class="advp-stock-dot"></span>
+      <p>Poco stock disponible</p>
     </div>
 
     <!-- CTA 1 -->
@@ -354,7 +381,8 @@
 
     <!-- STOCK -->
     <div class="advp-stock">
-      <p>¡Poco stock disponible!</p>
+      <span class="advp-stock-dot"></span>
+      <p>Poco stock disponible</p>
     </div>
 
     <!-- CTA 2 -->
