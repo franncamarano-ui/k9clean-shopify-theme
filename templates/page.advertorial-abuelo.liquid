@@ -13,58 +13,59 @@
   /* HOOK / HERO */
   .adva-hook {
     background: #17433c;
-    padding: 48px 20px 0;
+    padding: 52px 24px 0;
     text-align: center;
   }
   .adva-hook-badge {
     display: block;
-    color: #c9a961;
+    color: #B8924A;
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 16px;
+    letter-spacing: 1.8px;
+    margin-bottom: 20px;
   }
   .adva-headline {
     font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 600;
+    font-weight: 700;
     font-style: italic;
-    font-size: clamp(26px, 5vw, 35px);
+    font-size: clamp(30px, 5.5vw, 44px);
     color: #fff;
-    line-height: 1.32;
-    letter-spacing: -0.2px;
-    max-width: 640px;
-    margin: 0 auto 18px;
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    max-width: 660px;
+    margin: 0 auto 22px;
   }
   .adva-hook-sub {
     font-style: normal;
-    color: rgba(255,255,255,0.7);
-    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    font-size: 17px;
+    line-height: 1.6;
     max-width: 540px;
-    margin: 0 auto 32px;
+    margin: 0 auto 36px;
   }
   .adva-hook-img {
-    max-width: 680px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
     border-top: 1px solid rgba(255,255,255,0.12);
   }
   .adva-hook-img img { width: 100%; display: block; }
   .adva-hook-img-caption {
-    color: rgba(255,255,255,0.5);
-    font-size: 12.5px;
+    color: rgba(255,255,255,0.45);
+    font-size: 12px;
     font-style: italic;
     padding: 10px 16px 0;
     text-align: center;
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto;
   }
   .adva-hook-trust {
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.5);
     font-size: 12.5px;
-    padding: 18px 16px 0;
+    padding: 20px 16px 0;
     text-align: center;
   }
-  .adva-hook-spacer { height: 32px; }
+  .adva-hook-spacer { height: 36px; }
 
   /* STOCK */
   .adva-stock {
@@ -77,86 +78,87 @@
     background: #fdf2ee;
     border: 1px solid #e8c4b6;
     border-radius: 30px;
-    padding: 9px 20px;
-    margin: 28px auto;
+    padding: 10px 22px;
+    margin: 32px auto;
   }
   .adva-stock-dot {
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background: #b3492f;
+    background: #c0320f;
     flex-shrink: 0;
-    box-shadow: 0 0 0 0 rgba(179,73,47,0.5);
+    box-shadow: 0 0 0 0 rgba(192,50,15,0.5);
     animation: adva-pulse 1.8s infinite;
   }
   .adva-stock p {
     font-size: 12px;
     line-height: 1;
-    font-weight: 600;
-    color: #8a3a26;
+    font-weight: 700;
+    color: #c0320f;
     margin: 0;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.7px;
     white-space: nowrap;
   }
   @keyframes adva-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(179,73,47,0.45); }
-    70% { box-shadow: 0 0 0 6px rgba(179,73,47,0); }
-    100% { box-shadow: 0 0 0 0 rgba(179,73,47,0); }
+    0% { box-shadow: 0 0 0 0 rgba(192,50,15,0.45); }
+    70% { box-shadow: 0 0 0 7px rgba(192,50,15,0); }
+    100% { box-shadow: 0 0 0 0 rgba(192,50,15,0); }
   }
 
   /* WRAP */
-  .adva-wrap { max-width: 660px; margin: 0 auto; padding: 44px 20px; }
+  .adva-wrap { max-width: 680px; margin: 0 auto; padding: 56px 24px; }
 
-  .adva-wrap p { margin-bottom: 1.3em; color: #2b2b2b; }
+  .adva-wrap p { margin-bottom: 1.5em; color: #2b2b2b; line-height: 1.8; }
   .adva-wrap h2 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 600;
-    font-size: 24px;
+    font-weight: 700;
+    font-size: clamp(22px, 4vw, 30px);
     color: #17433c;
-    margin: 40px 0 16px;
-    line-height: 1.35;
-    letter-spacing: -0.1px;
+    margin: 52px 0 18px;
+    line-height: 1.3;
+    letter-spacing: -0.2px;
   }
 
   /* LISTA DE PROBLEMAS */
-  .adva-problem-list { margin: 22px 0 30px; }
+  .adva-problem-list { margin: 24px 0 34px; }
   .adva-problem-item {
     display: flex;
-    gap: 18px;
-    padding: 18px 0;
-    border-top: 1px solid #e8e5dd;
+    gap: 22px;
+    padding: 22px 0;
+    border-top: 1px solid #e2ddd4;
   }
-  .adva-problem-item:last-child { border-bottom: 1px solid #e8e5dd; }
+  .adva-problem-item:last-child { border-bottom: 1px solid #e2ddd4; }
   .adva-problem-icon {
-    width: 30px;
+    width: 40px;
     flex-shrink: 0;
     font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: #c9a961;
+    font-weight: 700;
+    font-size: 22px;
+    color: #B8924A;
+    padding-top: 2px;
   }
-  .adva-problem-text h4 { font-size: 15.5px; font-weight: 700; color: #17433c; margin-bottom: 5px; }
-  .adva-problem-text p { font-size: 14.5px; color: #555; margin: 0; }
+  .adva-problem-text h4 { font-size: 16px; font-weight: 700; color: #17433c; margin-bottom: 6px; }
+  .adva-problem-text p { font-size: 15px; color: #555; margin: 0; line-height: 1.6; }
 
   /* IMAGEN INLINE */
-  .adva-img { margin: 30px -20px; }
+  .adva-img { margin: 36px -24px; }
   .adva-img img { width: 100%; display: block; }
   @media (min-width: 768px) {
-    .adva-img { margin: 34px 0; }
-    .adva-img img { border-radius: 4px; }
+    .adva-img { margin: 36px 0; }
+    .adva-img img { border-radius: 5px; }
   }
 
   /* QUOTE EMOTIVA */
   .adva-quote {
     position: relative;
-    padding: 6px 0 6px 24px;
-    margin: 30px 0;
-    border-left: 2px solid #c9a961;
+    padding: 14px 0 14px 28px;
+    margin: 36px 0;
+    border-left: 4px solid #B8924A;
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
-    font-size: 19px;
+    font-size: clamp(20px, 3vw, 24px);
     line-height: 1.5;
     color: #17433c;
   }
@@ -165,108 +167,111 @@
   .adva-value-callout {
     background: #faf6ec;
     border: 1px solid #e3d5a8;
-    border-left: 4px solid #c9a961;
+    border-left: 5px solid #B8924A;
     border-radius: 6px;
-    padding: 26px 24px;
+    padding: 32px 28px;
     text-align: center;
-    margin: 32px 0;
+    margin: 36px 0;
   }
   .adva-value-callout .eyebrow {
     display: block;
-    font-size: 11.5px;
+    font-size: 11px;
     font-weight: 700;
-    color: #9c7d2e;
+    color: #8a6820;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
+    letter-spacing: 1.2px;
+    margin-bottom: 12px;
   }
   .adva-value-callout .label { font-size: 14.5px; color: #5b4a22; margin-bottom: 4px; }
   .adva-value-callout .price {
     font-family: 'DM Sans', sans-serif;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 700;
     color: #17433c;
     display: block;
-    margin: 8px 0;
-    letter-spacing: -0.5px;
+    margin: 10px 0;
+    letter-spacing: -1px;
+    line-height: 1;
   }
-  .adva-value-callout .note { color: #8a7a4a; font-size: 12.5px; margin: 0; }
+  .adva-value-callout .note { color: #8a7a4a; font-size: 13px; margin: 0; }
 
   /* SOLUCIÓN BOX */
   .adva-solution-box {
-    background: #faf9f6;
-    border: 1px solid #e8e5dd;
-    border-radius: 6px;
-    padding: 30px 24px;
-    margin: 34px 0;
+    background: #F5F0E8;
+    border: 1px solid #ddd9ce;
+    border-radius: 8px;
+    padding: 36px 28px;
+    margin: 36px 0;
     text-align: center;
   }
-  .adva-solution-box img { width: 130px; margin: 0 auto 18px; display: block; }
+  .adva-solution-box img { width: 140px; margin: 0 auto 20px; display: block; }
   .adva-solution-box h3 {
     font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 22px;
     color: #17433c;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
-  .adva-solution-box p { font-size: 14px; color: #555; max-width: 440px; margin: 0 auto; }
+  .adva-solution-box p { font-size: 15px; color: #555; max-width: 440px; margin: 0 auto; line-height: 1.65; }
 
   /* CIERRE EMOTIVO */
   .adva-closing {
-    background: #faf9f6;
-    border-left: 3px solid #c9a961;
+    background: #F5F0E8;
+    border-left: 4px solid #B8924A;
     border-radius: 0 6px 6px 0;
-    padding: 26px 24px;
-    margin: 34px 0;
+    padding: 28px 26px;
+    margin: 36px 0;
   }
-  .adva-closing p { font-size: 15.5px; color: #3a3a3a; margin-bottom: 0; }
+  .adva-closing p { font-size: 16px; color: #3a3a3a; margin-bottom: 0; line-height: 1.75; }
   .adva-closing p:last-child { margin-bottom: 0; }
 
   /* CTA */
-  .adva-cta-wrap { text-align: center; margin: 34px 0; }
+  .adva-cta-wrap { text-align: center; margin: 40px 0; }
   .adva-cta-btn {
     display: inline-block;
     background: #17433c;
     color: #fff;
-    padding: 15px 40px;
-    border-radius: 4px;
+    padding: 18px 52px;
+    border-radius: 5px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 15.5px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 700;
     text-decoration: none;
+    letter-spacing: 0.2px;
     transition: background 0.2s;
   }
   .adva-cta-btn:hover { background: #0f2e29; }
   .adva-cta-trust { margin-top: 14px; font-size: 12.5px; color: #999; letter-spacing: 0.1px; }
 
   /* TESTIMONIOS */
-  .adva-testi-section { background: #faf9f6; padding: 44px 0; margin: 36px 0; border-top: 1px solid #e8e5dd; border-bottom: 1px solid #e8e5dd; }
+  .adva-testi-section { background: #F5F0E8; padding: 60px 0; margin: 40px 0; border-top: 1px solid #ddd9ce; border-bottom: 1px solid #ddd9ce; }
   .adva-testi-section h2 { text-align: center; }
-  .adva-testi-grid { display: grid; gap: 16px; margin-top: 28px; }
+  .adva-testi-grid { display: grid; gap: 18px; margin-top: 32px; }
   .adva-testi-card {
     background: #fff;
-    border: 1px solid #e8e5dd;
-    border-radius: 6px;
-    padding: 22px;
+    border: 1px solid #ddd9ce;
+    border-radius: 8px;
+    padding: 26px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
   }
-  .adva-testi-stars { color: #c9a961; font-size: 14px; margin-bottom: 10px; letter-spacing: 1px; }
-  .adva-testi-card p { font-size: 14.5px; color: #444; margin-bottom: 12px; font-style: italic; }
+  .adva-testi-stars { color: #B8924A; font-size: 20px; margin-bottom: 12px; letter-spacing: 2px; }
+  .adva-testi-card p { font-size: 15px; color: #444; margin-bottom: 14px; font-style: italic; line-height: 1.65; }
   .adva-testi-card cite {
     font-style: normal;
-    font-size: 12.5px;
-    font-weight: 600;
+    font-size: 13.5px;
+    font-weight: 700;
     color: #17433c;
   }
 
   /* FOOTER LEGAL */
   .adva-footer {
-    max-width: 660px;
+    max-width: 680px;
     margin: 0 auto;
-    padding: 24px 20px 44px;
+    padding: 28px 24px 48px;
     font-size: 11px;
     color: #aaa;
     border-top: 1px solid #eee;
-    line-height: 1.6;
+    line-height: 1.7;
   }
 </style>
 
