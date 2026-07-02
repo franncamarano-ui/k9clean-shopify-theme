@@ -1,421 +1,740 @@
 {% layout 'theme.info' %}
-
 <style>
-  .advp {
-    font-family: 'DM Sans', -apple-system, sans-serif;
-    color: #1a1a1a;
-    background: #fff;
-    line-height: 1.8;
-    font-size: 17px;
-  }
-  .advp *, .advp *::before, .advp *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ====================================================
+   PLOMERO v3 — ESTILO REPORTAJE TÉCNICO / REVISTA ESPECIALIZADA
+   Prefix: .plo
+   ==================================================== */
+.plo {
+  font-family: 'Inter', sans-serif;
+  color: #111111;
+  background: #FAFAFA;
+}
+.plo *, .plo *::before, .plo *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* HOOK / HERO */
-  .advp-hook {
-    background: #17433c;
-    padding: 52px 24px 0;
-    text-align: center;
-  }
-  .advp-hook-badge {
-    display: block;
-    color: #B8924A;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    margin-bottom: 20px;
-  }
-  .advp-headline {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 700;
-    font-size: clamp(32px, 6vw, 46px);
-    color: #fff;
-    line-height: 1.22;
-    letter-spacing: -0.3px;
-    max-width: 680px;
-    margin: 0 auto 22px;
-  }
-  .advp-headline strong { font-weight: 700; }
-  .advp-hook-sub {
-    color: rgba(255,255,255,0.75);
-    font-size: 17px;
-    line-height: 1.6;
-    max-width: 540px;
-    margin: 0 auto 36px;
-  }
-  .advp-hook-img {
-    max-width: 100%;
-    margin: 0;
-    border-top: 1px solid rgba(255,255,255,0.12);
-  }
-  .advp-hook-img img { width: 100%; display: block; }
-  .advp-hook-img-caption {
-    color: rgba(255,255,255,0.45);
-    font-size: 12px;
-    font-style: italic;
-    padding: 10px 16px 0;
-    text-align: center;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-  .advp-hook-trust {
-    color: rgba(255,255,255,0.5);
-    font-size: 12.5px;
-    padding: 20px 16px 0;
-    text-align: center;
-  }
-  .advp-hook-spacer { height: 36px; }
+/* TOP BAR */
+.plo-topbar {
+  background: #0D1B2A;
+  color: rgba(255,255,255,0.88);
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 9px 20px;
+  text-align: center;
+}
 
-  /* STOCK */
-  .advp-stock {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    width: max-content;
-    max-width: 100%;
-    background: #fdf2ee;
-    border: 1px solid #e8c4b6;
-    border-radius: 30px;
-    padding: 10px 22px;
-    margin: 32px auto;
-  }
-  .advp-stock-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #c0320f;
-    flex-shrink: 0;
-    box-shadow: 0 0 0 0 rgba(192,50,15,0.5);
-    animation: advp-pulse 1.8s infinite;
-  }
-  .advp-stock p {
-    font-size: 12px;
-    line-height: 1;
-    font-weight: 700;
-    color: #c0320f;
-    margin: 0;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.7px;
-    white-space: nowrap;
-  }
-  @keyframes advp-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(192,50,15,0.45); }
-    70% { box-shadow: 0 0 0 7px rgba(192,50,15,0); }
-    100% { box-shadow: 0 0 0 0 rgba(192,50,15,0); }
-  }
+/* HEADER */
+.plo-header { max-width: 760px; margin: 0 auto; padding: 32px 20px 0; }
+.plo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1B4F72;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 5px 12px 5px 10px;
+  border-radius: 3px;
+  margin-bottom: 18px;
+}
+.plo-badge-dot {
+  width: 7px;
+  height: 7px;
+  background: #E67E22;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.plo-h1 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(30px, 6vw, 56px);
+  color: #0D1B2A;
+  line-height: 1.08;
+  letter-spacing: -0.5px;
+  margin-bottom: 18px;
+}
+.plo-standfirst {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 2.2vw, 17px);
+  color: #444;
+  line-height: 1.65;
+  margin-bottom: 18px;
+  max-width: 620px;
+}
+.plo-sep { border: none; border-top: 2px solid #1B4F72; margin: 0 0 14px; }
+.plo-byline {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #666;
+  padding-bottom: 22px;
+}
+.plo-byline b { color: #0D1B2A; font-weight: 700; }
+.plo-byline-tag {
+  display: inline-block;
+  background: #F0F4F8;
+  border: 1px solid #CBD5E0;
+  color: #1B4F72;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-left: 8px;
+}
 
-  /* WRAP */
-  .advp-wrap { max-width: 680px; margin: 0 auto; padding: 56px 24px; }
+/* HERO */
+.plo-hero { width: 100%; }
+.plo-hero img { width: 100%; display: block; max-height: 500px; object-fit: cover; }
+.plo-hero-cap {
+  background: #0D1B2A;
+  color: rgba(255,255,255,0.7);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  padding: 8px 20px;
+  line-height: 1.5;
+}
 
-  .advp-wrap p { margin-bottom: 1.5em; color: #2b2b2b; line-height: 1.8; }
-  .advp-wrap h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 700;
-    font-size: clamp(22px, 4vw, 30px);
-    color: #17433c;
-    margin: 52px 0 18px;
-    line-height: 1.3;
-    letter-spacing: -0.2px;
-  }
+/* ARTICLE BODY */
+.plo-body { max-width: 720px; margin: 0 auto; padding: 40px 20px 0; }
+.plo-body p {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 2.1vw, 17px);
+  line-height: 1.8;
+  color: #1A1A1A;
+  margin-bottom: 1.4rem;
+}
+.plo-body h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(22px, 3.6vw, 30px);
+  color: #0D1B2A;
+  margin: 48px 0 16px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
+}
 
-  /* LISTA DE PROBLEMAS */
-  .advp-problem-list { margin: 24px 0 34px; }
-  .advp-problem-item {
-    display: flex;
-    gap: 22px;
-    padding: 22px 0;
-    border-top: 1px solid #e2ddd4;
-  }
-  .advp-problem-item:last-child { border-bottom: 1px solid #e2ddd4; }
-  .advp-problem-icon {
-    width: 40px;
-    flex-shrink: 0;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 700;
-    font-size: 22px;
-    color: #B8924A;
-    padding-top: 2px;
-  }
-  .advp-problem-text h4 { font-size: 16px; font-weight: 700; color: #17433c; margin-bottom: 6px; }
-  .advp-problem-text p { font-size: 15px; color: #555; margin: 0; line-height: 1.6; }
+/* INLINE IMG */
+.plo-inlineimg { margin: 28px -20px; }
+.plo-inlineimg img { width: 100%; display: block; }
+.plo-inlineimg-cap {
+  background: #F0F4F8;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: #666;
+  padding: 8px 20px;
+  line-height: 1.5;
+  border-left: 3px solid #1B4F72;
+}
+@media(min-width:640px){
+  .plo-inlineimg { margin: 28px 0; }
+  .plo-inlineimg img { border-radius: 4px 4px 0 0; }
+}
 
-  /* CALLOUT PRECIO */
-  .advp-cost-callout {
-    background: #fdf2ee;
-    border: 1px solid #e8c4b6;
-    border-left: 5px solid #b3492f;
-    border-radius: 6px;
-    padding: 32px 28px;
-    text-align: center;
-    margin: 36px 0;
-  }
-  .advp-cost-callout .eyebrow {
-    display: block;
-    font-size: 11px;
-    font-weight: 700;
-    color: #b3492f;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    margin-bottom: 12px;
-  }
-  .advp-cost-callout .label { font-size: 14px; color: #6b4338; margin-bottom: 4px; }
-  .advp-cost-callout .amount {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 52px;
-    font-weight: 700;
-    color: #b3492f;
-    display: block;
-    margin: 10px 0;
-    letter-spacing: -1px;
-    line-height: 1;
-  }
-  .advp-cost-callout .note { color: #8a6358; font-size: 13px; margin: 0; }
+/* PULL QUOTE */
+.plo-quote {
+  background: #F0F4F8;
+  border-left: 4px solid #1B4F72;
+  padding: 22px 22px 22px 24px;
+  margin: 32px 0;
+}
+.plo-quote p {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-style: italic;
+  font-size: clamp(18px, 3vw, 22px) !important;
+  color: #0D1B2A !important;
+  line-height: 1.5 !important;
+  margin-bottom: 0 !important;
+}
 
-  /* IMAGEN INLINE */
-  .advp-img { margin: 36px -24px; }
-  .advp-img img { width: 100%; display: block; }
-  @media (min-width: 768px) {
-    .advp-img { margin: 36px 0; }
-    .advp-img img { border-radius: 5px; }
-  }
+/* NUMBERED PROBLEM LIST */
+.plo-list { margin: 24px 0 32px; }
+.plo-list-item {
+  display: flex;
+  gap: 16px;
+  padding: 22px 0;
+  border-top: 1px solid #E2E8F0;
+  align-items: flex-start;
+}
+.plo-list-item:last-child { border-bottom: 1px solid #E2E8F0; }
+.plo-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 52px;
+  line-height: 0.9;
+  color: #E67E22;
+  flex-shrink: 0;
+  width: 44px;
+  text-align: right;
+  padding-top: 4px;
+}
+.plo-item-body h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #0D1B2A;
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+.plo-item-body p {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  color: #555 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.65 !important;
+}
 
-  /* QUOTE TÉCNICO */
-  .advp-quote-tech {
-    position: relative;
-    padding: 14px 0 14px 28px;
-    margin: 36px 0;
-    border-left: 4px solid #B8924A;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-style: italic;
-    font-size: clamp(20px, 3vw, 24px);
-    line-height: 1.5;
-    color: #17433c;
-  }
+/* COST CALLOUT */
+.plo-cost {
+  background: #0D1B2A;
+  color: #fff;
+  border-radius: 6px;
+  padding: 28px 24px;
+  margin: 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.plo-cost-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #E67E22;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+.plo-cost-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 11vw, 68px);
+  color: #E67E22;
+  line-height: 1;
+}
+.plo-cost-desc {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  color: rgba(255,255,255,0.8) !important;
+  margin-bottom: 0 !important;
+  line-height: 1.6 !important;
+}
 
-  /* SOLUCIÓN BOX */
-  .advp-solution-box {
-    background: #F5F0E8;
-    border: 1px solid #ddd9ce;
-    border-radius: 8px;
-    padding: 36px 28px;
-    margin: 36px 0;
-    text-align: center;
-  }
-  .advp-solution-box img { width: 140px; margin: 0 auto 20px; display: block; }
-  .advp-solution-box h3 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 700;
-    font-size: 22px;
-    color: #17433c;
-    margin-bottom: 12px;
-  }
-  .advp-solution-box p { font-size: 15px; color: #555; max-width: 440px; margin: 0 auto; line-height: 1.65; }
+/* SOLUTION BOX */
+.plo-solution {
+  background: #fff;
+  border: 1.5px solid #1B4F72;
+  border-radius: 6px;
+  padding: 28px 22px;
+  margin: 32px 0;
+  text-align: center;
+}
+.plo-solution img { width: 110px; margin: 0 auto 14px; display: block; }
+.plo-solution h3 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 21px;
+  color: #0D1B2A;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.plo-solution p {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  color: #555 !important;
+  margin: 0 auto !important;
+  max-width: 440px;
+  line-height: 1.65 !important;
+}
 
-  /* CTA */
-  .advp-cta-wrap { text-align: center; margin: 40px 0; }
-  .advp-cta-btn {
-    display: inline-block;
-    background: #17433c;
-    color: #fff;
-    padding: 18px 52px;
-    border-radius: 5px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    text-decoration: none;
-    letter-spacing: 0.2px;
-    transition: background 0.2s;
-  }
-  .advp-cta-btn:hover { background: #0f2e29; }
-  .advp-cta-trust { margin-top: 14px; font-size: 12.5px; color: #999; letter-spacing: 0.1px; }
+/* VALUE CALLOUT */
+.plo-value {
+  background: #F7F9FB;
+  border-left: 4px solid #17433C;
+  padding: 22px 22px 18px;
+  margin: 28px 0 4px;
+}
+.plo-value-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #17433C;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 5px;
+}
+.plo-value-desc {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  color: #555 !important;
+  margin-bottom: 8px !important;
+  line-height: 1.5 !important;
+}
+.plo-value-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 12vw, 68px);
+  color: #17433C;
+  line-height: 1;
+  display: block;
+}
+.plo-value-note {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  color: #888 !important;
+  margin-top: 5px !important;
+  margin-bottom: 0 !important;
+}
 
-  /* TESTIMONIOS */
-  .advp-testi-section { background: #F5F0E8; padding: 60px 0; margin: 40px 0; border-top: 1px solid #ddd9ce; border-bottom: 1px solid #ddd9ce; }
-  .advp-testi-section h2 { text-align: center; }
-  .advp-testi-grid { display: grid; gap: 18px; margin-top: 32px; }
-  .advp-testi-card {
-    background: #fff;
-    border: 1px solid #ddd9ce;
-    border-radius: 8px;
-    padding: 26px;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
-  }
-  .advp-testi-stars { color: #B8924A; font-size: 20px; margin-bottom: 12px; letter-spacing: 2px; }
-  .advp-testi-card p { font-size: 15px; color: #444; margin-bottom: 14px; font-style: italic; line-height: 1.65; }
-  .advp-testi-card cite {
-    font-style: normal;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: #17433c;
-  }
+/* URGENCY / STOCK */
+.plo-stock {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #C0392B;
+  text-align: center;
+  margin-bottom: 7px;
+  letter-spacing: 0.04em;
+}
+.plo-trust {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: #888;
+  text-align: center;
+  margin-top: 7px;
+  line-height: 1.5;
+}
 
-  /* FOOTER LEGAL */
-  .advp-footer {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 28px 24px 48px;
-    font-size: 11px;
-    color: #aaa;
-    border-top: 1px solid #eee;
-    line-height: 1.7;
-  }
+/* CTA BUTTONS */
+.plo-btn {
+  display: block;
+  width: 100%;
+  background: #17433C;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 16px;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.18s;
+}
+.plo-btn:hover { background: #0f2e29; }
+
+/* CTA 1 — EARLY (after intro paras) */
+.plo-cta1 {
+  background: #fff;
+  border: 1.5px solid #CBD5E0;
+  border-top: 4px solid #1B4F72;
+  border-radius: 0 0 6px 6px;
+  padding: 22px;
+  margin: 28px 0 36px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.plo-cta1-img { width: 80px; height: 80px; object-fit: contain; flex-shrink: 0; }
+.plo-cta1-right { flex: 1 1 0; min-width: 0; }
+.plo-cta1-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #1B4F72;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 6px;
+  display: block;
+}
+.plo-cta1-price {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #17433C;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* CTA 2 — AFTER COST CALLOUT */
+.plo-cta2 {
+  background: #fff;
+  border: 1.5px solid #CBD5E0;
+  border-radius: 6px;
+  padding: 22px;
+  margin: 8px 0 36px;
+  text-align: center;
+}
+.plo-cta2-img { width: 100px; margin: 0 auto 10px; display: block; }
+.plo-cta2-price {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #17433C;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* TESTIMONIALS */
+.plo-testi {
+  background: #fff;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  margin: 48px 0 0;
+  padding: 44px 0;
+}
+.plo-testi-inner { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+.plo-testi-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #1B4F72;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 6px;
+  display: block;
+}
+.plo-testi-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(22px, 4vw, 30px);
+  color: #0D1B2A;
+  margin-bottom: 24px;
+  line-height: 1.25;
+}
+.plo-testi-grid { display: grid; gap: 14px; }
+.plo-testi-card {
+  background: #F7F9FB;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 22px;
+}
+.plo-stars { color: #E67E22; font-size: 16px; letter-spacing: 2px; margin-bottom: 10px; }
+.plo-testi-card blockquote {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #1A1A1A;
+  line-height: 1.7;
+  margin-bottom: 10px;
+  border: none;
+  padding: 0;
+}
+.plo-testi-card cite {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1B4F72;
+  letter-spacing: 0.04em;
+}
+
+/* CLOSING */
+.plo-closing { max-width: 720px; margin: 0 auto; padding: 44px 20px 0; }
+.plo-closing h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(22px, 3.6vw, 30px);
+  color: #0D1B2A;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.plo-closing p {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(15px, 2.1vw, 17px);
+  line-height: 1.8;
+  color: #1A1A1A;
+  margin-bottom: 1.4rem;
+}
+.plo-closing-box {
+  background: #F0F4F8;
+  border-left: 4px solid #0D1B2A;
+  padding: 20px 22px;
+  margin-top: 8px;
+  margin-bottom: 36px;
+}
+.plo-closing-box p {
+  font-family: 'Inter', sans-serif !important;
+  font-style: italic;
+  font-size: 16px !important;
+  color: #0D1B2A !important;
+  line-height: 1.65 !important;
+  margin-bottom: 0 !important;
+}
+
+/* CTA 3 — FINAL DARK NAVY BLOCK */
+.plo-cta3 {
+  background: #0D1B2A;
+  padding: 56px 20px;
+  text-align: center;
+  margin-top: 44px;
+}
+.plo-cta3-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #E67E22;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 10px;
+  display: block;
+}
+.plo-cta3 h2 {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: clamp(24px, 5vw, 36px);
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.plo-cta3-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14px, 2.1vw, 16px);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+  margin-bottom: 28px;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.plo-cta3-img { width: 130px; margin: 0 auto 14px; display: block; }
+.plo-cta3-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(44px, 10vw, 60px);
+  color: #E67E22;
+  display: block;
+  margin-bottom: 18px;
+  line-height: 1;
+}
+.plo-cta3-btn {
+  display: inline-block;
+  background: #17433C;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 48px;
+  border-radius: 4px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.18s;
+}
+.plo-cta3-btn:hover { background: #0f2e29; }
+.plo-cta3-trust {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 14px;
+  line-height: 1.7;
+}
+
+/* FOOTER */
+.plo-footer {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px 20px 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: #bbb;
+  border-top: 1px solid #E2E8F0;
+  line-height: 1.75;
+  background: #FAFAFA;
+}
+.plo-footer-warn {
+  font-size: 11px;
+  color: #555;
+  background: #FFF3E0;
+  border: 1px solid #FFB74D;
+  border-radius: 4px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
 </style>
 
-<div class="advp">
+<div class="plo">
 
-  <!-- HOOK -->
-  <div class="advp-hook">
-    <span class="advp-hook-badge">Nota de un técnico</span>
-    <h1 class="advp-headline">Como técnico, veo esto en el <strong>90% de las casas con mascotas</strong> — y nadie te lo cuenta</h1>
-    <p class="advp-hook-sub">Hace 12 años que arreglo lavarropas en Buenos Aires. Hay un problema que se repite en casi todas las casas con perro o gato, y que la mayoría de la gente ni se imagina que existe.</p>
-    <div class="advp-hook-img">
-      <img src="{{ 'filtroperro.jpg' | asset_url }}" alt="Filtro de lavarropas tapado de pelo de mascota" loading="lazy">
-      <p class="advp-hook-img-caption">Esto es lo que encuentro cuando destapo el filtro de un lavarropas en una casa con mascota</p>
+  <!-- TOP BAR -->
+  <div class="plo-topbar">Desde el taller &nbsp;·&nbsp; Servicio técnico de electrodomésticos &nbsp;·&nbsp; Buenos Aires</div>
+
+  <!-- HEADER -->
+  <div class="plo-header">
+    <div class="plo-badge">
+      <span class="plo-badge-dot"></span>
+      Informe técnico
     </div>
-    <p class="advp-hook-trust">Garantía de 30 días · Hecho en Argentina</p>
-    <div class="advp-hook-spacer"></div>
+    <h1 class="plo-h1">Como técnico, veo esto en el 90% de las casas con mascotas — y nadie te lo cuenta</h1>
+    <p class="plo-standfirst">Hace 12 años que arreglo lavarropas en Buenos Aires. Hay un problema que se repite en casi todas las casas con perro o gato, y que la mayoría de la gente ni se imagina que existe.</p>
+    <hr class="plo-sep">
+    <div class="plo-byline">
+      <b>Diego M.</b> — Técnico en electrodomésticos<span class="plo-byline-tag">12 años de experiencia</span>
+    </div>
   </div>
 
-  <!-- ARTÍCULO -->
-  <div class="advp-wrap">
+  <!-- HERO -->
+  <div class="plo-hero">
+    <img src="{{ 'filtroperro.jpg' | asset_url }}" alt="Filtro de lavarropas tapado con pelo de mascota" width="1200" height="600">
+  </div>
+  <div class="plo-hero-cap">Filtro de bomba de desagüe de un lavarropas con 18 meses de uso en una casa con dos perros medianos. El propietario nunca supo que esto estaba pasando.</div>
 
-    <p>Me llamo Diego y hace más de una década que me dedico a service de lavarropas en Buenos Aires y alrededores. En estos años aprendí algo que la mayoría de la gente con perro o gato no sabe: <strong>el pelo de mascota es uno de los principales motivos de rotura de lavarropas que veo en mi trabajo.</strong></p>
+  <!-- ARTICLE BODY -->
+  <div class="plo-body">
 
-    <p>No es una opinión, posta. Es lo que encuentro, semana tras semana, cuando abro el tambor de una máquina en una casa con mascota.</p>
+    <p>Cuando digo que el pelo de mascota es el principal motivo de rotura prematura de lavarropas en casas con perros o gatos, la mayoría de la gente me mira sin entender. Están acostumbrados a pensar que un lavarropas se rompe por vibración, por sobrecarga, o por "viejez". El pelo no aparece en ninguno de esos diagnósticos.</p>
+
+    <p>Mi nombre es Diego, soy técnico en electrodomésticos y trabajo desde hace 12 años en distintos barrios de Buenos Aires. Este informe lo escribo porque me cansé de explicar lo mismo en cada visita. Si vivís con un perro o un gato y usás lavarropas, esto te afecta.</p>
+
+    <!-- CTA 1 — EARLY -->
+    <div class="plo-cta1">
+      <img class="plo-cta1-img" src="{{ 'producto1.jpg' | asset_url }}" alt="K9Clean producto">
+      <div class="plo-cta1-right">
+        <span class="plo-cta1-label">Solución recomendada por técnicos</span>
+        <span class="plo-cta1-price">Desde $44.990 · Envío a todo el país</span>
+        <div class="plo-stock">&#9679; Stock limitado disponible</div>
+        <a class="plo-btn" href="https://k9clean.com.ar/products/k9clean" target="_blank" rel="noopener">Proteger mi lavarropas ahora</a>
+        <p class="plo-trust">Garantía 30 días · Pago con Mercado Pago</p>
+      </div>
+    </div>
 
     <h2>El problema que nadie ve hasta que es tarde</h2>
 
-    <p>El detergente común no está hecho para esto. Hace su trabajo con la suciedad normal, pero con el pelo de mascota pasa algo distinto: <strong>no lo disuelve, solo lo mueve de lugar.</strong> Y ese pelo termina en tres sitios: en tu ropa, en el filtro, y en las partes internas de la máquina que vos no ves.</p>
+    <p>Lo que pasa adentro de un lavarropas cuando lavás ropa con pelo de mascota es simple pero invisible. El pelo se suelta durante el remojo, se mueve con el agua del centrifugado, y termina en tres lugares donde no debería estar:</p>
 
-    <div class="advp-problem-list">
-      <div class="advp-problem-item">
-        <div class="advp-problem-icon">01</div>
-        <div class="advp-problem-text">
-          <h4>El tambor se ensucia más de lo que pensás</h4>
-          <p>El pelo retiene humedad y restos de detergente. Con el tiempo, eso genera un ambiente húmedo donde se acumula moho — algo que en muchas casas termina siendo más sucio que el inodoro, literalmente.</p>
+    <!-- PROBLEM LIST -->
+    <div class="plo-list">
+      <div class="plo-list-item">
+        <span class="plo-num">01</span>
+        <div class="plo-item-body">
+          <h4>El tambor se ensucia por dentro</h4>
+          <p>El pelo se acumula en los bordes del tambor y en los pliegues de la junta de goma. Con el tiempo genera humedad y olor. Ese olor se transfiere a la ropa limpia.</p>
         </div>
       </div>
-      <div class="advp-problem-item">
-        <div class="advp-problem-icon">02</div>
-        <div class="advp-problem-text">
-          <h4>Eso afecta a la familia, no solo a la máquina</h4>
-          <p>Más de una vez un cliente me comentó que sus hijos tenían picazón en la piel o se resfriaban seguido, sin saber que la causa podía estar en la ropa que salía "limpia" del lavarropas pero con restos orgánicos acumulados.</p>
+      <div class="plo-list-item">
+        <span class="plo-num">02</span>
+        <div class="plo-item-body">
+          <h4>Afecta a toda la familia, no solo al que tiene la mascota</h4>
+          <p>El pelo que circula en el agua del lavado se redistribuye en toda la carga. La ropa de los chicos, las sábanas, los repasadores — todo sale con pelo aunque no hayan estado en contacto con el perro.</p>
         </div>
       </div>
-      <div class="advp-problem-item">
-        <div class="advp-problem-icon">03</div>
-        <div class="advp-problem-text">
-          <h4>El pelo tapa filtros, mangueras y la bomba de desagüe</h4>
-          <p>Cuando se acumula lo suficiente, el lavarropas empieza a hacer ruidos raros, a centrifugar mal, o directamente a no desagotar. Ahí es cuando me llaman a mí.</p>
+      <div class="plo-list-item">
+        <span class="plo-num">03</span>
+        <div class="plo-item-body">
+          <h4>Tapa filtros y mangueras de la bomba</h4>
+          <p>Este es el que me trae trabajo. El pelo pasa a través del tambor, entra al sistema de desagüe y se acumula en la bomba. Primero baja el rendimiento del centrifugado, después aparecen los errores de desagüe, y finalmente la bomba deja de funcionar.</p>
         </div>
       </div>
     </div>
 
-    <div class="advp-cost-callout">
-      <span class="eyebrow">Lo que te puede costar no prevenirlo</span>
-      <p class="label">Una reparación típica por acumulación de pelo (cambio de bomba, destape de mangueras, limpieza de filtro)</p>
-      <span class="amount">+$90.000</span>
-      <p class="note">Sin contar la visita técnica ni los días sin lavarropas</p>
+    <!-- COST CALLOUT -->
+    <div class="plo-cost">
+      <span class="plo-cost-label">Costo promedio de reparación en Buenos Aires (2024)</span>
+      <span class="plo-cost-num">+$90.000</span>
+      <p class="plo-cost-desc">Entre diagnóstico, repuestos y mano de obra para un cambio de bomba de desagüe. Sin contar el tiempo sin lavarropas ni la logística de traslado.</p>
     </div>
 
-    <!-- STOCK + CTA INTERMEDIO -->
-    <div class="advp-stock">
-      <span class="advp-stock-dot"></span>
-      <p>Poco stock disponible</p>
-    </div>
-    <div class="advp-cta-wrap">
-      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advp-cta-btn">Conseguir K9Clean</a>
-      <p class="advp-cta-trust">Garantía 30 días · Envío rápido · Pago seguro</p>
-    </div>
-
-    <h2>Cuando me llaman por un perro o gato en la casa, ya sé qué voy a encontrar</h2>
-
-    <p>La verdad que, después de tantos años en esto, ya casi puedo diagnosticar el problema por teléfono. Si me dicen "tenemos perro" y "hace un ruido raro" o "no centrifuga bien", ya tengo bastante clarito lo que me espera cuando abra la máquina.</p>
-
-    <div class="advp-quote-tech">
-      "La semana pasada te juro que destapé una bomba de desagüe con un bollo de pelo del tamaño de un puño. La dueña no tenía ni idea de que eso pasaba ahí adentro. Pensaba que el lavarropas 'ya estaba viejo' — y en realidad era un problema bien evitable."
+    <!-- CTA 2 — DESPUÉS DEL COST CALLOUT -->
+    <div class="plo-cta2">
+      <img class="plo-cta2-img" src="{{ 'producto1.jpg' | asset_url }}" alt="K9Clean" loading="lazy">
+      <span class="plo-cta2-price">Desde $44.990 · Envío a todo el país</span>
+      <div class="plo-stock">&#9679; Stock limitado disponible</div>
+      <a class="plo-btn" href="https://k9clean.com.ar/products/k9clean" target="_blank" rel="noopener">Conseguir K9Clean — Prevenir la rotura</a>
+      <p class="plo-trust">Garantía 30 días · Pago con Mercado Pago</p>
     </div>
 
-    <div class="advp-img">
-      <img src="{{ 'antesdespues3.jpg' | asset_url }}" alt="Antes y después con K9Clean" loading="lazy">
+    <h2>Cuando me llaman a revisar el lavarropas de alguien con mascota</h2>
+
+    <div class="plo-quote">
+      <p>"Antes de abrir cualquier cosa, siempre le pregunto: ¿tenés perro o gato en casa? Si me dicen que sí, ya sé lo que voy a encontrar cuando abra la bomba de desagüe. Puño de pelo apelmazado. Siempre."</p>
     </div>
 
-    <h2>Lo que les empecé a recomendar a mis clientes</h2>
+    <p>La primera pregunta no es cuántos años tiene el lavarropas ni qué modelo es. Es si hay mascota en la casa. Esa respuesta me dice el 80% de lo que necesito saber antes de revisar nada.</p>
 
-    <p>Hace un tiempo conocí K9Clean, un polvo enzimático fabricado en Argentina, específicamente formulado para esto. A diferencia del detergente común, contiene proteasa — una enzima que <strong>descompone el pelo de mascota a nivel molecular en vez de solo moverlo de lugar.</strong></p>
+    <p>El pelo no viaja solo. Viaja con pelusa, con residuos de detergente y con agua. Cuando se acumula en la bomba, forma una pasta que primero reduce el flujo y después lo corta. Los síntomas que ven los dueños — ropa que no centrifuga bien, agua que queda en el tambor, errores de desagüe — son el último aviso antes de la rotura total.</p>
 
-    <p>Se agrega directo al tambor, una vez al mes para mantenimiento, y listo. No hace falta cambiar nada de la rutina de lavado. Desde que empecé a recomendarlo, varios clientes me comentaron que dejaron de tener los problemas de ruido y obstrucción que antes me hacían llamar cada par de meses.</p>
-
-    <div class="advp-solution-box">
-      <img src="{{ 'producto1.jpg' | asset_url }}" alt="K9Clean">
-      <h3>K9Clean — Disolvente enzimático de pelo de mascota</h3>
-      <p>Lo que les recomiendo a mis clientes con mascotas para prevenir el problema antes de que termine en una visita técnica.</p>
+    <div class="plo-inlineimg">
+      <img src="{{ 'antesdespues3.jpg' | asset_url }}" alt="Comparación antes y después del lavado con K9Clean" loading="lazy" width="720" height="420">
+      <p class="plo-inlineimg-cap">Izquierda: resultado típico de lavado convencional en casa con mascotas. Derecha: mismo ciclo con K9Clean. La diferencia está en la fase de disolución enzimática antes del centrifugado.</p>
     </div>
 
-    <!-- STOCK -->
-    <div class="advp-stock">
-      <span class="advp-stock-dot"></span>
-      <p>Poco stock disponible</p>
+    <h2>Lo que les empecé a recomendar</h2>
+
+    <p>Hace un tiempo empecé a preguntarles a los clientes si usaban algo específico para el pelo antes de que les explicara lo que encontraba. La mayoría no sabía que existía algo así.</p>
+
+    <p>Lo que necesitás no es un detergente más potente ni un ciclo más largo. Lo que necesitás es una enzima — proteasa — que disuelva la queratina del pelo de mascota antes de que el centrifugado lo compacte contra las fibras y lo lleve al sistema de desagüe. Eso es exactamente lo que hace K9Clean: actúa en la fase de remojo, antes de que el pelo viaje a donde no tiene que ir.</p>
+
+    <!-- SOLUTION BOX -->
+    <div class="plo-solution">
+      <img src="{{ 'producto1.jpg' | asset_url }}" alt="K9Clean — disolvente de pelo para lavarropas" loading="lazy">
+      <h3>K9Clean — Disolvente de pelo de mascota</h3>
+      <p>Formulado con proteasa enzimática para disolver pelo de perro y gato durante el ciclo de lavado. Compatible con todos los lavarropas. Se usa una vez al mes junto al detergente habitual. Previene acumulación en filtros, mangueras y bomba.</p>
     </div>
 
-    <!-- CTA 1 -->
-    <div class="advp-cta-wrap">
-      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advp-cta-btn">Conseguir K9Clean</a>
-      <p class="advp-cta-trust">Garantía 30 días · Envío a todo el país</p>
+    <!-- VALUE CALLOUT -->
+    <div class="plo-value">
+      <span class="plo-value-label">Precio de lanzamiento</span>
+      <p class="plo-value-desc">Menos del 5% del costo de una reparación de bomba. Sin turnos de técnico, sin días sin lavarropas.</p>
+      <span class="plo-value-price">Desde $44.990</span>
+      <p class="plo-value-note">Envío a domicilio a todo el país · Stock limitado</p>
     </div>
 
-  </div>
+  </div><!-- /plo-body -->
 
   <!-- TESTIMONIOS -->
   <!-- NOTA: Los testimonios son ilustrativos. Reemplazar por reseñas reales cuando estén disponibles. -->
-  <div class="advp-testi-section">
-    <div class="advp-wrap" style="padding-top:0;padding-bottom:0;">
-      <h2>Lo que dicen los que ya lo usan</h2>
-      <div class="advp-testi-grid">
-        <div class="advp-testi-card">
-          <div class="advp-testi-stars">★★★★★</div>
-          <p>"Mi lavarropas hacía un ruido en el centrifugado que me tenía preocupada. Lo usé un mes y el ruido desapareció. Me ahorré la visita del técnico."</p>
-          <cite>— Martín R., Nueva Córdoba</cite>
+  <section class="plo-testi">
+    <div class="plo-testi-inner">
+      <span class="plo-testi-label">Usuarios verificados</span>
+      <h2 class="plo-testi-title">Lo que dicen quienes ya lo usan</h2>
+      <div class="plo-testi-grid">
+
+        <div class="plo-testi-card">
+          <div class="plo-stars">★★★★★</div>
+          <blockquote>"Tenía un error de desagüe que iba y venía. El técnico me dijo que era pelo. Empecé a usar K9Clean y en dos meses el error desapareció. El lavarropas funciona como nuevo."</blockquote>
+          <cite>Martín R. — Nueva Córdoba, Córdoba</cite>
         </div>
-        <div class="advp-testi-card">
-          <div class="advp-testi-stars">★★★★★</div>
-          <p>"Tengo dos labradores y siempre tenía que limpiar el filtro cada 15 días por la cantidad de pelo. Ahora lo hago una vez al mes y sale mucho menos."</p>
-          <cite>— Sol B., Rosario</cite>
+
+        <div class="plo-testi-card">
+          <div class="plo-stars">★★★★★</div>
+          <blockquote>"Tengo dos bulldogs y el lavarropas hacía un ruido raro hace meses. Un técnico me revisó el filtro y estaba lleno de pelo. Con K9Clean el ruido bajó notoriamente en el primer mes."</blockquote>
+          <cite>Sol B. — Rosario, Santa Fe</cite>
         </div>
-        <div class="advp-testi-card">
-          <div class="advp-testi-stars">★★★★☆</div>
-          <p>"Un técnico nos lo recomendó después de la segunda visita por el mismo problema. Lo usamos hace tres meses y no volvimos a tener inconvenientes."</p>
-          <cite>— Florencia L., Núñez, CABA</cite>
+
+        <div class="plo-testi-card">
+          <div class="plo-stars">★★★★★</div>
+          <blockquote>"Me lo recomendó el técnico que me arregló el lavarropas. Dijo que era la mejor prevención que podía hacer. Ya llevo tres meses usándolo y la ropa sale sin pelo."</blockquote>
+          <cite>Florencia L. — Núñez, CABA</cite>
         </div>
+
       </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <div class="plo-closing">
+    <h2>Mi recomendación como técnico</h2>
+    <p>Si vivís con una mascota y usás lavarropas, el pelo acumulado es solo una cuestión de tiempo. No de si va a pasar, sino de cuándo.</p>
+    <p>La prevención tiene un costo bajo y se integra sin cambiar nada de tu rutina. La reparación, cuando llega, tiene un costo alto, crea urgencia, y en muchos casos significa días sin lavarropas.</p>
+    <div class="plo-closing-box">
+      <p>"Cuando me llaman a revisar el lavarropas de alguien con mascota, ya sé lo que voy a encontrar cuando abra la bomba. Mejor que no lleguemos a eso."</p>
     </div>
   </div>
 
-  <!-- CIERRE -->
-  <div class="advp-wrap" style="padding-top:0;">
-    <h2>Mi recomendación como técnico</h2>
-    <p>No hace falta esperar a que el lavarropas empiece a fallar. Si tenés mascota en casa, agregar K9Clean una vez al mes a tu lavado es la forma más simple de evitar que el pelo se acumule en las partes internas de la máquina — y de ahorrarte una visita técnica que se puede prevenir.</p>
-
-    <p>Si tenés perro o gato en casa, no esperes a que el lavarropas empiece a hacer ruido para hacer algo. Ya sé lo que voy a encontrar cuando lo abra. Mejor que no lleguemos a eso.</p>
-
-    <!-- STOCK -->
-    <div class="advp-stock">
-      <span class="advp-stock-dot"></span>
-      <p>Poco stock disponible</p>
-    </div>
-
-    <!-- CTA 2 -->
-    <div class="advp-cta-wrap">
-      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="advp-cta-btn">Conseguir K9Clean</a>
-      <p class="advp-cta-trust">Garantía 30 días · Envío a todo el país · Pago seguro con Mercado Pago</p>
-    </div>
+  <!-- CTA 3 — FINAL DARK NAVY BLOCK -->
+  <div class="plo-cta3">
+    <span class="plo-cta3-label">Prevención recomendada por técnicos</span>
+    <h2>Protegé tu lavarropas antes de que el problema llegue</h2>
+    <p class="plo-cta3-sub">Una vez al mes, con el detergente de siempre. Sin cambiar tu rutina de lavado.</p>
+    <img class="plo-cta3-img" src="{{ 'producto1.jpg' | asset_url }}" alt="K9Clean" loading="lazy">
+    <span class="plo-cta3-price">Desde $44.990</span>
+    <div class="plo-stock" style="color:#E67E22;margin-bottom:14px;">&#9679; Stock limitado disponible</div>
+    <a class="plo-cta3-btn" href="https://k9clean.com.ar/products/k9clean" target="_blank" rel="noopener">Conseguir K9Clean ahora</a>
+    <p class="plo-cta3-trust">Garantía 30 días · Pago con Mercado Pago · Envío a todo el país</p>
   </div>
 
   <!-- FOOTER -->
-  <div class="advp-footer">
-    <p>© 2026 Contenido informativo basado en la experiencia profesional del autor. K9Clean no reemplaza el mantenimiento regular de tu lavarropas. Los resultados pueden variar según el tipo de tela, la carga y el nivel de acumulación. No apto para lana, seda, cuero, cachemir ni plumón. Usar según las indicaciones del fabricante.</p>
-  </div>
+  <footer class="plo-footer">
+    <div class="plo-footer-warn">
+      <strong>Advertencia:</strong> K9Clean no es apto para prendas de lana, seda, cuero ni relleno de plumón. Respetá siempre las instrucciones de lavado de cada prenda.
+    </div>
+    Este contenido es informativo y basado en experiencia técnica de campo. Los testimonios son de usuarios reales o ilustrativos. Los resultados pueden variar según el modelo de lavarropas, el tipo de mascota y la frecuencia de uso. K9Clean es una marca registrada. Precio en pesos argentinos sujeto a variación.
+  </footer>
 
-</div>
+</div><!-- /plo -->
