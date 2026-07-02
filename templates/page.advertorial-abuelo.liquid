@@ -93,6 +93,10 @@
 }
 .abu-hero img {
   width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  object-position: center top;
   display: block;
   border-radius: 6px;
   box-shadow: 0 4px 28px rgba(44,24,16,0.1);
@@ -584,7 +588,7 @@
 
   <!-- HERO -->
   <div class="abu-hero">
-    <img src="{{ 'humanoperro.jpg' | asset_url }}" alt="Mano anciana y zarpa de perro, luz cálida" width="1200" height="700" fetchpriority="high" loading="eager">
+    <img src="{{ 'humanoperro.jpg' | asset_url }}" alt="Mano anciana y zarpa de perro, luz cálida" width="1200" fetchpriority="high" loading="eager">
     <p class="abu-hero-cap">Aldo y Toby, el ovejero que lo acompañó más de diez años.</p>
   </div>
 
