@@ -42,12 +42,16 @@
       r.send();
     }
 
-    // Estrategia principal: limpiar al cargar la pagina de producto
-    document.addEventListener('DOMContentLoaded', function(){
+    function maybeClear(){
       var el = document.querySelector('[data-product-id]');
       if(!el) return;
       clearK9Lines(el.dataset.productId, null);
-    });
+    }
+
+    // Carga normal
+    document.addEventListener('DOMContentLoaded', maybeClear);
+    // Restauracion desde bfcache (back button en mobile)
+    window.addEventListener('pageshow', function(e){ if(e.persisted) maybeClear(); });
 
     // Fallback: interceptar XHR si Kaching usa /cart/add.js
     window.XMLHttpRequest = function(){
