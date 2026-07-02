@@ -201,31 +201,57 @@
 
   var _fetch = window.fetch.bind(window);
 
-  window.fetch = function(input, init) {
-    var url = typeof input === 'string' ? input : (input && input.url ? input.url : '');
-    if (url.indexOf('/cart/add') === -1) return _fetch(input, init);
-
+  function clearK9Lines() {
     return _fetch('/cart.js')
       .then(function(r) { return r.json(); })
       .then(function(cart) {
-        var existing = (cart.items || []).filter(function(item) {
-          return String(item.product_id) === String(pid);
-        });
-        if (!existing.length) return _fetch(input, init);
-
-        return existing.reduce(function(chain, item) {
-          return chain.then(function() {
-            return _fetch('/cart/change.js', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id: item.key, quantity: 0 })
+        return (cart.items || [])
+          .filter(function(i) { return String(i.product_id) === String(pid); })
+          .reduce(function(chain, item) {
+            return chain.then(function() {
+              return _fetch('/cart/change.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: item.key, quantity: 0 })
+              });
             });
-          });
-        }, Promise.resolve()).then(function() {
-          return _fetch(input, init);
-        });
+          }, Promise.resolve());
       })
-      .catch(function() { return _fetch(input, init); });
+      .catch(function() {});
+  }
+
+  // Intercept fetch
+  window.fetch = function(input, init) {
+    var url = typeof input === 'string' ? input : (input && input.url ? input.url : '');
+    if (url.indexOf('/cart/add') !== -1) {
+      return clearK9Lines().then(function() { return _fetch(input, init); });
+    }
+    return _fetch(input, init);
+  };
+
+  // Intercept XHR (Kaching puede usar XHR en lugar de fetch)
+  var _XHR = window.XMLHttpRequest;
+  window.XMLHttpRequest = function() {
+    var xhr = new _XHR();
+    var xhrOpen = xhr.open.bind(xhr);
+    var xhrSend = xhr.send.bind(xhr);
+    var xhrMethod = '', xhrUrl = '';
+
+    xhr.open = function() {
+      xhrMethod = arguments[0] || '';
+      xhrUrl = arguments[1] || '';
+      return xhrOpen.apply(null, arguments);
+    };
+
+    xhr.send = function(body) {
+      if (xhrMethod.toUpperCase() === 'POST' && xhrUrl.indexOf('/cart/add') !== -1) {
+        clearK9Lines().then(function() { xhrSend(body); });
+        return;
+      }
+      return xhrSend(body);
+    };
+
+    return xhr;
   };
 })();
 
