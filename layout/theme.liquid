@@ -14,6 +14,64 @@
 
   <link rel="preload" href="{{ 'k9clean.css' | asset_url }}" as="style">
   {{ 'k9clean.css' | asset_url | stylesheet_tag }}
+  <script>
+  /* Kaching cart deduplicator — corre antes que Kaching inicialice */
+  (function(){
+    var _XHR = window.XMLHttpRequest;
+    var _fetch = window.fetch ? window.fetch.bind(window) : null;
+
+    function clearK9Lines(done){
+      var el = document.querySelector('[data-product-id]');
+      var pid = el && el.dataset.productId;
+      if(!pid){ done(); return; }
+      var r = new _XHR();
+      r.open('GET','/cart.js',true);
+      r.onload = function(){
+        try{
+          var items = JSON.parse(r.responseText).items || [];
+          var lines = items.filter(function(i){ return String(i.product_id)===String(pid); });
+          if(!lines.length){ done(); return; }
+          var n=0;
+          lines.forEach(function(item){
+            var x = new _XHR();
+            x.open('POST','/cart/change.js',true);
+            x.setRequestHeader('Content-Type','application/json');
+            x.onload = x.onerror = function(){ if(++n===lines.length) done(); };
+            x.send(JSON.stringify({id:item.key,quantity:0}));
+          });
+        }catch(e){ done(); }
+      };
+      r.onerror = function(){ done(); };
+      r.send();
+    }
+
+    window.XMLHttpRequest = function(){
+      var xhr = new _XHR();
+      var m='', u='';
+      var oOpen=xhr.open.bind(xhr), oSend=xhr.send.bind(xhr);
+      xhr.open = function(){ m=arguments[0]||''; u=arguments[1]||''; return oOpen.apply(null,arguments); };
+      xhr.send = function(body){
+        if(m.toUpperCase()==='POST' && u.indexOf('/cart/add')!==-1){
+          clearK9Lines(function(){ oSend(body); }); return;
+        }
+        return oSend(body);
+      };
+      return xhr;
+    };
+
+    if(_fetch){
+      window.fetch = function(input,init){
+        var u = typeof input==='string'?input:(input&&input.url?input.url:'');
+        if(u.indexOf('/cart/add')!==-1){
+          return new Promise(function(res,rej){
+            clearK9Lines(function(){ _fetch(input,init).then(res).catch(rej); });
+          });
+        }
+        return _fetch(input,init);
+      };
+    }
+  })();
+  </script>
   {{ content_for_header }}
 </head>
 <body>
