@@ -192,6 +192,43 @@
   fadeEls.forEach(function(el) { observer.observe(el); });
 })();
 
+/* ---- Kaching: reemplazar bundle anterior en vez de acumular líneas ---- */
+(function() {
+  var section = document.querySelector('[data-product-id]');
+  if (!section) return;
+  var pid = section.dataset.productId;
+  if (!pid) return;
+
+  var _fetch = window.fetch.bind(window);
+
+  window.fetch = function(input, init) {
+    var url = typeof input === 'string' ? input : (input && input.url ? input.url : '');
+    if (url.indexOf('/cart/add') === -1) return _fetch(input, init);
+
+    return _fetch('/cart.js')
+      .then(function(r) { return r.json(); })
+      .then(function(cart) {
+        var existing = (cart.items || []).filter(function(item) {
+          return String(item.product_id) === String(pid);
+        });
+        if (!existing.length) return _fetch(input, init);
+
+        return existing.reduce(function(chain, item) {
+          return chain.then(function() {
+            return _fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: item.key, quantity: 0 })
+            });
+          });
+        }, Promise.resolve()).then(function() {
+          return _fetch(input, init);
+        });
+      })
+      .catch(function() { return _fetch(input, init); });
+  };
+})();
+
 /* ---- Track Buttons with Result Display (seguimiento.html) ---- */
 (function() {
   var result = document.getElementById('trackResult');
