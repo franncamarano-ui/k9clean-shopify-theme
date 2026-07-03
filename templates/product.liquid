@@ -484,7 +484,7 @@
 
   function makeBadge(text, bg, color){
     var b = document.createElement('span');
-    b.style.cssText = 'position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;background:'+bg+';color:'+color+';padding:3px 12px;border-radius:20px;white-space:nowrap;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.18);letter-spacing:0.5px;';
+    b.style.cssText = 'position:absolute;top:-12px;right:12px;font-size:10px;font-weight:700;background:'+bg+';color:'+color+';padding:3px 12px;border-radius:20px;white-space:nowrap;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.18);letter-spacing:0.5px;';
     b.textContent = text;
     return b;
   }
@@ -498,16 +498,6 @@
         card3.style.position = 'relative';
         card3.style.marginTop = '14px';
         card3.insertBefore(makeBadge('★ MEJOR VALOR','var(--verde-oscuro)','#fff'), card3.firstChild);
-      }
-    }
-    // 2 Unidades → MÁS POPULAR (dorado)
-    if(!section.dataset.k9badge2){
-      var card2 = findCardForText(/^2\s*[Uu]nidades?$/);
-      if(card2){
-        section.dataset.k9badge2 = '1';
-        card2.style.position = 'relative';
-        card2.style.marginTop = '14px';
-        card2.insertBefore(makeBadge('★ MÁS POPULAR','var(--dorado)','var(--verde-oscuro)'), card2.firstChild);
       }
     }
   }
