@@ -464,42 +464,57 @@
     if(btn && btn !== nativeBtn) setLoading(btn);
   }, true);
 
-  // Punto 4: badge "MEJOR VALOR" flotante sobre la card de 3 unidades
-  function injectBundleExtras(){
-    if(section.dataset.k9done) return;
-
-    // Buscar el elemento hoja que contenga exactamente "3 Unidades" o "3 unidades"
+  // Punto 4: badges flotantes sobre cards de bundle
+  function findCardForText(pattern){
     var found = null;
     section.querySelectorAll('*').forEach(function(el){
       if(found) return;
       var txt = (el.textContent || '').trim();
-      if(/^3\s*[Uu]nidades?$/.test(txt) && el.children.length === 0) found = el;
+      if(pattern.test(txt) && el.children.length === 0) found = el;
     });
-    if(!found) return;
-
-    // Subir hasta encontrar la card contenedora (ancho > 200px, dentro de section)
+    if(!found) return null;
     var card = found.parentElement;
     for(var i = 0; i < 6; i++){
       if(!card || card === section) break;
       if(card.getBoundingClientRect().width > 200) break;
       card = card.parentElement;
     }
-    if(!card || card === section) card = found.parentElement;
+    return (!card || card === section) ? found.parentElement : card;
+  }
 
-    section.dataset.k9done = '1';
-    card.style.position = 'relative';
-    card.style.marginTop = '14px';
+  function makeBadge(text, bg, color){
+    var b = document.createElement('span');
+    b.style.cssText = 'position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;background:'+bg+';color:'+color+';padding:3px 12px;border-radius:20px;white-space:nowrap;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.18);letter-spacing:0.5px;';
+    b.textContent = text;
+    return b;
+  }
 
-    var badge = document.createElement('span');
-    badge.style.cssText = 'position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;background:var(--verde-oscuro);color:#fff;padding:3px 12px;border-radius:20px;white-space:nowrap;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.15);letter-spacing:0.5px;';
-    badge.textContent = '★ MEJOR VALOR';
-    card.insertBefore(badge, card.firstChild);
+  function injectBundleExtras(){
+    // 3 Unidades → MEJOR VALOR (verde oscuro)
+    if(!section.dataset.k9badge3){
+      var card3 = findCardForText(/^3\s*[Uu]nidades?$/);
+      if(card3){
+        section.dataset.k9badge3 = '1';
+        card3.style.position = 'relative';
+        card3.style.marginTop = '14px';
+        card3.insertBefore(makeBadge('★ MEJOR VALOR','var(--verde-oscuro)','#fff'), card3.firstChild);
+      }
+    }
+    // 2 Unidades → MÁS POPULAR (dorado)
+    if(!section.dataset.k9badge2){
+      var card2 = findCardForText(/^2\s*[Uu]nidades?$/);
+      if(card2){
+        section.dataset.k9badge2 = '1';
+        card2.style.position = 'relative';
+        card2.style.marginTop = '14px';
+        card2.insertBefore(makeBadge('★ MÁS POPULAR','var(--dorado)','var(--verde-oscuro)'), card2.firstChild);
+      }
+    }
   }
 
   // Observar cuando Kaching renderiza su widget
   var observer = new MutationObserver(function(){ injectBundleExtras(); });
   observer.observe(section, { childList: true, subtree: true });
-  // Intentar también de inmediato y con delay por si ya renderizó
   injectBundleExtras();
   setTimeout(injectBundleExtras, 800);
   setTimeout(injectBundleExtras, 2000);
