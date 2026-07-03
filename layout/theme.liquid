@@ -37,7 +37,7 @@
     // Restauracion desde bfcache (back button en mobile)
     window.addEventListener('pageshow', function(e){ if(e.persisted) maybeClear(); });
 
-    // Interceptor XHR: limpiar carrito antes de cada add de Kaching
+    // Interceptor XHR: limpiar carrito y redirigir al checkout tras add de Kaching
     window.XMLHttpRequest = function(){
       var xhr = new _XHR();
       var m='', u='';
@@ -46,6 +46,11 @@
       xhr.send = function(body){
         if(m.toUpperCase()==='POST' && u.indexOf('/cart/add')!==-1){
           if(document.querySelector('[data-product-id]')){
+            var origOnLoad = xhr.onload;
+            xhr.onload = function(e){
+              if(origOnLoad) origOnLoad.call(xhr, e);
+              window.location.href = '/checkout';
+            };
             clearCart(function(){ oSend(body); }); return;
           }
         }
@@ -59,10 +64,11 @@
     if(_fetch){
       window.fetch = function(input,init){
         var u = typeof input==='string'?input:(input&&input.url?input.url:'');
-        if(u.indexOf('/cart/add')!==-1){
+        if(u.indexOf('/cart/add')!==-1 && document.querySelector('[data-product-id]')){
           return new Promise(function(res,rej){
-            var el=document.querySelector('[data-product-id]');
-            clearK9Lines(el&&el.dataset.productId, function(){ _fetch(input,init).then(res).catch(rej); });
+            clearCart(function(){
+              _fetch(input,init).then(function(r){ window.location.href='/checkout'; res(r); }).catch(rej);
+            });
           });
         }
         return _fetch(input,init);
@@ -99,10 +105,6 @@
       <div class="header-icons">
         <button class="hamburger" id="hamburgerBtn" aria-label="Menú"><span></span><span></span><span></span></button>
         <a href="/pages/contacto" aria-label="Contacto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></a>
-        <button id="cartToggle" aria-label="Carrito" style="background:none;border:none;padding:0;cursor:pointer;position:relative;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:22px;height:22px;color:var(--crema);"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          {% if cart.item_count > 0 %}<span id="cartCount" style="position:absolute;top:-6px;right:-8px;background:var(--dorado);color:var(--verde-oscuro);font-size:10px;font-weight:800;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;">{{ cart.item_count }}</span>{% endif %}
-        </button>
       </div>
     </div>
   </header>
@@ -162,73 +164,6 @@
     <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="btn btn-primary">Quiero el mío</a>
   </div>
 
-  <!-- CART DRAWER -->
-  <div id="cartOverlay" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);z-index:9998;"></div>
-  <div id="cartDrawer" style="position:fixed;top:0;right:-400px;width:380px;max-width:90vw;height:100%;background:#fff;z-index:9999;transition:right 0.3s ease;box-shadow:-4px 0 20px rgba(0,0,0,0.15);display:flex;flex-direction:column;">
-    <div style="padding:20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;">
-      <h3 style="font-family:var(--font-display);font-size:20px;color:var(--verde-oscuro);margin:0;">Tu Carrito</h3>
-      <button id="cartClose" style="background:none;border:none;font-size:24px;cursor:pointer;color:var(--texto-medio);padding:4px;">&#10005;</button>
-    </div>
-    <div id="cartDrawerBody" style="flex:1;overflow-y:auto;padding:16px 20px;">
-      {% if cart.item_count > 0 %}
-        {% for item in cart.items %}
-          <div style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #f0f0f0;align-items:center;">
-            {% if item.image %}
-              <img src="{{ item.image | img_url: '120x120' }}" style="width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0;">
-            {% else %}
-              <img src="{{ 'producto1.jpg' | asset_url }}" style="width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0;">
-            {% endif %}
-            <div style="flex:1;min-width:0;">
-              <p style="font-size:14px;font-weight:600;color:var(--verde-oscuro);margin:0 0 2px;">{{ item.product.title }}</p>
-              {% unless item.variant.title == 'Default Title' %}
-                <p style="font-size:12px;color:var(--texto-claro);margin:0 0 2px;">{{ item.variant.title }}</p>
-              {% endunless %}
-              <p style="font-size:12px;color:var(--texto-medio);margin:0;">Cant: {{ item.quantity }}</p>
-            </div>
-            <div style="text-align:right;flex-shrink:0;">
-              <p style="font-size:15px;font-weight:700;color:var(--verde-oscuro);margin:0 0 4px;">{{ item.line_price | money }}</p>
-              <a href="/cart/change?line={{ forloop.index }}&quantity=0&return_to=back" style="font-size:11px;color:#cc0000;text-decoration:underline;">Eliminar</a>
-            </div>
-          </div>
-        {% endfor %}
-      {% else %}
-        <div style="text-align:center;padding:48px 0;">
-          <p style="font-size:36px;margin-bottom:12px;">&#128722;</p>
-          <p style="font-size:15px;color:var(--texto-medio);">Tu carrito esta vacio</p>
-        </div>
-      {% endif %}
-    </div>
-    <!-- ONE footer: subtotal + checkout + continue shopping. JS replaces this same div via .cart-drawer-footer class -->
-    {% if cart.item_count > 0 %}
-      <div class="cart-drawer-footer" style="padding:16px 20px;border-top:2px solid var(--verde-oscuro);background:#fafaf7;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
-          <span style="font-size:14px;color:var(--texto-medio);">Subtotal</span>
-          <span style="font-size:20px;font-weight:700;color:var(--verde-oscuro);">{{ cart.total_price | money }}</span>
-        </div>
-        <form action="/cart" method="post">
-          <button type="submit" name="checkout" style="width:100%;padding:14px;font-size:15px;cursor:pointer;background:linear-gradient(135deg,#c9a961,#b8943f);color:#17433c;border:none;border-radius:40px;font-weight:700;text-transform:uppercase;">Finalizar compra</button>
-        </form>
-        <a href="/products/k9clean-disolvente-de-pelo-de-mascota" style="display:block;text-align:center;margin-top:10px;font-size:13px;color:var(--dorado);font-weight:600;">&#8592; Seguir comprando</a>
-      </div>
-    {% endif %}
-  </div>
-
   <script src="{{ 'k9clean.js' | asset_url }}" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var toggle = document.getElementById('cartToggle');
-      var drawer = document.getElementById('cartDrawer');
-      var overlay = document.getElementById('cartOverlay');
-      var close = document.getElementById('cartClose');
-      if (!toggle || !drawer) return;
-
-      function openCart() { drawer.style.right = '0'; overlay.style.display = 'block'; }
-      function closeCart() { drawer.style.right = '-400px'; overlay.style.display = 'none'; }
-
-      toggle.addEventListener('click', openCart);
-      if (close) close.addEventListener('click', closeCart);
-      if (overlay) overlay.addEventListener('click', closeCart);
-    });
-  </script>
 </body>
 </html>
