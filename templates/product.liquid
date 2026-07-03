@@ -464,59 +464,36 @@
     if(btn && btn !== nativeBtn) setLoading(btn);
   }, true);
 
-  // Punto 4: badge "MEJOR VALOR" + precio por unidad en el bundle de Kaching
-  // Precios base por variante (actualizar si Kaching cambia los precios)
-  var bundlePrices = [
-    { units: 1, total: 44990 },
-    { units: 2, total: 57990 },
-    { units: 3, total: 69990 }
-  ];
-
+  // Punto 4: badge "MEJOR VALOR" flotante sobre la card de 3 unidades
   function injectBundleExtras(){
-    // Kaching renderiza filas de opciones; buscamos contenedores que tengan
-    // texto con "nidad" (1 Unidad / 2 Unidades / 3 Unidades)
-    var rows = section.querySelectorAll('[class]');
-    var options = [];
-    rows.forEach(function(el){
-      if(el.querySelector('[class]')) return; // skip parents, only leaf-ish containers
-      var txt = el.textContent || '';
-      if(/\d\s*[Uu]nidad/.test(txt) && !el.dataset.k9injected) options.push(el);
-    });
+    if(section.dataset.k9done) return;
 
-    // Fallback: buscar directamente los contenedores de Kaching por texto
-    if(!options.length){
-      section.querySelectorAll('*').forEach(function(el){
-        var txt = (el.textContent || '').trim();
-        if(/^[123]\s*[Uu]nidad/.test(txt) && el.children.length === 0 && !el.dataset.k9injected){
-          options.push(el.parentElement || el);
-        }
-      });
+    // Buscar el elemento hoja que contenga exactamente "3 Unidades" o "3 unidades"
+    var found = null;
+    section.querySelectorAll('*').forEach(function(el){
+      if(found) return;
+      var txt = (el.textContent || '').trim();
+      if(/^3\s*[Uu]nidades?$/.test(txt) && el.children.length === 0) found = el;
+    });
+    if(!found) return;
+
+    // Subir hasta encontrar la card contenedora (ancho > 200px, dentro de section)
+    var card = found.parentElement;
+    for(var i = 0; i < 6; i++){
+      if(!card || card === section) break;
+      if(card.getBoundingClientRect().width > 200) break;
+      card = card.parentElement;
     }
+    if(!card || card === section) card = found.parentElement;
 
-    if(!options.length) return;
+    section.dataset.k9done = '1';
+    card.style.position = 'relative';
+    card.style.marginTop = '14px';
 
-    options.forEach(function(el, i){
-      if(el.dataset.k9injected) return;
-      el.dataset.k9injected = '1';
-      var data = bundlePrices[i] || bundlePrices[bundlePrices.length - 1];
-      var ppu = Math.round(data.total / data.units);
-
-      // Precio por unidad
-      var ppuEl = document.createElement('span');
-      ppuEl.style.cssText = 'font-size:11px;color:var(--texto-medio);display:block;margin-top:2px;';
-      ppuEl.textContent = '$' + ppu.toLocaleString('es-AR') + ' c/u';
-      el.appendChild(ppuEl);
-
-      // Badge "MEJOR VALOR" solo en la opción de 3 unidades
-      if(data.units === 3){
-        var badge = document.createElement('span');
-        badge.style.cssText = 'font-size:10px;font-weight:700;background:var(--verde-oscuro);color:#fff;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle;white-space:nowrap;';
-        badge.textContent = 'MEJOR VALOR';
-        var firstChild = el.firstChild;
-        if(firstChild) el.insertBefore(badge, firstChild);
-        else el.appendChild(badge);
-      }
-    });
+    var badge = document.createElement('span');
+    badge.style.cssText = 'position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;background:var(--verde-oscuro);color:#fff;padding:3px 12px;border-radius:20px;white-space:nowrap;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,0.15);letter-spacing:0.5px;';
+    badge.textContent = '★ MEJOR VALOR';
+    card.insertBefore(badge, card.firstChild);
   }
 
   // Observar cuando Kaching renderiza su widget
