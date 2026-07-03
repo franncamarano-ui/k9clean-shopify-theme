@@ -1,0 +1,445 @@
+{% layout 'theme.info' %}
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --adv-verde:      #17433c;
+    --adv-dorado:     #c9a961;
+    --adv-paper:      #faf9f6;
+    --adv-paper-deep: #f0ece3;
+    --adv-ink:        #1c1b18;
+    --adv-ink-mid:    #5a5750;
+    --adv-ink-light:  #8a8780;
+    --adv-rule:       #ddd8ce;
+    --adv-warn-bg:    #fff9e6;
+    --adv-warn-bdr:   #e6c840;
+  }
+
+  .adv-page {
+    background: var(--adv-paper);
+    min-height: 100vh;
+    font-family: Georgia, 'Times New Roman', 'Bitstream Charter', serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    color: var(--adv-ink);
+    font-size: 17px;
+    line-height: 1.80;
+  }
+
+  .adv-col {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 44px 24px 80px;
+  }
+
+  /* Eyebrow */
+  .adv-eyebrow {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--adv-verde);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .adv-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--adv-rule);
+  }
+
+  /* Headline */
+  .adv-h1 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(27px, 5.8vw, 44px);
+    font-weight: 800;
+    line-height: 1.13;
+    letter-spacing: -0.6px;
+    color: var(--adv-ink);
+    text-wrap: balance;
+    margin-bottom: 26px;
+  }
+
+  .adv-h1 em {
+    font-style: normal;
+    color: var(--adv-verde);
+  }
+
+  /* Author bar */
+  .adv-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 0;
+    border-top: 1px solid var(--adv-rule);
+    border-bottom: 1px solid var(--adv-rule);
+    margin-bottom: 38px;
+  }
+
+  .adv-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--adv-verde);
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .adv-author-name {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--adv-ink);
+    line-height: 1.3;
+  }
+
+  .adv-author-meta {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    color: var(--adv-ink-mid);
+    line-height: 1.4;
+    margin-top: 3px;
+  }
+
+  /* Body prose */
+  .adv-page p { margin-bottom: 22px; }
+  .adv-page em { font-style: italic; }
+
+  /* Section h2 */
+  .adv-h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--adv-ink);
+    margin: 42px 0 14px;
+    text-wrap: balance;
+    letter-spacing: -0.2px;
+  }
+
+  /* Pull quote */
+  .adv-pull {
+    border-left: 3px solid var(--adv-dorado);
+    padding: 6px 0 6px 22px;
+    margin: 38px 0;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.62;
+    color: var(--adv-verde);
+  }
+
+  /* Science callout */
+  .adv-science {
+    background: var(--adv-paper-deep);
+    border-left: 3px solid var(--adv-verde);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 22px 20px 24px;
+    margin: 34px 0;
+  }
+
+  .adv-science-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--adv-verde);
+    margin-bottom: 12px;
+  }
+
+  .adv-science p {
+    font-size: 15.5px;
+    line-height: 1.72;
+    color: #2b2a26;
+    margin-bottom: 10px;
+  }
+
+  .adv-science p:last-child { margin-bottom: 0; }
+
+  /* Testimonials */
+  .adv-testi-block {
+    background: var(--adv-paper-deep);
+    border-radius: 10px;
+    padding: 26px 26px 18px;
+    margin: 42px 0;
+  }
+
+  .adv-testi-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--adv-ink-light);
+    margin-bottom: 20px;
+  }
+
+  .adv-testi {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--adv-rule);
+  }
+
+  .adv-testi:last-child {
+    border-bottom: none;
+    padding-bottom: 4px;
+  }
+
+  .adv-stars {
+    color: var(--adv-dorado);
+    font-size: 12.5px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-family: sans-serif;
+  }
+
+  .adv-testi-text {
+    font-size: 15.5px;
+    line-height: 1.70;
+    color: var(--adv-ink);
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .adv-testi-name {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--adv-verde);
+  }
+
+  /* Warning */
+  .adv-warning {
+    background: var(--adv-warn-bg);
+    border: 1px solid var(--adv-warn-bdr);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13.5px;
+    color: #5c4200;
+    line-height: 1.65;
+    margin: 34px 0;
+  }
+
+  .adv-warning strong { display: block; margin-bottom: 4px; font-size: 13px; }
+
+  /* CTA box */
+  .adv-cta {
+    background: var(--adv-verde);
+    border-radius: 14px;
+    padding: 38px 32px 34px;
+    margin: 46px 0 32px;
+    text-align: center;
+  }
+
+  .adv-cta h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 10px;
+    letter-spacing: -0.2px;
+  }
+
+  .adv-cta > p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    color: rgba(255,255,255,.78);
+    margin: 0 0 22px;
+    line-height: 1.55;
+  }
+
+  .adv-trust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 18px;
+    margin-bottom: 26px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,.7);
+  }
+
+  .adv-trust span::before { content: '✓ '; color: var(--adv-dorado); font-weight: 700; }
+
+  .adv-btn {
+    display: inline-block;
+    background: var(--adv-dorado);
+    color: var(--adv-verde);
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 16px 42px;
+    border-radius: 40px;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.22);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+
+  .adv-btn:hover { transform: translateY(-2px); box-shadow: 0 7px 26px rgba(0,0,0,.28); }
+
+  .adv-cta-sub {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11.5px;
+    color: rgba(255,255,255,.45);
+    margin: 14px 0 0;
+  }
+
+  /* Footer legal */
+  .adv-footer {
+    border-top: 1px solid var(--adv-rule);
+    margin-top: 52px;
+    padding-top: 22px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11px;
+    color: var(--adv-ink-light);
+    line-height: 1.72;
+    text-align: center;
+  }
+
+  .adv-footer a { color: var(--adv-ink-light); text-decoration: none; }
+  .adv-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 520px) {
+    .adv-col { padding: 28px 18px 60px; }
+    .adv-pull { font-size: 17.5px; padding-left: 16px; margin: 30px 0; }
+    .adv-h2 { margin-top: 36px; }
+    .adv-cta { padding: 28px 20px 26px; }
+    .adv-btn { padding: 15px 32px; font-size: 15px; }
+    .adv-testi-block { padding: 20px 16px 14px; }
+    .adv-science { padding: 18px 18px 18px 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .adv-btn { transition: none; }
+  }
+</style>
+
+<div class="adv-page">
+  <div class="adv-col">
+
+    <div class="adv-eyebrow">Experiencia personal &middot; K9Clean</div>
+
+    <h1 class="adv-h1">Gasté más de $50.000 en rodillos, cepillos y cintas adhesivas.<br><em>Todo fue inútil hasta que encontré esto.</em></h1>
+
+    <div class="adv-author">
+      <div class="adv-avatar">LM</div>
+      <div>
+        <div class="adv-author-name">Lucía M.</div>
+        <div class="adv-author-meta">36 años &middot; Palermo, CABA &middot; Mamá de Bruno (Golden Retriever, 4 años)</div>
+      </div>
+    </div>
+
+    <p>Durante tres años, mi rutina de antes de salir al trabajo incluía un paso obligatorio que mis amigas encontraban gracioso y yo encontraba agotador: la inspección. Agarraba cada prenda recién lavada, la ponía bajo la luz y buscaba pelos. Los había siempre. Finos, largos, rubios como Bruno, pegados al jean, incrustados en el polar, flotando en la tela del saco. Y lo peor no era que estuvieran ahí. Lo peor era que yo <em>había lavado esa ropa</em>. Había pasado el rodillo antes de guardarla. La había lavado de vuelta. Y los pelos seguían igual.</p>
+
+    <p>Llegué a tener el rodillo adhesivo en la cartera, en el auto y en el cajón del escritorio de la oficina. Era una solución de emergencia permanente para un problema que el lavado nunca terminaba de resolver. En algún momento empecé a pensar que el problema era yo &mdash; que no lavaba bien, que no hacía las cosas como se debían hacer.</p>
+
+    <h2 class="adv-h2">Dos años probando todo lo que existe</h2>
+
+    <p>Lo intenté con todo. Primero fue el rodillo clásico, el de toda la vida. Sirve para lo que se ve &mdash; para el pelo que está en la superficie antes del lavado. Pero después de lavar, la ropa volvía con pelos que no estaban cuando la metí a la máquina. No entendía de dónde salían.</p>
+
+    <p>Después probé un cepillo "especial para mascotas" que vi en una feria de barrio. En tapizados y alfombras funciona, pero en ropa de tela fina era un desastre: dejaba marcas. La bolsa de malla antiestática fue la siguiente inversión. La influencer que la recomendaba decía que "captura el pelo durante el centrifugado". En mi lavarropas no capturó nada. Quizás era el pelo muy fino de Bruno. Quizás era mi máquina. No funcionó.</p>
+
+    <p>Alguien me dijo que agregara vinagre blanco en el enjuague para que "las fibras se suavicen y el pelo se desprenda". Olía raro y no cambió absolutamente nada. El doble ciclo de lavado me lo recomendó una amiga con schnauzer. Con perros de pelo corto quizás funciona. Con un golden de pelo largo como Bruno, el segundo ciclo simplemente redistribuía el mismo pelo que el primero no había sacado.</p>
+
+    <p>En un momento calculé lo que había gastado en todo esto. Rodillos que uso y rompo, el cepillo, las bolsas, una aspiradora de mano que compré específicamente para el tema. Llegué a más de cincuenta mil pesos. Y el problema seguía exactamente igual que el primer día.</p>
+
+    <div class="adv-pull">&ldquo;En algún punto dejé de buscar soluciones. Pensé que era algo con lo que simplemente había que vivir si tenías un perro de pelo largo.&rdquo;</div>
+
+    <h2 class="adv-h2">La parte que nadie me había explicado nunca</h2>
+
+    <p>Un día scrolleando apareció un video corto que explicaba algo que me cambió completamente la forma de entender el problema. Decía que el pelo de mascota tiene queratina &mdash; la misma proteína dura que forma las uñas y las garras. Y que el agua caliente y el detergente común no pueden disolver esa proteína: solo la mueven de lugar dentro de la máquina.</p>
+
+    <div class="adv-science">
+      <div class="adv-science-label">Por qué el pelo siempre vuelve después del lavado</div>
+      <p>Con cada ciclo, el pelo no se va por el desagüe &mdash; se acumula en el tambor, en el burlete de goma, en los filtros y en las mangueras. El lavarropas se convierte en un reservorio.</p>
+      <p>Cuando metés ropa limpia al ciclo siguiente, la máquina te devuelve una parte de ese pelo acumulado adentro. Por eso el rodillo nunca alcanza. El pelo que aparece en la ropa después del lavado no viene de tu ropa &mdash; viene de tu máquina.</p>
+    </div>
+
+    <p>Cuando lo entendí, todo hizo sentido de golpe. Todos esos años usando rodillos y cepillos, yo estaba atacando el pelo que veía en la ropa, que es el síntoma. El problema real estaba adentro del lavarropas, que se iba llenando de queratina ciclo a ciclo, y yo nunca lo había limpiado porque no sabía que había algo para limpiar.</p>
+
+    <h2 class="adv-h2">Lo que apareció al final de ese video</h2>
+
+    <p>Al terminar apareció K9Clean. Un polvo a base de plantas que usa algo llamado enzimas proteasa &mdash; proteínas que descomponen otras proteínas. Según explicaban, estas enzimas atacan la queratina del pelo a nivel molecular: no la mueven de lugar, la disuelven.</p>
+
+    <p>Fui re escéptica. Primero porque ya había gastado plata en cosas que prometían y no cumplían. Segundo porque no entendía cómo un polvo podía hacer lo que ningún cepillo, ningún rodillo y ningún ciclo extra habían logrado en tres años. Pero tenía garantía de devolución de 30 días, así que compré el paquete más chico para probar. Si no funcionaba, pedía el reembolso y listo.</p>
+
+    <h2 class="adv-h2">Qué pasó después del primer uso</h2>
+
+    <p>El primer uso fue un viernes a la tarde. El instructivo dice que el primer ciclo tiene que ser con el tambor vacío &mdash; sin ropa &mdash; para limpiar la máquina primero. Puse dos cucharadas del polvo, ciclo de algodón, temperatura máxima, y lo dejé correr solo.</p>
+
+    <p>Cuando abrí el tambor al terminar, había pelo en el burlete de goma. No poco &mdash; bastante. Y no era pelo nuevo. Era el que llevaba meses acumulado ahí adentro que las enzimas habían soltado. La máquina lo había expulsado. Fue un momento raro: mezcla de asco y alivio al mismo tiempo.</p>
+
+    <p>Al día siguiente lavé ropa de verdad. La remera vieja que uso cuando baño a Bruno, que siempre sale del lavarropas con pelo incrustado. Salió limpia. La polar que uso para salir a pasear, que siempre atrapa pelos en el tejido abierto. Limpia. No revisé bajo la luz dos veces. No pasé el rodillo. No encontré nada que sacar.</p>
+
+    <div class="adv-pull">&ldquo;No fue una maravilla milagrosa. Fue simplemente que el problema dejó de estar. Y esa sensación fue bastante más grande de lo que esperaba.&rdquo;</div>
+
+    <p>Ya van cinco meses usando K9Clean una vez por mes. El día de lavar dejó de ser el día en que siempre terminaba frustrada. No tengo más rodillos en la cartera. El que estaba en el cajón del escritorio lo tiré hace semanas y no lo extrañé.</p>
+
+    <div class="adv-testi-block">
+      <div class="adv-testi-label">Otras dueñas de mascotas que lo probaron</div>
+
+      <div class="adv-testi">
+        <div class="adv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="adv-testi-text">&ldquo;Llevaba años con dos labradores y siempre creí que la bolsa de malla iba a ser la solución. Nunca funcionó. Cuando leí que el problema estaba adentro del lavarropas y no en la ropa, me cayó la ficha de golpe. Desde que uso K9Clean no tuve más pelo después del lavado. Ya tiré las bolsas y el rodillo que tenía en la cartera.&rdquo;</p>
+        <div class="adv-testi-name">Sol, 34 años &mdash; Rosario &middot; 2 Labradores</div>
+      </div>
+
+      <div class="adv-testi">
+        <div class="adv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="adv-testi-text">&ldquo;Lo que más me sorprendió fue que mi lavarropas dejó de hacer un ruido extraño que tenía hace tiempo. El técnico me había dicho que era desgaste normal. Después del primer ciclo con K9Clean el ruido desapareció. No sé qué había acumulado adentro, pero algo había. La ropa también salió sin ese olorcito a humedad que a veces tenía.&rdquo;</p>
+        <div class="adv-testi-name">Caro, 40 años &mdash; La Plata &middot; Border Collie</div>
+      </div>
+
+      <div class="adv-testi">
+        <div class="adv-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="adv-testi-text">&ldquo;Vi el anuncio y pensé que era cualquier cosa de esas que prometen todo y no hacen nada. Lo compré igual porque tenía garantía de devolución. Primer uso y la diferencia fue total &mdash; no lo puedo explicar mejor que eso. Ya lo recomendé a tres amigas con perros.&rdquo;</p>
+        <div class="adv-testi-name">Nadia, 29 años &mdash; Belgrano, CABA &middot; Golden Retriever</div>
+      </div>
+    </div>
+
+    <!-- NOTA: Advertencia de telas no aptas — obligatoria por CLAUDE.md regla 6, mantener visible -->
+    <div class="adv-warning">
+      <strong>⚠️ Importante antes de usar</strong>
+      K9Clean no es apto para lana, seda, cachemir, plumón ni cuero. Revisá la etiqueta de tus prendas antes de usarlo. Para todo lo demás &mdash; algodón, sintéticos, denim, polar &mdash; es completamente seguro.
+    </div>
+
+    <p>Si llevás tiempo usando rodillos y el pelo siempre termina volviendo después del lavado, te diría que lo pruebes. No porque sea algo mágico, sino porque resuelve el problema desde el lugar correcto &mdash; desde adentro de la máquina, que es de donde viene. Yo lo conseguí por su página oficial. Ojalá lo hubiera encontrado antes.</p>
+
+    <div class="adv-cta">
+      <h2>Probá K9Clean con garantía de 30 días</h2>
+      <p>Si en 30 días no ves diferencia, te devuelven la plata. Sin preguntas.</p>
+      <div class="adv-trust">
+        <span>Desde $44.990</span>
+        <span>Garantía 30 días</span>
+        <span>Mercado Pago</span>
+        <span>Envío a todo el país</span>
+      </div>
+      <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="adv-btn">Ver K9Clean &rarr;</a>
+      <p class="adv-cta-sub">Apto para lavarropas de carga frontal y superior &nbsp;&middot;&nbsp; No apto para lana, seda ni cuero</p>
+    </div>
+
+    <div class="adv-footer">
+      <p>Este artículo refleja la experiencia personal de la autora. Los resultados pueden variar según el tipo de mascota, el lavarropas y la frecuencia de uso. K9Clean no es un producto médico ni veterinario. Los testimonios pertenecen a personas reales; los resultados individuales pueden diferir.</p>
+      <p style="margin-top:8px;">
+        &copy; {{ 'now' | date: '%Y' }} K9 Clean Argentina. Todos los derechos reservados.
+        &nbsp;&middot;&nbsp;
+        <a href="/policies/privacy-policy">Política de privacidad</a>
+        &nbsp;&middot;&nbsp;
+        <a href="/policies/terms-of-service">Términos y condiciones</a>
+      </p>
+    </div>
+
+  </div>
+</div>
