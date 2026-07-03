@@ -15,37 +15,21 @@
   <link rel="preload" href="{{ 'k9clean.css' | asset_url }}" as="style">
   {{ 'k9clean.css' | asset_url | stylesheet_tag }}
   <script>
-  /* Kaching cart fix — limpia lineas previas al cargar la pagina de producto */
+  /* Kaching cart fix — vaciar carrito completo al llegar a pagina de producto */
   (function(){
     var _XHR = window.XMLHttpRequest;
 
-    function clearK9Lines(pid, done){
-      if(!pid){ if(done) done(); return; }
+    function clearCart(done){
       var r = new _XHR();
-      r.open('GET','/cart.js',true);
-      r.onload = function(){
-        try{
-          var items = JSON.parse(r.responseText).items || [];
-          var lines = items.filter(function(i){ return String(i.product_id)===String(pid); });
-          if(!lines.length){ if(done) done(); return; }
-          var n=0, total=lines.length;
-          lines.forEach(function(item){
-            var x = new _XHR();
-            x.open('POST','/cart/change.js',true);
-            x.setRequestHeader('Content-Type','application/json');
-            x.onload = x.onerror = function(){ if(++n===total && done) done(); };
-            x.send(JSON.stringify({id:item.key,quantity:0}));
-          });
-        }catch(e){ if(done) done(); }
-      };
-      r.onerror = function(){ if(done) done(); };
+      r.open('POST','/cart/clear.js',true);
+      r.setRequestHeader('Content-Type','application/json');
+      r.onload = r.onerror = function(){ if(done) done(); };
       r.send();
     }
 
     function maybeClear(){
-      var el = document.querySelector('[data-product-id]');
-      if(!el) return;
-      clearK9Lines(el.dataset.productId, null);
+      if(!document.querySelector('[data-product-id]')) return;
+      clearCart(null);
     }
 
     // Carga normal
@@ -53,7 +37,7 @@
     // Restauracion desde bfcache (back button en mobile)
     window.addEventListener('pageshow', function(e){ if(e.persisted) maybeClear(); });
 
-    // Fallback: interceptar XHR si Kaching usa /cart/add.js
+    // Interceptor XHR: limpiar carrito antes de cada add de Kaching
     window.XMLHttpRequest = function(){
       var xhr = new _XHR();
       var m='', u='';
@@ -61,8 +45,9 @@
       xhr.open = function(){ m=arguments[0]||''; u=arguments[1]||''; return oOpen.apply(null,arguments); };
       xhr.send = function(body){
         if(m.toUpperCase()==='POST' && u.indexOf('/cart/add')!==-1){
-          var el=document.querySelector('[data-product-id]');
-          clearK9Lines(el&&el.dataset.productId, function(){ oSend(body); }); return;
+          if(document.querySelector('[data-product-id]')){
+            clearCart(function(){ oSend(body); }); return;
+          }
         }
         return oSend(body);
       };
