@@ -316,25 +316,25 @@
         <span style="font-size:13px;color:var(--texto-medio);">· 127 reseñas</span>
       </div>
 
-      <!-- 2x2 Benefits Grid -->
-      <div class="benefits-grid">
-        <div class="benefit-item">
-          <div class="benefit-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <span class="benefit-item__text">Disuelve el pelo en cada lavado</span>
-        </div>
-        <div class="benefit-item">
-          <div class="benefit-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-          <span class="benefit-item__text">Se adapta a tu rutina actual</span>
-        </div>
-        <div class="benefit-item">
-          <div class="benefit-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <span class="benefit-item__text">Seguro para mascotas, telas y lavarropas</span>
-        </div>
-        <div class="benefit-item">
-          <div class="benefit-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg></div>
-          <span class="benefit-item__text">Elimina pelo de perro y gato</span>
-        </div>
-      </div>
+      <!-- Bullets de beneficios clave — visibles sin click -->
+      <ul style="list-style:none;margin:0 0 16px;padding:0;">
+        <li style="display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:13px;color:var(--texto-medio);">
+          <span style="color:var(--verde-oscuro);font-weight:700;flex-shrink:0;">&#10003;</span>
+          Disuelve hasta el <strong style="color:var(--verde-oscuro);">96.7%</strong> del pelo acumulado en telas y lavarropas
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:13px;color:var(--texto-medio);">
+          <span style="color:var(--verde-oscuro);font-weight:700;flex-shrink:0;">&#10003;</span>
+          Limpia el tambor, filtro y componentes internos en cada lavado
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:13px;color:var(--texto-medio);">
+          <span style="color:var(--verde-oscuro);font-weight:700;flex-shrink:0;">&#10003;</span>
+          Previene reparaciones costosas del lavarropas a largo plazo
+        </li>
+        <li style="display:flex;align-items:flex-start;gap:8px;padding:5px 0;font-size:13px;color:var(--texto-medio);">
+          <span style="color:var(--verde-oscuro);font-weight:700;flex-shrink:0;">&#10003;</span>
+          Sin esfuerzo extra — se agrega al lavado normal, sin pasos nuevos
+        </li>
+      </ul>
 
       <!-- POCO STOCK -->
       <div style="background:#fff3cd;border:1px solid #e6c34d;border-radius:8px;padding:10px 16px;margin-bottom:16px;text-align:center;">
@@ -473,6 +473,69 @@
     var btn = e.target.closest('button[type="submit"], [class*="buy"], [class*="checkout"], [class*="cart"]');
     if(btn && btn !== nativeBtn) setLoading(btn);
   }, true);
+
+  // Punto 4: badge "MEJOR VALOR" + precio por unidad en el bundle de Kaching
+  // Precios base por variante (actualizar si Kaching cambia los precios)
+  var bundlePrices = [
+    { units: 1, total: 44990 },
+    { units: 2, total: 57990 },
+    { units: 3, total: 69990 }
+  ];
+
+  function injectBundleExtras(){
+    // Kaching renderiza filas de opciones; buscamos contenedores que tengan
+    // texto con "nidad" (1 Unidad / 2 Unidades / 3 Unidades)
+    var rows = section.querySelectorAll('[class]');
+    var options = [];
+    rows.forEach(function(el){
+      if(el.querySelector('[class]')) return; // skip parents, only leaf-ish containers
+      var txt = el.textContent || '';
+      if(/\d\s*[Uu]nidad/.test(txt) && !el.dataset.k9injected) options.push(el);
+    });
+
+    // Fallback: buscar directamente los contenedores de Kaching por texto
+    if(!options.length){
+      section.querySelectorAll('*').forEach(function(el){
+        var txt = (el.textContent || '').trim();
+        if(/^[123]\s*[Uu]nidad/.test(txt) && el.children.length === 0 && !el.dataset.k9injected){
+          options.push(el.parentElement || el);
+        }
+      });
+    }
+
+    if(!options.length) return;
+
+    options.forEach(function(el, i){
+      if(el.dataset.k9injected) return;
+      el.dataset.k9injected = '1';
+      var data = bundlePrices[i] || bundlePrices[bundlePrices.length - 1];
+      var ppu = Math.round(data.total / data.units);
+
+      // Precio por unidad
+      var ppuEl = document.createElement('span');
+      ppuEl.style.cssText = 'font-size:11px;color:var(--texto-medio);display:block;margin-top:2px;';
+      ppuEl.textContent = '$' + ppu.toLocaleString('es-AR') + ' c/u';
+      el.appendChild(ppuEl);
+
+      // Badge "MEJOR VALOR" solo en la opción de 3 unidades
+      if(data.units === 3){
+        var badge = document.createElement('span');
+        badge.style.cssText = 'font-size:10px;font-weight:700;background:var(--verde-oscuro);color:#fff;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle;white-space:nowrap;';
+        badge.textContent = 'MEJOR VALOR';
+        var firstChild = el.firstChild;
+        if(firstChild) el.insertBefore(badge, firstChild);
+        else el.appendChild(badge);
+      }
+    });
+  }
+
+  // Observar cuando Kaching renderiza su widget
+  var observer = new MutationObserver(function(){ injectBundleExtras(); });
+  observer.observe(section, { childList: true, subtree: true });
+  // Intentar también de inmediato y con delay por si ya renderizó
+  injectBundleExtras();
+  setTimeout(injectBundleExtras, 800);
+  setTimeout(injectBundleExtras, 2000);
 })();
 </script>
 <style>
