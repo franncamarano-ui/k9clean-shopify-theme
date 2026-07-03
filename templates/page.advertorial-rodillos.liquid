@@ -125,7 +125,7 @@
   }
 
   /* Body prose */
-  .adv-page p { margin-bottom: 22px; }
+  .adv-page p { margin-bottom: 26px; }
   .adv-page em { font-style: italic; }
 
   /* Section h2 */
@@ -134,7 +134,7 @@
     font-size: 20px;
     font-weight: 800;
     color: var(--adv-verde);
-    margin: 42px 0 14px;
+    margin: 60px 0 16px;
     text-wrap: balance;
     letter-spacing: -0.2px;
   }
@@ -155,11 +155,26 @@
     color: #fff;
     border-left: none;
     border-radius: 8px;
-    padding: 22px 26px;
-    margin: 38px 0;
+    padding: 26px 28px 26px 44px;
+    margin: 42px 0;
     font-size: 19px;
     font-style: italic;
     line-height: 1.60;
+    position: relative;
+  }
+
+  .adv-pull::before {
+    content: '\201C';
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 76px;
+    color: var(--adv-dorado);
+    line-height: 1;
+    font-style: normal;
+    opacity: 0.55;
+    pointer-events: none;
   }
 
   /* Science callout */
@@ -192,11 +207,11 @@
 
   /* Testimonials */
   .adv-testi-block {
-    background: var(--adv-paper-deep);
-    border-radius: 10px;
-    padding: 0 26px 18px;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
     margin: 42px 0;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .adv-testi-header {
@@ -207,26 +222,32 @@
     text-transform: uppercase;
     background: var(--adv-verde);
     color: var(--adv-dorado);
-    margin: 0 -26px 22px;
-    padding: 12px 26px;
-    border-radius: 10px 10px 0 0;
+    margin: 0 0 14px;
+    padding: 12px 20px;
+    border-radius: 8px;
   }
 
   .adv-testi {
-    padding: 18px 0;
-    border-bottom: 1px solid var(--adv-rule);
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 12px;
+    border-bottom: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border: 1px solid var(--adv-rule);
   }
 
   .adv-testi:last-child {
     border-bottom: none;
-    padding-bottom: 4px;
+    margin-bottom: 0;
+    padding-bottom: 20px;
   }
 
   .adv-stars {
     color: var(--adv-dorado);
-    font-size: 12.5px;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
     font-family: sans-serif;
   }
 
@@ -240,7 +261,7 @@
 
   .adv-testi-name {
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 700;
     color: var(--adv-verde);
   }
@@ -386,15 +407,37 @@
     white-space: nowrap;
   }
 
+  /* Image block */
+  .adv-img-block {
+    margin: 36px 0 42px;
+  }
+  .adv-img-block img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    display: block;
+  }
+  .adv-img-block figcaption {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    color: var(--adv-ink-light);
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+  }
+
   @media (max-width: 520px) {
     .adv-header { padding: 28px 18px 30px; }
     .adv-col { padding: 32px 18px 60px; }
-    .adv-pull { font-size: 17px; padding: 18px 20px; margin: 30px 0; }
-    .adv-h2 { margin-top: 36px; }
+    .adv-pull { font-size: 17px; padding: 20px 20px 20px 36px; margin: 32px 0; }
+    .adv-pull::before { font-size: 58px; top: 6px; left: 10px; }
+    .adv-h2 { margin-top: 48px; }
     .adv-cta { padding: 28px 20px 26px; }
-    .adv-btn { padding: 15px 32px; font-size: 15px; }
-    .adv-testi-block { padding: 0 16px 14px; }
-    .adv-testi-header { margin: 0 -16px 20px; padding: 11px 16px; }
+    .adv-cta-mid .adv-btn,
+    .adv-cta .adv-btn { display: block; width: 100%; text-align: center; padding: 17px 20px; box-sizing: border-box; }
+    .adv-testi-block { padding: 0; }
+    .adv-testi { padding: 16px; }
+    .adv-testi-header { margin: 0 0 12px; padding: 11px 16px; }
     .adv-science { padding: 18px 18px 18px 20px; }
   }
 
@@ -434,6 +477,11 @@
     <p>Alguien me dijo que agregara vinagre blanco en el enjuague para que "las fibras se suavicen y el pelo se desprenda". Olía raro y no cambió absolutamente nada. El doble ciclo de lavado me lo recomendó una amiga con schnauzer. Con perros de pelo corto quizás funciona. Con un golden de pelo largo como Bruno, el segundo ciclo simplemente redistribuía el mismo pelo que el primero no había sacado.</p>
 
     <p>En un momento calculé lo que había gastado en todo esto. Rodillos que uso y rompo, el cepillo, las bolsas, una aspiradora de mano que compré específicamente para el tema. Llegué a más de cincuenta mil pesos. Y el problema seguía exactamente igual que el primer día.</p>
+
+    <figure class="adv-img-block">
+      <img src="{{ 'tachocepillo.png' | asset_url }}" alt="Rodillos, cepillos y guantes de mascota usados — todo lo que probé antes de encontrar K9Clean" loading="lazy" onerror="this.closest('figure').style.display='none'">
+      <figcaption>Todo lo que probé antes de encontrar K9Clean.</figcaption>
+    </figure>
 
     <div class="adv-pull">&ldquo;En algún punto dejé de buscar soluciones. Pensé que era algo con lo que simplemente había que vivir si tenías un perro de pelo largo.&rdquo;</div>
 
