@@ -331,12 +331,32 @@
     letter-spacing: -0.2px;
   }
 
-  .adv-cta-mid-sub {
+  .adv-cta-mid .adv-btn {
+    background: var(--adv-verde);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(23,67,60,0.22);
+  }
+
+  .adv-cta-mid .adv-btn:hover {
+    background: #1e5248;
+  }
+
+  .adv-trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 20px;
+    margin: 14px 0 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
     font-size: 12px;
     color: var(--adv-ink-mid);
-    margin: 12px 0 0;
-    letter-spacing: 0.1px;
+  }
+
+  .adv-trust-strip span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
   }
 
   @media (max-width: 520px) {
@@ -400,7 +420,12 @@
     <div class="adv-cta-mid">
       <h3>¿Querés resolver el problema de raíz?</h3>
       <a href="/products/k9clean-disolvente-de-pelo-de-mascota" class="adv-btn">Ver K9Clean &rarr;</a>
-      <p class="adv-cta-mid-sub">Garantía de 30 días &nbsp;&middot;&nbsp; Mercado Pago &nbsp;&middot;&nbsp; Envío a todo el país</p>
+      <div class="adv-trust-strip">
+        <span>🛡 Garantía 30 días</span>
+        <span>🚚 Envío 3-7 días hábiles</span>
+        <span>🔒 Pago seguro</span>
+        <span>♻️ Apto pozo séptico</span>
+      </div>
     </div>
 
     <h2 class="adv-h2">Lo que apareció al final de ese video</h2>
