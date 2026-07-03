@@ -71,6 +71,7 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(201, 169, 97, 0.45);
 }
+.info-cta:active { transform: translateY(0); box-shadow: none; }
 
 /* ---------- STAR RATING ---------- */
 .info-stars {
@@ -487,6 +488,10 @@
   max-width: 800px;
   margin: 0 auto;
   color: rgba(255,255,255,0.72);
+}
+html { scroll-behavior: smooth; }
+@media (max-width: 540px) {
+  .info-cta { display: block; width: 100%; text-align: center; box-sizing: border-box; }
 }
 </style>
 

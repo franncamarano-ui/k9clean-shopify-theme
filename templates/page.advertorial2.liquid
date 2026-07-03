@@ -323,11 +323,13 @@
     transition: transform 0.2s, box-shadow 0.2s;
   }
   .adv2-cta-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(201,169,97,0.4); }
+  .adv2-cta-btn:active { transform: translateY(0); box-shadow: none; }
   .adv2-cta-btn--dark {
     background: #17433c;
     color: #fff;
   }
   .adv2-cta-btn--dark:hover { background: #1d5a51; box-shadow: 0 4px 16px rgba(23,67,60,0.3); }
+  .adv2-cta-btn--dark:active { transform: translateY(0); box-shadow: none; }
 
   .adv2-cta-box {
     margin: 48px 0 32px;
@@ -357,6 +359,10 @@
     color: #aaa;
     border-top: 1px solid #eee;
     line-height: 1.6;
+  }
+  html { scroll-behavior: smooth; }
+  @media (max-width: 540px) {
+    .adv2-cta-btn { display: block; width: 100%; text-align: center; padding: 14px 20px; box-sizing: border-box; }
   }
 </style>
 

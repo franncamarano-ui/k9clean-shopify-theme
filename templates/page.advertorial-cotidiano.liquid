@@ -305,13 +305,14 @@
   font-size: 15px;
   font-weight: 700;
   padding: 14px 16px;
-  border-radius: 4px;
+  border-radius: 8px;
   text-align: center;
   text-decoration: none;
   letter-spacing: 0.02em;
-  transition: background 0.18s;
+  transition: background 0.18s, transform 0.15s, box-shadow 0.15s;
 }
-.cot-btn:hover { background: #0f2e29; }
+.cot-btn:hover { background: #0f2e29; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(23,67,60,0.28); }
+.cot-btn:active { transform: translateY(0); box-shadow: none; }
 
 /* CTA 1 — EARLY (after intro paras) */
 .cot-cta1 {
@@ -460,12 +461,13 @@
   font-size: 16px;
   font-weight: 700;
   padding: 16px 48px;
-  border-radius: 4px;
+  border-radius: 8px;
   text-decoration: none;
   letter-spacing: 0.02em;
-  transition: background 0.18s;
+  transition: background 0.18s, transform 0.15s, box-shadow 0.15s;
 }
-.cot-cta3-btn:hover { background: #f0ede8; }
+.cot-cta3-btn:hover { background: #f0ede8; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+.cot-cta3-btn:active { transform: translateY(0); box-shadow: none; }
 .cot-cta3-trust {
   font-family: 'Inter', sans-serif;
   font-size: 11px;
@@ -494,6 +496,10 @@
   padding: 12px 14px;
   margin-bottom: 14px;
   line-height: 1.6;
+}
+html { scroll-behavior: smooth; }
+@media (max-width: 540px) {
+  .cot-cta3-btn { display: block; width: 100%; text-align: center; padding: 16px 20px; box-sizing: border-box; }
 }
 </style>
 
