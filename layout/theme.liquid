@@ -49,7 +49,7 @@
             var origOnLoad = xhr.onload;
             xhr.onload = function(e){
               if(origOnLoad) origOnLoad.call(xhr, e);
-              window.location.href = '/checkout';
+              setTimeout(function(){ window.location.href = '/checkout'; }, 250);
             };
             clearCart(function(){ oSend(body); }); return;
           }
@@ -67,7 +67,7 @@
         if(u.indexOf('/cart/add')!==-1 && document.querySelector('[data-product-id]')){
           return new Promise(function(res,rej){
             clearCart(function(){
-              _fetch(input,init).then(function(r){ window.location.href='/checkout'; res(r); }).catch(rej);
+              _fetch(input,init).then(function(r){ setTimeout(function(){ window.location.href='/checkout'; }, 250); res(r); }).catch(rej);
             });
           });
         }
