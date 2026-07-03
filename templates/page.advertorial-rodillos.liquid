@@ -96,16 +96,14 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: var(--adv-dorado);
-    color: var(--adv-verde);
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 14px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
     flex-shrink: 0;
+  }
+  .adv-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .adv-author-name {
@@ -454,7 +452,7 @@
       <div class="adv-eyebrow">Experiencia personal &middot; K9Clean</div>
       <h1 class="adv-h1">Gasté más de $50.000 en rodillos, cepillos y cintas.<br><em>Todo fue inútil hasta que encontré esto.</em></h1>
       <div class="adv-author">
-        <div class="adv-avatar">LM</div>
+        <div class="adv-avatar"><img src="{{ 'perroperfil.jpg' | asset_url }}" alt="Lucía M." loading="lazy"></div>
         <div>
           <div class="adv-author-name">Lucía M.</div>
           <div class="adv-author-meta">36 años &middot; Palermo, CABA &middot; Mamá de Bruno (Golden Retriever, 4 años)</div>
