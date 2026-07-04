@@ -466,6 +466,16 @@
     if(btn && btn !== nativeBtn) setLoading(btn);
   }, true);
 
+  // Vaciar carrito cada vez que el usuario cambia de variante (radio/click en card de bundle)
+  // Evita acumulación cuando vuelven del checkout y eligen una opción distinta
+  function clearCartSilent(){
+    fetch('/cart/clear.js', {method:'POST', headers:{'Content-Type':'application/json'}}).catch(function(){});
+  }
+  section.addEventListener('change', function(){ clearCartSilent(); });
+  section.addEventListener('click', function(e){
+    if(e.target.closest('[class*="bundle"], [class*="option"], [class*="plan"], [class*="pack"], [class*="kaching"]')) clearCartSilent();
+  });
+
   // Punto 4: badges flotantes sobre cards de bundle
   function findCardForText(pattern){
     var found = null;
