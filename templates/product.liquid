@@ -425,16 +425,32 @@
   if(!section) return;
 
   var originalText = 'Comprar ahora';
+  var _loadingTimer = null;
+  var _loadingBtn = null;
+
+  function resetLoading(){
+    if(_loadingTimer){ clearTimeout(_loadingTimer); _loadingTimer = null; }
+    if(_loadingBtn){
+      _loadingBtn.disabled = false;
+      _loadingBtn.style.opacity = '';
+      _loadingBtn.textContent = originalText;
+      _loadingBtn = null;
+    }
+  }
 
   function setLoading(btn){
+    resetLoading();
+    _loadingBtn = btn;
     btn.disabled = true;
     btn.style.opacity = '0.75';
     btn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px;">'
       + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:k9spin 0.7s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>'
       + 'Procesando...</span>';
-    // Re-habilitar si no redirige en 10s
-    setTimeout(function(){ btn.disabled = false; btn.style.opacity = ''; btn.textContent = originalText; }, 10000);
+    _loadingTimer = setTimeout(resetLoading, 10000);
   }
+
+  // Resetear inmediatamente si el usuario vuelve con el botón back (bfcache)
+  window.addEventListener('pageshow', function(e){ if(e.persisted) resetLoading(); });
 
   // Botón nativo (puede estar oculto por Kaching pero igual funciona)
   var nativeBtn = document.getElementById('buyNowBtnProduct');
