@@ -514,12 +514,40 @@
     }
   }
 
+  // Interceptar clicks en imágenes de upsell de Kaching para que togleen el checkbox
+  // en vez de navegar a la página de producto individual del addon
+  function patchUpsellLinks(){
+    section.querySelectorAll('a[href]').forEach(function(link){
+      if(link.dataset.k9upsell) return;                        // ya interceptado
+      var href = link.getAttribute('href') || '';
+      if(!href.match(/\/products\//)) return;                  // solo links de producto
+      if(href.indexOf('k9clean-disolvente') !== -1) return;    // no tocar el producto principal
+      if(!link.querySelector('img')) return;                   // solo links que envuelven imágenes
+      link.dataset.k9upsell = '1';
+      link.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        // Subir en el DOM hasta encontrar el checkbox del upsell
+        var el = link, cb = null;
+        for(var i = 0; i < 7; i++){
+          el = el.parentElement;
+          if(!el || el === section) break;
+          cb = el.querySelector('input[type="checkbox"]');
+          if(cb) break;
+        }
+        if(cb) cb.click();
+      }, true); // capture phase: intercepta antes que los handlers de Kaching
+    });
+  }
+
+  function runKachingPatches(){ injectBundleExtras(); patchUpsellLinks(); }
+
   // Observar cuando Kaching renderiza su widget
-  var observer = new MutationObserver(function(){ injectBundleExtras(); });
+  var observer = new MutationObserver(runKachingPatches);
   observer.observe(section, { childList: true, subtree: true });
-  injectBundleExtras();
-  setTimeout(injectBundleExtras, 800);
-  setTimeout(injectBundleExtras, 2000);
+  runKachingPatches();
+  setTimeout(runKachingPatches, 800);
+  setTimeout(runKachingPatches, 2000);
 })();
 </script>
 <style>
